@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &mdash; Studio Toinon</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/contact.css">
+</head>
+<body data-page="contact" data-default-dark="false">
+
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <div id="site-header-placeholder"></div>
+
+  <div id="contact-wrap">
+
+    <div class="contact-left">
+      <canvas id="contact-canvas"></canvas>
+      <div>
+        <div class="contact-eyebrow reveal">L'enqu&ecirc;te commence ici</div>
+        <h1 class="contact-title reveal reveal-d1">
+          Ouvrir<br>un <span class="vive">dossier.</span>
+        </h1>
+        <p class="contact-sub reveal reveal-d2">Aucun dossier ne reste sans r&eacute;ponse. D&eacute;crivez votre affaire &mdash; on s'en charge.</p>
+      </div>
+      <div class="contact-infos reveal reveal-d3">
+        <div class="contact-info-item">
+          <span class="contact-info-label">Email</span>
+          <a href="mailto:contact@studiotoinon.fr" class="contact-info-val">contact@studiotoinon.fr</a>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-label">Bas&eacute; &agrave;</span>
+          <span class="contact-info-val">Paris, France</span>
+        </div>
+        <div class="contact-info-item">
+          <span class="contact-info-label">Disponibilit&eacute;</span>
+          <span class="contact-info-val">Dossiers ouverts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <div class="form-dossier-num reveal">Dossier N&deg; &mdash; En cours d'ouverture</div>
+
+      <div class="form-group reveal reveal-d1">
+        <label class="form-label" for="nom-projet">Nom du projet</label>
+        <input class="form-input" type="text" id="nom-projet" placeholder="Le nom de votre affaire">
+      </div>
+
+      <div class="form-group reveal reveal-d1">
+        <label class="form-label" for="identite">Votre identit&eacute;</label>
+        <input class="form-input" type="text" id="identite" placeholder="Nom, pr&eacute;nom ou raison sociale">
+      </div>
+
+      <div class="form-group reveal reveal-d2">
+        <label class="form-label" for="coordonnees">Coordonn&eacute;es</label>
+        <input class="form-input" type="email" id="coordonnees" placeholder="Votre adresse email">
+      </div>
+
+      <div class="form-group reveal reveal-d2">
+        <label class="form-label">Juridiction concern&eacute;e</label>
+        <div class="jur-options" id="juridiction">
+          <label class="jur-option">
+            <input type="radio" name="juridiction" value="strategie">
+            <span class="jur-option-label"><span class="jur-option-num">J.01</span>Strat&eacute;gie de marque</span>
+          </label>
+          <label class="jur-option">
+            <input type="radio" name="juridiction" value="interface">
+            <span class="jur-option-label"><span class="jur-option-num">J.02</span>Design d'interface</span>
+          </label>
+          <label class="jur-option">
+            <input type="radio" name="juridiction" value="motion">
+            <span class="jur-option-label"><span class="jur-option-num">J.03</span>Motion &amp; Vid&eacute;o</span>
+          </label>
+          <label class="jur-option">
+            <input type="radio" name="juridiction" value="multi">
+            <span class="jur-option-label"><span class="jur-option-num">&mdash;</span>Plusieurs juridictions</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group reveal reveal-d3">
+        <label class="form-label" for="dossier">Description du dossier</label>
+        <textarea class="form-textarea" id="dossier" placeholder="D&eacute;crivez votre projet, votre contexte, vos objectifs&hellip;"></textarea>
+      </div>
+
+      <div class="form-bottom reveal reveal-d4">
+        <p class="form-mention">Chaque dossier re&ccedil;oit une r&eacute;ponse sous 48h. Toutes les informations transmises restent confidentielles.</p>
+        <button class="form-submit">
+          <span>Soumettre le dossier</span>
+          <span>&rarr;</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="site-footer-placeholder"></div>
+  <div id="tab-bar-placeholder"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages/contact.js"></script>
+
+</body>
+</html>

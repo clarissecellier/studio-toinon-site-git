@@ -1,0 +1,75 @@
+/* ══════════════════════════════
+   MANIFESTE — Hero
+══════════════════════════════ */
+#hero-manifeste {
+  background: var(--encre); min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 3.5rem 5rem; position: relative; overflow: hidden;
+}
+#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.04; mix-blend-mode: screen; }
+.hero-m-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--kraft); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+.hero-m-badge { display: inline-flex; align-items: center; background: var(--vive); color: var(--encre); padding: 0.3rem 0.75rem; font-size: 0.58rem; letter-spacing: 0.15em; }
+.hero-m-title { font-family: var(--display); font-size: clamp(5rem, 11vw, 10rem); text-transform: uppercase; line-height: 0.88; letter-spacing: -0.02em; color: var(--base); max-width: 900px; }
+.hero-m-title .outline { -webkit-text-stroke: 1.5px var(--base); color: transparent; }
+.hero-m-bottom { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 3rem; }
+.hero-m-sub { font-family: var(--mono); font-size: 0.72rem; color: rgba(245,240,232,0.5); line-height: 1.9; max-width: 360px; font-style: italic; }
+
+/* ══════════════════════════════
+   CORPS MANIFESTE
+══════════════════════════════ */
+#manifeste-body { background: var(--base); }
+.manifeste-intro { padding: 8rem 3.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+.manifeste-intro-left { position: sticky; top: 8rem; }
+.manifeste-num { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--kraft); margin-bottom: 1.5rem; }
+.manifeste-pull { font-family: var(--display); font-size: clamp(2rem, 3.5vw, 3rem); text-transform: uppercase; line-height: 0.95; color: var(--encre); }
+.manifeste-pull .dot-accent { color: var(--accent); }
+.manifeste-intro-right p { font-family: var(--mono); font-size: 0.78rem; line-height: 2.1; color: rgba(26,26,26,0.65); margin-bottom: 1.5rem; }
+.manifeste-intro-right p strong { color: var(--encre); font-weight: normal; }
+.manifeste-beliefs { padding: 0 3.5rem; }
+.belief { display: grid; grid-template-columns: 80px 1fr; gap: 3rem; padding: 4rem 0; border-top: 1px solid rgba(26,26,26,0.08); }
+.belief:first-child { border-top: none; padding-top: 6rem; }
+.belief:last-child { border-bottom: 1px solid rgba(26,26,26,0.08); }
+.belief-index { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--kraft); padding-top: 0.4rem; }
+.belief-title { font-family: var(--display); font-size: clamp(2rem, 3.5vw, 3.2rem); text-transform: uppercase; color: var(--encre); line-height: 0.95; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+.belief-title .vive { color: var(--vive); }
+.belief-title .accent { color: var(--accent); }
+.belief-body { font-family: var(--mono); font-size: 0.78rem; line-height: 2.1; color: rgba(26,26,26,0.6); max-width: 680px; }
+
+/* ══════════════════════════════
+   VERDICT
+══════════════════════════════ */
+#verdict { background: var(--encre); padding: 10rem 3.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; overflow: hidden; }
+.verdict-phrase { font-family: var(--display); font-size: clamp(4rem, 9vw, 8rem); text-transform: uppercase; line-height: 0.9; letter-spacing: -0.02em; color: var(--base); max-width: 800px; }
+.verdict-phrase .vive { color: var(--vive); }
+.verdict-sub { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; font-style: italic; color: var(--kraft); margin-top: 3rem; }
+.verdict-cta {
+  margin-top: 4rem; display: inline-flex; align-items: center; gap: 1.25rem;
+  background: var(--vive); color: var(--encre); font-family: var(--display); font-size: 1.1rem;
+  text-transform: uppercase; letter-spacing: 0.08em; padding: 1.1rem 2.5rem; text-decoration: none; cursor: none;
+  position: relative; overflow: hidden;
+}
+.verdict-cta::before { content: ''; position: absolute; inset: 0; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+.verdict-cta:hover::before { transform: scaleX(1); }
+.verdict-cta span { position: relative; z-index: 1; }
+
+/* Footer light pour manifeste */
+footer#site-footer.light {
+  background: var(--base);
+  border-top: 1px solid rgba(26,26,26,0.1);
+}
+footer#site-footer.light .footer-services,
+footer#site-footer.light .footer-copy { color: var(--kraft); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  #hero-manifeste { padding: 7rem 1.5rem 3rem; }
+  .hero-m-title { font-size: clamp(3rem, 12vw, 5rem); }
+  .manifeste-intro { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem 0; }
+  .manifeste-intro-left { position: static; }
+  .manifeste-beliefs { padding: 0 1.5rem; }
+  .belief { grid-template-columns: 1fr; gap: 1rem; padding: 2.5rem 0; }
+  .belief-index { display: none; }
+  .belief-title { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+  #verdict { padding: 5rem 1.5rem; }
+  .verdict-phrase { font-size: clamp(3rem, 12vw, 5rem); }
+}

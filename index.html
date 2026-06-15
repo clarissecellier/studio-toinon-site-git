@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Toinon — Design d'investigation</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/index.css">
+</head>
+<body data-page="index" data-dark-sections="juridictions-section,tarification" data-default-dark="true">
+
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <div id="site-header-placeholder"></div>
+
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-glitch-overlay"></div>
+    <div class="hero-glitch-slice"></div>
+    <div class="hero-glitch-slice"></div>
+    <div class="hero-glitch-slice"></div>
+    <div class="hero-bg-text" id="heroBg">Studio Toinon</div>
+    <div class="hero-dossier">
+      <span class="live-badge">Studio de design d'investigation</span>
+      Dossier ouvert
+    </div>
+    <h1 class="hero-tagline">
+      Rendre<br>
+      <span class="accent-word">justice</span><br>
+      &agrave; vos projets<span class="dot-vert">.</span>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-sub">On instruit avant de construire,<br>on questionne avant de livrer.</p>
+      <div class="hero-scroll">D&eacute;filer</div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Strat&eacute;gie de marque</span><span class="sep">&#x2726;</span>
+      <span>Design d'interface</span><span class="sep">&#x2726;</span>
+      <span>Motion &amp; Vid&eacute;o</span><span class="sep">&#x2726;</span>
+      <span>Identit&eacute; visuelle</span><span class="sep">&#x2726;</span>
+      <span>Direction artistique</span><span class="sep">&#x2726;</span>
+      <span>Rendre justice &agrave; vos projets</span><span class="sep">&#x2726;</span>
+      <span>Strat&eacute;gie de marque</span><span class="sep">&#x2726;</span>
+      <span>Design d'interface</span><span class="sep">&#x2726;</span>
+      <span>Motion &amp; Vid&eacute;o</span><span class="sep">&#x2726;</span>
+      <span>Identit&eacute; visuelle</span><span class="sep">&#x2726;</span>
+      <span>Direction artistique</span><span class="sep">&#x2726;</span>
+      <span>Rendre justice &agrave; vos projets</span><span class="sep">&#x2726;</span>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="about-eyebrow">Dossier &mdash; &Agrave; propos du studio</div>
+    <div class="about-grid">
+      <div class="about-title reveal">
+        On ne<br>cr&eacute;e pas.<br>
+        <span class="outline">On r&eacute;v&egrave;le.</span>
+      </div>
+      <div class="about-body">
+        <p class="reveal reveal-d1">Studio Toinon ne part pas d'une id&eacute;e. <strong>Studio Toinon part d'un constat.</strong></p>
+        <p class="reveal reveal-d2">On instruit avant de construire, on questionne avant de livrer. Le r&eacute;sultat n'est pas une proposition &mdash; c'est une conclusion.</p>
+        <p class="reveal reveal-d3">On croit que chaque projet a une v&eacute;rit&eacute;. Pas une tendance. Pas une opinion. <strong>Une v&eacute;rit&eacute;</strong> &mdash; celle de ce que vous &ecirc;tes, de ce que vous faites, de ce que vous voulez laisser comme trace.</p>
+        <p class="reveal reveal-d4">Notre travail est de la trouver avant de la mettre en forme.</p>
+        <div class="reveal reveal-d5" style="margin-top: 2.5rem;">
+          <a href="manifeste.html" class="about-cta"><span>Lire le manifeste</span><span>&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="archives">
+    <canvas id="archives-canvas"></canvas>
+    <div class="archives-glitch-overlay"></div>
+    <div class="archives-header">
+      <span class="archives-label">Archives &mdash; Dossiers r&eacute;solus</span>
+      <a href="archives.html" class="archives-link">Consulter toutes les affaires &rarr;</a>
+    </div>
+    <div class="archives-track-wrap">
+      <div class="archives-track" id="archivesTrack">
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 001</div><div class="dossier-client">Maison Leroux</div><div class="dossier-meta"><div class="dossier-type">Strat&eacute;gie de marque</div><div class="dossier-year">2024</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 002</div><div class="dossier-client">Studio K&#x14D;d&#x14D;</div><div class="dossier-meta"><div class="dossier-type">Design d'interface</div><div class="dossier-year">2024</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 003</div><div class="dossier-client">Atelier Vidal</div><div class="dossier-meta"><div class="dossier-type">Identit&eacute; visuelle</div><div class="dossier-year">2024</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 004</div><div class="dossier-client">Bureau Nord</div><div class="dossier-meta"><div class="dossier-type">Motion &amp; Vid&eacute;o</div><div class="dossier-year">2023</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 005</div><div class="dossier-client">Collectif 44</div><div class="dossier-meta"><div class="dossier-type">Direction artistique</div><div class="dossier-year">2023</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 006</div><div class="dossier-client">Forma Studio</div><div class="dossier-meta"><div class="dossier-type">Refonte de site</div><div class="dossier-year">2023</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 001</div><div class="dossier-client">Maison Leroux</div><div class="dossier-meta"><div class="dossier-type">Strat&eacute;gie de marque</div><div class="dossier-year">2024</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 002</div><div class="dossier-client">Studio K&#x14D;d&#x14D;</div><div class="dossier-meta"><div class="dossier-type">Design d'interface</div><div class="dossier-year">2024</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 003</div><div class="dossier-client">Atelier Vidal</div><div class="dossier-meta"><div class="dossier-type">Identit&eacute; visuelle</div><div class="dossier-year">2024</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 004</div><div class="dossier-client">Bureau Nord</div><div class="dossier-meta"><div class="dossier-type">Motion &amp; Vid&eacute;o</div><div class="dossier-year">2023</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 005</div><div class="dossier-client">Collectif 44</div><div class="dossier-meta"><div class="dossier-type">Direction artistique</div><div class="dossier-year">2023</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+        <div class="dossier-item"><div class="dossier-inner"><div class="dossier-num">N&deg; 006</div><div class="dossier-client">Forma Studio</div><div class="dossier-meta"><div class="dossier-type">Refonte de site</div><div class="dossier-year">2023</div><div class="dossier-status resolu">Affaire r&eacute;solue</div></div></div><div class="dossier-preview"><div class="dossier-preview-placeholder">Visuel &agrave; venir</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="juridictions-section">
+    <div class="juridiction reveal" data-jur="0" role="button" tabindex="0" aria-expanded="false">
+      <div class="jur-num">J.01</div>
+      <div class="jur-name">Strat&eacute;gie de marque</div>
+      <div class="jur-arrow">&#x2193;</div>
+    </div>
+    <div class="jur-detail" id="jur-0">
+      <div class="jur-detail-inner">
+        <p class="jur-desc">On instruit avant de dessiner. Ce qui ressort n'est pas une proposition &mdash; c'est une conclusion sur ce que vous &ecirc;tes vraiment.</p>
+        <ul class="jur-list">
+          <li>Identit&eacute; visuelle</li><li>Conception de logo</li><li>Charte graphique</li>
+          <li>Direction artistique</li><li>Identit&eacute; verbale</li><li>Positionnement de marque</li>
+        </ul>
+      </div>
+    </div>
+    <div class="juridiction reveal reveal-d1" data-jur="1" role="button" tabindex="0" aria-expanded="false">
+      <div class="jur-num">J.02</div>
+      <div class="jur-name">Design d'interface</div>
+      <div class="jur-arrow">&#x2193;</div>
+    </div>
+    <div class="jur-detail" id="jur-1">
+      <div class="jur-detail-inner">
+        <p class="jur-desc">Un espace digital construit avec m&eacute;thode. Chaque d&eacute;cision est argument&eacute;e, chaque choix est d&eacute;fendable. Rien n'est laiss&eacute; au hasard.</p>
+        <ul class="jur-list">
+          <li>Conception de site web</li><li>Refonte de site</li><li>Landing page</li>
+          <li>UI / UX Design</li><li>Design syst&egrave;me</li><li>Int&eacute;gration WordPress</li>
+        </ul>
+      </div>
+    </div>
+    <div class="juridiction reveal reveal-d2" data-jur="2" role="button" tabindex="0" aria-expanded="false">
+      <div class="jur-num">J.03</div>
+      <div class="jur-name">Motion &amp; Vid&eacute;o</div>
+      <div class="jur-arrow">&#x2193;</div>
+    </div>
+    <div class="jur-detail" id="jur-2">
+      <div class="jur-detail-inner">
+        <p class="jur-desc">On reste sur l'affaire. Pour que chaque nouvelle pi&egrave;ce visuelle soit coh&eacute;rente, d&eacute;fendable, et fid&egrave;le &agrave; ce qu'on a construit ensemble.</p>
+        <ul class="jur-list">
+          <li>Motion design</li><li>Animation de logo</li><li>Vid&eacute;o editing</li>
+          <li>Contenu social media</li><li>Habillage vid&eacute;o</li><li>G&eacute;n&eacute;rique / titrage</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="protocole">
+    <div class="protocole-header reveal">
+      <h2 class="protocole-title">Le<br>protocole</h2>
+      <p class="protocole-sub">De l'audition au verdict &mdash; une m&eacute;thode rod&eacute;e, sans raccourci.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal"><div class="step-num">00</div><div class="step-title">Audition</div><p class="step-desc">Avant d'ouvrir le dossier, on &eacute;coute. Un appel ou un questionnaire pour cerner le projet et v&eacute;rifier qu'on est les bons pour l'affaire.</p></div>
+      <div class="step-card reveal reveal-d1"><div class="step-num">01</div><div class="step-title">Prise en charge</div><p class="step-desc">Le dossier est officiellement ouvert. On formalise les objectifs, le p&eacute;rim&egrave;tre et les livrables. Chaque partie sait ce qu'elle a &agrave; faire.</p></div>
+      <div class="step-card reveal reveal-d2"><div class="step-num">02</div><div class="step-title">Ouverture d'enqu&ecirc;te</div><p class="step-desc">On creuse. Analyse du march&eacute;, audit de l'existant, recherche de r&eacute;f&eacute;rences. On cherche ce qui vous distingue avant de construire quoi que ce soit.</p></div>
+      <div class="step-card reveal reveal-d3"><div class="step-num">03</div><div class="step-title">Rapport d'expertise</div><p class="step-desc">La phase de cr&eacute;ation. Chaque proposition est construite, argument&eacute;e, d&eacute;fendable. Rien n'est laiss&eacute; au hasard, rien n'est livr&eacute; au feeling.</p></div>
+      <div class="step-card reveal reveal-d4"><div class="step-num">04</div><div class="step-title">Examen des pi&egrave;ces</div><p class="step-desc">On pr&eacute;sente. On &eacute;change. On ajuste. Cette &eacute;tape existe pour que le r&eacute;sultat final soit exactement ce qu'il doit &ecirc;tre &mdash; ni plus, ni moins.</p></div>
+      <div class="step-card reveal reveal-d5"><div class="step-num">05</div><div class="step-title">Verdict</div><p class="step-desc">L'affaire est r&eacute;solue. Les fichiers sont livr&eacute;s, les acc&egrave;s transmis. Justice est rendue.</p><div class="step-verdict">Justice est rendue.</div></div>
+    </div>
+  </section>
+
+  <section id="tarification">
+    <div class="tarif-left reveal">
+      <div class="tarif-eyebrow">Tarification &mdash; Modalit&eacute;s d'engagement</div>
+      <h2 class="tarif-title">Soumettre<br>son dossier</h2>
+      <p class="tarif-intro">Des modalit&eacute;s d'engagement adapt&eacute;es &agrave; chaque affaire &mdash; quelle que soit l'&eacute;chelle du projet.</p>
+      <div class="cta-wrapper">
+        <a href="contact.html" class="cta-btn"><span>R&eacute;server un appel</span><span>&rarr;</span></a>
+      </div>
+    </div>
+    <div class="tarif-cards reveal reveal-d2">
+      <div class="tarif-card">
+        <div class="tarif-card-tag">Flexible</div>
+        <div class="tarif-card-title">Session horaire</div>
+        <p class="tarif-card-desc">Engagement flexible pour des t&acirc;ches sp&eacute;cifiques, du conseil, des audits ou des sprints rapides.</p>
+      </div>
+      <div class="tarif-card">
+        <div class="tarif-card-tag">Complet</div>
+        <div class="tarif-card-title">Forfait projet</div>
+        <p class="tarif-card-desc">Ex&eacute;cution de bout en bout. P&eacute;rim&egrave;tre complet, livrables d&eacute;finis, calendrier fixe.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer-placeholder"></div>
+  <div id="tab-bar-placeholder"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages/index.js"></script>
+
+</body>
+</html>
