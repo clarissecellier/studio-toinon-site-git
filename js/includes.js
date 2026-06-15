@@ -39,12 +39,15 @@
       });
     }
 
-    // Logo initial selon couleur de page
+    // Logo + thème nav initial selon couleur de page (évite le clignotement
+    // avant que main.js ne prenne le relais au scroll)
+    var isDark = document.body.dataset.defaultDark === 'true';
     var logoImg = document.getElementById('nav-logo-img');
     if (logoImg) {
-      var isDark = document.body.dataset.defaultDark === 'true';
       logoImg.src = base + (isDark ? 'assets/images/logo-light.svg' : 'assets/images/logo-dark.svg');
     }
+    var navEl = document.getElementById('site-nav');
+    if (navEl) navEl.classList.toggle('on-light', !isDark);
 
     // Footer : cacher le bon logo
     var footer = document.getElementById('site-footer');

@@ -1,3 +1,6 @@
+/* Police monospace du site : Space Mono (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
 @font-face {
   font-family: 'MomoTrust';
   src: url('../assets/fonts/MomoTrust.ttf') format('truetype');

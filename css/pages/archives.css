@@ -19,21 +19,8 @@
   93% { opacity: 0; }
 }
 
-/* Nav transparente qui se solidifie au scroll */
-nav#site-nav {
-  background: transparent;
-  border-bottom: none;
-  transition: background 0.35s, border-color 0.35s;
-}
-nav#site-nav.scrolled {
-  background: rgba(237,232,220,0.92);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(26,26,26,0.08);
-}
-nav#site-nav .nav-center { border-color: rgba(26,26,26,0.18); }
-nav#site-nav .nav-center a { color: var(--encre); border-right-color: rgba(26,26,26,0.12); }
-nav#site-nav .nav-center a:hover { background: var(--encre); color: var(--base); }
-nav#site-nav .nav-cta { background: var(--vive); color: var(--encre); border-color: var(--vive); }
+/* La nav (transparente + contraste adaptatif) est gérée globalement
+   dans main.css / main.js via la classe .on-light. */
 
 /* ══════════════════════════════
    HERO ARCHIVES

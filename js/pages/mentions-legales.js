@@ -18,12 +18,4 @@ window.addEventListener('includes-ready', function () {
     grain();
   }
 
-  /* ── NAV SCROLL ── */
-  var navEl = document.getElementById('site-nav');
-  if (navEl) {
-    window.addEventListener('scroll', function () {
-      navEl.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-  }
-
 });

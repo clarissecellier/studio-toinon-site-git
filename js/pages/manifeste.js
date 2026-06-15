@@ -18,18 +18,4 @@ window.addEventListener('includes-ready', function () {
     grain();
   }
 
-  /* ── NAV : zones claires/sombres ── */
-  var navEl = document.getElementById('site-nav');
-  if (navEl) {
-    var lightSections = document.querySelectorAll('#manifeste-body, footer');
-    function checkNav() {
-      var anyLight = Array.from(lightSections).some(function (el) {
-        var r = el.getBoundingClientRect(); return r.top < 80 && r.bottom > 0;
-      });
-      navEl.classList.toggle('on-light', anyLight);
-    }
-    window.addEventListener('scroll', checkNav, { passive: true });
-    checkNav();
-  }
-
 });

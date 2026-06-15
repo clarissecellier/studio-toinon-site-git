@@ -18,14 +18,6 @@ window.addEventListener('includes-ready', function () {
     grain();
   }
 
-  /* ── NAV SCROLL (transparente → solide) ── */
-  var navEl = document.getElementById('site-nav');
-  if (navEl) {
-    window.addEventListener('scroll', function () {
-      navEl.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-  }
-
   /* ── FILTRES ── */
   var cards = document.querySelectorAll('.archive-card');
   document.querySelectorAll('.filtre-btn').forEach(function (btn) {
