@@ -20,7 +20,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 
 /* ── APP SCROLL ── */
 #app{
-  height:calc(100dvh - var(--bar));
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
   overflow-y:scroll;
   scroll-snap-type:y mandatory;
   -webkit-overflow-scrolling:touch;
@@ -29,7 +29,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 #app::-webkit-scrollbar{display:none}
 
 .screen{
-  height:calc(100dvh - var(--bar));
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
   scroll-snap-align:start;
   scroll-snap-stop:always;
   position:relative;overflow:hidden;
@@ -254,9 +254,9 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 /* ══════════════════════════════
    6. TARIFICATION
 ══════════════════════════════ */
-#s-tarif{background:var(--encre);padding:2rem 1.5rem;justify-content:center;gap:1.5rem;}
+#s-tarif{background:var(--encre);padding:1.5rem;justify-content:flex-start;gap:1rem;}
 .tarif-m-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--kraft);}
-.tarif-m-title{font-family:var(--display);font-size:clamp(2rem,10vw,3.2rem);text-transform:uppercase;line-height:.9;color:var(--base);}
+.tarif-m-title{font-family:var(--display);font-size:clamp(1.9rem,9vw,2.8rem);text-transform:uppercase;line-height:.9;color:var(--base);}
 .tarif-m-cards{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.08);}
 .tarif-m-card{background:var(--encre);padding:1.5rem;}
 .tarif-m-tag{
@@ -578,7 +578,6 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 
 <!-- ── 6. TARIFICATION ── -->
 <section class="screen" id="s-tarif">
-  <span class="tarif-m-label">Soumettre un dossier</span>
   <div class="tarif-m-title">Modalités<br>d'engagement.</div>
   <div class="tarif-m-cards">
     <div class="tarif-m-card">
