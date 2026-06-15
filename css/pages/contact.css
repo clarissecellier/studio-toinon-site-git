@@ -1,6 +1,16 @@
 /* ══════════════════════════════
    CONTACT
 ══════════════════════════════ */
+
+/* Cas particulier : la page est scindée (panneau gauche foncé, droite clair).
+   Un menu transparent serait illisible sur l'une des deux moitiés, donc ici
+   seulement on lui donne un léger fond foncé translucide → texte clair partout. */
+nav#site-nav {
+  background: rgba(26,26,26,0.72);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
 #contact-wrap { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
 
 .contact-left {

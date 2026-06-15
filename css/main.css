@@ -42,7 +42,7 @@ nav#site-nav {
 .nav-center { display: flex; border: 1px solid rgba(255,255,255,0.2); transition: border-color 0.35s; }
 .nav-center a {
   display: flex; align-items: center; gap: 0.6rem;
-  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em;
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em;
   text-transform: uppercase; color: var(--base); text-decoration: none;
   padding: 0.65rem 1.4rem; border-right: 1px solid rgba(255,255,255,0.15);
   transition: background 0.2s, color 0.35s, border-color 0.35s;
@@ -52,7 +52,7 @@ nav#site-nav {
 .nav-center a .nav-num { font-size: 0.48rem; color: var(--accent); letter-spacing: 0.1em; flex-shrink: 0; }
 .nav-right { display: flex; justify-content: flex-end; }
 .nav-cta {
-  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em;
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em;
   text-transform: uppercase; color: var(--encre); text-decoration: none;
   background: var(--vive); border: 1px solid var(--vive); padding: 0.65rem 1.25rem;
   transition: background 0.2s, color 0.2s, border-color 0.2s; cursor: none;
