@@ -366,7 +366,8 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   background:none;border:none;color:rgba(245,240,232,.3);
   transition:color .2s;
 }
-.tab-item.active,.tab-item:active{color:var(--vive);}
+.tab-item.active,.tab-item:not(.disabled):active{color:var(--vive);}
+.tab-item.disabled{opacity:.32;pointer-events:none;color:rgba(245,240,232,.3);}
 .tab-icon{font-size:1.15rem;line-height:1;}
 
 
@@ -634,8 +635,8 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 <nav id="tab-bar">
   <a href="index-mobile.html" class="tab-item active"><span class="tab-icon">⌂</span><span>Accueil</span></a>
   <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
-  <a href="archives.html" class="tab-item"><span class="tab-icon">◫</span><span>Archives</span></a>
-  <a href="contact.html" class="tab-item"><span class="tab-icon">✉</span><span>Contact</span></a>
+  <span class="tab-item disabled" aria-disabled="true"><span class="tab-icon">◫</span><span>Archives</span></span>
+  <span class="tab-item disabled" aria-disabled="true"><span class="tab-icon">✉</span><span>Contact</span></span>
 </nav>
 
 <script>
