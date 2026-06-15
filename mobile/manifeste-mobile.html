@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Manifeste &mdash; Studio Toinon</title>
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:64px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+/* ── APP SCROLL ── */
+#app{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+#app::-webkit-scrollbar{display:none}
+
+.screen{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  padding:2.5rem 1.5rem;
+}
+
+.glitch-lines{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(245,240,232,.02) 2px,rgba(245,240,232,.02) 4px);
+  animation:scan 8s linear infinite;
+}
+@keyframes scan{0%{background-position:0 0}100%{background-position:0 100px}}
+
+/* Révélation au scroll */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
+
+/* ══════════════════════════════
+   1. HERO
+══════════════════════════════ */
+#s-hero{background:var(--encre);}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.05;mix-blend-mode:screen;z-index:0;}
+.hero-m-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
+.hero-m-eyebrow{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--kraft);
+  display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;justify-content:center;
+  margin-bottom:1.75rem;
+}
+.hero-m-badge{
+  display:inline-flex;align-items:center;background:var(--vive);color:var(--encre);
+  padding:.3rem .75rem;font-size:.58rem;letter-spacing:.15em;
+}
+.hero-m-title{
+  font-family:var(--display);
+  font-size:clamp(3.4rem,16vw,6rem);
+  text-transform:uppercase;line-height:.88;letter-spacing:-.02em;
+  color:var(--base);
+}
+.hero-m-title .outline{-webkit-text-stroke:1.5px var(--base);color:transparent;}
+.hero-m-sub{
+  font-family:var(--mono);font-size:.78rem;line-height:1.9;font-style:italic;
+  color:rgba(245,240,232,.55);margin-top:1.75rem;
+}
+
+/* ══════════════════════════════
+   2-5. CONVICTIONS
+══════════════════════════════ */
+.belief-screen{background:var(--base);}
+.belief-screen.alt{background:#EDE8DC;}
+.belief-index{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--kraft);margin-bottom:1.5rem;
+}
+.belief-title{
+  font-family:var(--display);
+  font-size:clamp(2.4rem,11vw,4rem);
+  text-transform:uppercase;line-height:.95;letter-spacing:-.01em;
+  color:var(--encre);margin-bottom:1.75rem;
+}
+.belief-title .vive{color:var(--accent);}
+.belief-title .accent{color:var(--accent);}
+.belief-body{
+  font-family:var(--mono);font-size:.8rem;line-height:2;
+  color:rgba(26,26,26,.62);max-width:34ch;
+}
+
+/* ══════════════════════════════
+   6. VERDICT
+══════════════════════════════ */
+#s-verdict{background:var(--encre);}
+#verdict-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.05;mix-blend-mode:screen;z-index:0;}
+.verdict-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
+.verdict-phrase{
+  font-family:var(--display);
+  font-size:clamp(3.6rem,17vw,6.5rem);
+  text-transform:uppercase;line-height:.9;letter-spacing:-.02em;color:var(--base);
+}
+.verdict-phrase .vive{color:var(--vive);}
+.verdict-sub{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;font-style:italic;
+  color:var(--kraft);margin-top:2.25rem;
+}
+.verdict-cta{
+  margin-top:2.75rem;display:inline-flex;align-items:center;gap:1.1rem;
+  background:var(--vive);color:var(--encre);
+  font-family:var(--display);font-size:1.05rem;
+  text-transform:uppercase;letter-spacing:.08em;
+  padding:1rem 2.25rem;text-decoration:none;
+  -webkit-tap-highlight-color:transparent;transition:background .2s;
+}
+.verdict-cta:active{background:var(--accent);color:var(--base);}
+
+/* ══════════════════════════════
+   TAB BAR
+══════════════════════════════ */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  height:var(--bar);
+  background:var(--encre);
+  border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);
+  align-items:center;
+  padding:0 .5rem;
+  padding-bottom:env(safe-area-inset-bottom);
+  z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;
+  padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.42rem;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  background:none;border:none;color:rgba(245,240,232,.3);
+  transition:color .2s;
+}
+.tab-item.active,.tab-item:active{color:var(--vive);}
+.tab-icon{font-size:1.15rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+<!-- ── 1. HERO ── -->
+<section class="screen" id="s-hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="glitch-lines"></div>
+  <div class="hero-m-content">
+    <div class="hero-m-eyebrow reveal">
+      <span class="hero-m-badge">Manifeste</span>
+      Ce en quoi on croit
+    </div>
+    <h1 class="hero-m-title reveal d1">
+      Un studio<br>
+      de design<br>
+      <span class="outline">d'investigation.</span>
+    </h1>
+    <p class="hero-m-sub reveal d2">On ne crée pas. On révèle.</p>
+  </div>
+</section>
+
+<!-- ── 2. CONVICTION 01 ── -->
+<section class="screen belief-screen" id="s-belief-1">
+  <div class="belief-index reveal">01 &mdash;</div>
+  <div class="belief-title reveal d1">Chaque projet<br>a une <span class="vive">vérité.</span></div>
+  <p class="belief-body reveal d2">Pas une tendance. Pas une opinion. Une vérité, celle de ce que vous êtes, de ce que vous faites, de ce que vous voulez laisser comme trace. Notre travail est de la trouver avant de la mettre en forme.</p>
+</section>
+
+<!-- ── 3. CONVICTION 02 ── -->
+<section class="screen belief-screen alt" id="s-belief-2">
+  <div class="belief-index reveal">02 &mdash;</div>
+  <div class="belief-title reveal d1">Le beau<br>ne suffit <span class="accent">pas.</span></div>
+  <p class="belief-body reveal d2">Un visuel qui plaît mais ne convainc pas est une affaire classée sans suite. Studio Toinon construit des identités qui tiennent la route, pas seulement à l'écran, mais dans le temps, dans les usages, dans les esprits.</p>
+</section>
+
+<!-- ── 4. CONVICTION 03 ── -->
+<section class="screen belief-screen" id="s-belief-3">
+  <div class="belief-index reveal">03 &mdash;</div>
+  <div class="belief-title reveal d1">La méthode<br>est un acte <span class="vive">créatif.</span></div>
+  <p class="belief-body reveal d2">Creuser, questionner, reconstituer, ce n'est pas de l'administration. C'est le cœur du travail. Ce que d'autres appellent contraintes, on les appelle indices. Ce que d'autres évitent, on le cherche.</p>
+</section>
+
+<!-- ── 5. CONVICTION 04 ── -->
+<section class="screen belief-screen alt" id="s-belief-4">
+  <div class="belief-index reveal">04 &mdash;</div>
+  <div class="belief-title reveal d1">Chaque dossier<br>mérite d'être<br>instruit <span class="accent">sérieusement.</span></div>
+  <p class="belief-body reveal d2">Aucune affaire ne se ressemble. Chaque dossier repart de zéro. On creuse, on argumente, on livre, rien qui ne tienne pas la route.</p>
+</section>
+
+<!-- ── 6. VERDICT ── -->
+<section class="screen" id="s-verdict">
+  <canvas id="verdict-canvas"></canvas>
+  <div class="glitch-lines"></div>
+  <div class="verdict-content">
+    <p class="verdict-phrase reveal">Justice<br>est <span class="vive">rendue.</span></p>
+    <p class="verdict-sub reveal d1">&mdash; Studio Toinon</p>
+    <a href="contact.html" class="verdict-cta reveal d2">
+      <span>Ouvrir un dossier</span><span>&rarr;</span>
+    </a>
+  </div>
+</section>
+
+</div>
+
+<!-- ── TAB BAR ── -->
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item active"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives.html" class="tab-item"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <a href="contact.html" class="tab-item"><span class="tab-icon">✉</span><span>Contact</span></a>
+</nav>
+
+<script>
+// ── GRAIN ──
+function initGrain(id){
+  const c=document.getElementById(id);if(!c)return;
+  const ctx=c.getContext('2d');
+  function r(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
+  r();window.addEventListener('resize',r);
+  function d(){
+    const w=c.width,h=c.height,img=ctx.createImageData(w,h),px=img.data;
+    for(let i=0;i<px.length;i+=4){
+      const v=Math.random()*255|0;
+      px[i]=v;px[i+1]=Math.round(v*.92);px[i+2]=Math.round(v*.78);px[i+3]=Math.random()*32|0;
+    }
+    ctx.putImageData(img,0,0);requestAnimationFrame(d);
+  }
+  d();
+}
+initGrain('hero-canvas');
+initGrain('verdict-canvas');
+
+// ── RÉVÉLATION AU SCROLL ──
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('in');
+  });
+},{root:document.getElementById('app'),threshold:.25});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
