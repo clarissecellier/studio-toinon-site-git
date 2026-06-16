@@ -19,42 +19,57 @@
 }
 html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
 
-/* ── APP SCROLL (feed libre, pas de snap) ── */
+/* ── APP SCROLL (type plein écran, section par section) ── */
 #app{
-  width:100%;max-width:100vw;
   height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
-  overflow-y:scroll;overflow-x:hidden;
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
-  background:var(--base);
 }
 #app::-webkit-scrollbar{display:none}
+
+.screen{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  padding:2.5rem 1.5rem;
+}
+.screen.is-hidden{display:none;}
+
+.glitch-lines{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(245,240,232,.02) 2px,rgba(245,240,232,.02) 4px);
+  animation:scan 8s linear infinite;
+}
+@keyframes scan{0%{background-position:0 0}100%{background-position:0 100px}}
 
 /* Révélation au scroll */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
 .reveal.in{opacity:1;transform:none;}
-.reveal.d1{transition-delay:.06s}
-.reveal.d2{transition-delay:.12s}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
 
 /* ══════════════════════════════
-   1. HERO
+   1. HERO (modèle section 1 Manifeste)
 ══════════════════════════════ */
-#hero-m{
-  position:relative;overflow:hidden;
-  background:var(--encre);color:var(--base);
-  padding:3.25rem 1.5rem 2.5rem;
-}
+#s-hero{background:var(--encre);}
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.05;mix-blend-mode:screen;z-index:0;}
-.glitch-lines{
-  position:absolute;inset:0;pointer-events:none;z-index:1;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(245,240,232,.02) 2px,rgba(245,240,232,.02) 4px);
+.hero-m-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
+.hero-logo{
+  width:clamp(140px,42vw,180px);height:auto;
+  margin-bottom:2rem;opacity:.92;
 }
-.hero-m-content{position:relative;z-index:2;}
 .hero-m-eyebrow{
   font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;
   text-transform:uppercase;color:var(--kraft);
-  display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;
-  margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;justify-content:center;
+  margin-bottom:1.75rem;
 }
 .hero-m-badge{
   display:inline-flex;align-items:center;background:var(--vive);color:var(--encre);
@@ -64,110 +79,81 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   font-family:var(--display);
   font-size:clamp(2.2rem,11.5vw,3rem);
   text-transform:uppercase;line-height:.92;letter-spacing:-.03em;
-  overflow-wrap:break-word;
+  color:var(--base);max-width:100%;overflow-wrap:break-word;
 }
 .hero-m-title .outline{-webkit-text-stroke:1.5px var(--base);color:transparent;}
 .hero-m-sub{
-  font-family:var(--mono);font-size:.72rem;line-height:1.85;font-style:italic;
-  color:rgba(245,240,232,.55);margin-top:1.25rem;
+  font-family:var(--mono);font-size:.78rem;line-height:1.9;font-style:italic;
+  color:rgba(245,240,232,.55);margin-top:1.75rem;
 }
 
 /* ══════════════════════════════
-   2. FILTRES (sticky)
+   2-10. DOSSIERS (plein écran)
+══════════════════════════════ */
+.dossier{background:var(--base);}
+.dossier.alt{background:#EDE8DC;}
+.dossier-index{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--kraft);margin-bottom:.9rem;
+}
+.dossier-jur{
+  font-family:var(--display);
+  font-size:clamp(2.8rem,15vw,4.2rem);line-height:.9;
+  color:var(--accent);letter-spacing:-.01em;margin-bottom:1.1rem;
+}
+.dossier-client{
+  font-family:var(--display);
+  font-size:clamp(2rem,9vw,2.8rem);
+  text-transform:uppercase;line-height:.95;letter-spacing:-.01em;
+  color:var(--encre);max-width:100%;overflow-wrap:break-word;margin-bottom:.85rem;
+}
+.dossier-type{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem;
+}
+.dossier-desc{
+  font-family:var(--mono);font-size:.8rem;line-height:2;
+  color:rgba(26,26,26,.62);max-width:32ch;margin-bottom:1.6rem;
+}
+.dossier-status{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(26,26,26,.5);
+}
+.dossier-status::before{
+  content:"";width:7px;height:7px;border-radius:50%;background:var(--vive);
+}
+.dossier-cta{
+  margin-top:1.6rem;display:inline-flex;align-items:center;gap:.8rem;
+  background:var(--encre);color:var(--base);
+  font-family:var(--display);font-size:.95rem;
+  text-transform:uppercase;letter-spacing:.06em;
+  padding:.85rem 1.75rem;text-decoration:none;
+  -webkit-tap-highlight-color:transparent;transition:background .2s;
+}
+.dossier-cta:active{background:var(--accent);}
+
+/* ══════════════════════════════
+   FILTRES (barre flottante haut)
 ══════════════════════════════ */
 #filtres{
-  position:sticky;top:0;z-index:10;
-  background:var(--encre);
-  border-top:1px solid rgba(255,255,255,.08);
-  border-bottom:1px solid rgba(255,255,255,.08);
-  display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;
-  padding:.85rem 1.25rem;
-}
-.filtre-label{
-  font-family:var(--mono);font-size:.55rem;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--kraft);margin-right:.25rem;
+  position:fixed;top:0;left:0;right:0;z-index:150;
+  display:flex;gap:.4rem;justify-content:center;align-items:center;
+  padding:.6rem .75rem;
+  padding-top:calc(.6rem + env(safe-area-inset-top));
+  background:rgba(26,26,26,.6);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
 }
 .filtre-btn{
-  font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;
   text-transform:uppercase;
-  background:none;border:1px solid rgba(245,240,232,.22);
-  color:rgba(245,240,232,.6);
-  padding:.45rem .85rem;cursor:pointer;
+  background:rgba(245,240,232,.08);border:1px solid rgba(245,240,232,.18);
+  color:rgba(245,240,232,.65);
+  padding:.4rem .8rem;cursor:pointer;border-radius:2px;
   -webkit-tap-highlight-color:transparent;
   transition:background .2s,color .2s,border-color .2s;
 }
 .filtre-btn.active{background:var(--vive);border-color:var(--vive);color:var(--encre);}
-
-/* ══════════════════════════════
-   3. GRILLE DOSSIERS
-══════════════════════════════ */
-#grille{padding:1.5rem 1.25rem 3rem;display:flex;flex-direction:column;gap:1.25rem;}
-.archive-card{
-  display:block;text-decoration:none;color:var(--encre);
-  background:#EDE8DC;
-  border:1px solid rgba(26,26,26,.08);
-  -webkit-tap-highlight-color:transparent;
-  transition:transform .15s,box-shadow .2s;
-}
-.archive-card:active{transform:scale(.985);}
-.archive-card.is-hidden{display:none;}
-.archive-card-img{
-  position:relative;height:140px;
-  background:var(--encre);overflow:hidden;
-  display:flex;align-items:flex-end;justify-content:space-between;
-  padding:.85rem;
-}
-.archive-card-img::after{
-  content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(135deg,transparent,transparent 7px,rgba(245,240,232,.025) 7px,rgba(245,240,232,.025) 8px);
-}
-.archive-card-num{
-  position:relative;z-index:1;
-  font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;
-  color:rgba(245,240,232,.55);
-}
-.archive-card-jur{
-  position:relative;z-index:1;
-  font-family:var(--display);font-size:1.05rem;
-  color:var(--vive);
-}
-.archive-card-body{padding:1rem 1.1rem 1.15rem;}
-.archive-card-client{
-  font-family:var(--display);font-size:1.7rem;line-height:1;
-  text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.5rem;
-}
-.archive-card-type{
-  font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;
-}
-.archive-card-desc{
-  font-family:var(--mono);font-size:.72rem;line-height:1.75;
-  color:rgba(26,26,26,.6);
-}
-.archive-card-status{
-  display:flex;align-items:center;gap:.45rem;
-  font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;
-  text-transform:uppercase;color:rgba(26,26,26,.42);
-  padding:.7rem 1.1rem;border-top:1px solid rgba(26,26,26,.08);
-}
-.archive-card-status::before{
-  content:"";width:6px;height:6px;border-radius:50%;background:var(--vive);
-}
-
-/* État vide (aucun dossier pour ce filtre) */
-#vide{
-  display:none;
-  font-family:var(--mono);font-size:.75rem;line-height:1.8;
-  color:rgba(26,26,26,.5);text-align:center;padding:3rem 1.5rem;
-}
-#vide.show{display:block;}
-
-/* Pied de page mini */
-.feed-end{
-  text-align:center;padding:1rem 1.5rem 2rem;
-  font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;
-  text-transform:uppercase;color:rgba(26,26,26,.35);
-}
 
 /* ══════════════════════════════
    TAB BAR
@@ -199,131 +185,122 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 </head>
 <body>
 
+<!-- ── FILTRES (flottants) ── -->
+<div id="filtres">
+  <button class="filtre-btn active" data-filter="all">Tous</button>
+  <button class="filtre-btn" data-filter="J.01">J.01</button>
+  <button class="filtre-btn" data-filter="J.02">J.02</button>
+  <button class="filtre-btn" data-filter="J.03">J.03</button>
+</div>
+
 <div id="app">
 
   <!-- ── 1. HERO ── -->
-  <header id="hero-m">
+  <section class="screen" id="s-hero">
     <canvas id="hero-canvas"></canvas>
     <div class="glitch-lines"></div>
     <div class="hero-m-content">
-      <div class="hero-m-eyebrow reveal">
+      <img class="hero-logo reveal" src="../assets/images/logo-light.svg" alt="Studio Toinon">
+      <div class="hero-m-eyebrow reveal d1">
         <span class="hero-m-badge">Archives</span>
         Dossiers résolus
       </div>
-      <h1 class="hero-m-title reveal d1">
+      <h1 class="hero-m-title reveal d2">
         Toutes<br>les <span class="outline">affaires.</span>
       </h1>
-      <p class="hero-m-sub reveal d2">Chaque dossier instruit, argumenté, livré.</p>
+      <p class="hero-m-sub reveal d3">Chaque dossier instruit, argumenté, livré.</p>
     </div>
-  </header>
-
-  <!-- ── 2. FILTRES ── -->
-  <div id="filtres">
-    <span class="filtre-label">Filtrer &mdash;</span>
-    <button class="filtre-btn active" data-filter="all">Tous</button>
-    <button class="filtre-btn" data-filter="J.01">J.01 &mdash; Marque</button>
-    <button class="filtre-btn" data-filter="J.02">J.02 &mdash; Interface</button>
-    <button class="filtre-btn" data-filter="J.03">J.03 &mdash; Motion</button>
-  </div>
-
-  <!-- ── 3. GRILLE ── -->
-  <section id="grille">
-
-    <a href="../single.html" class="archive-card reveal" data-jur="J.01">
-      <div class="archive-card-img"><span class="archive-card-num">N&deg; 001</span><span class="archive-card-jur">J.01</span></div>
-      <div class="archive-card-body">
-        <div class="archive-card-client">Maison Leroux</div>
-        <div class="archive-card-type">Stratégie de marque &mdash; 2024</div>
-        <p class="archive-card-desc">Identité visuelle complète pour une maison de décoration intérieure haut de gamme.</p>
-      </div>
-      <div class="archive-card-status">Affaire résolue</div>
-    </a>
-
-    <a href="#" class="archive-card reveal" data-jur="J.02">
-      <div class="archive-card-img"><span class="archive-card-num">N&deg; 002</span><span class="archive-card-jur">J.02</span></div>
-      <div class="archive-card-body">
-        <div class="archive-card-client">Studio Kōdō</div>
-        <div class="archive-card-type">Design d'interface &mdash; 2024</div>
-        <p class="archive-card-desc">Refonte du site web et design système pour un studio de musique ambiant.</p>
-      </div>
-      <div class="archive-card-status">Affaire résolue</div>
-    </a>
-
-    <a href="#" class="archive-card reveal" data-jur="J.01">
-      <div class="archive-card-img"><span class="archive-card-num">N&deg; 003</span><span class="archive-card-jur">J.01</span></div>
-      <div class="archive-card-body">
-        <div class="archive-card-client">Atelier Vidal</div>
-        <div class="archive-card-type">Identité visuelle &mdash; 2024</div>
-        <p class="archive-card-desc">Création d'identité pour un atelier de céramique artisanale à Lyon.</p>
-      </div>
-      <div class="archive-card-status">Affaire résolue</div>
-    </a>
-
-    <a href="#" class="archive-card reveal" data-jur="J.03">
-      <div class="archive-card-img"><span class="archive-card-num">N&deg; 004</span><span class="archive-card-jur">J.03</span></div>
-      <div class="archive-card-body">
-        <div class="archive-card-client">Bureau Nord</div>
-        <div class="archive-card-type">Motion &amp; Vidéo &mdash; 2023</div>
-        <p class="archive-card-desc">Habillage vidéo et motion design pour une agence d'architecture scandinave.</p>
-      </div>
-      <div class="archive-card-status">Affaire résolue</div>
-    </a>
-
-    <a href="#" class="archive-card reveal" data-jur="J.01">
-      <div class="archive-card-img"><span class="archive-card-num">N&deg; 005</span><span class="archive-card-jur">J.01</span></div>
-      <div class="archive-card-body">
-        <div class="archive-card-client">Collectif 44</div>
-        <div class="archive-card-type">Direction artistique &mdash; 2023</div>
-        <p class="archive-card-desc">Direction artistique d'une exposition collective d'art contemporain.</p>
-      </div>
-      <div class="archive-card-status">Affaire résolue</div>
-    </a>
-
-    <a href="#" class="archive-card reveal" data-jur="J.02">
-      <div class="archive-card-img"><span class="archive-card-num">N&deg; 006</span><span class="archive-card-jur">J.02</span></div>
-      <div class="archive-card-body">
-        <div class="archive-card-client">Forma Studio</div>
-        <div class="archive-card-type">Refonte de site &mdash; 2023</div>
-        <p class="archive-card-desc">Refonte complète d'un studio de design produit, du branding au digital.</p>
-      </div>
-      <div class="archive-card-status">Affaire résolue</div>
-    </a>
-
-    <a href="#" class="archive-card reveal" data-jur="J.01">
-      <div class="archive-card-img"><span class="archive-card-num">N&deg; 007</span><span class="archive-card-jur">J.01</span></div>
-      <div class="archive-card-body">
-        <div class="archive-card-client">Éditions Brut</div>
-        <div class="archive-card-type">Identité visuelle &mdash; 2023</div>
-        <p class="archive-card-desc">Identité éditoriale pour une maison d'édition de livres d'art indépendante.</p>
-      </div>
-      <div class="archive-card-status">Affaire résolue</div>
-    </a>
-
-    <a href="#" class="archive-card reveal" data-jur="J.02">
-      <div class="archive-card-img"><span class="archive-card-num">N&deg; 008</span><span class="archive-card-jur">J.02</span></div>
-      <div class="archive-card-body">
-        <div class="archive-card-client">Capsule Paris</div>
-        <div class="archive-card-type">Landing page &mdash; 2022</div>
-        <p class="archive-card-desc">Design et intégration d'une landing page pour un lancement de produit mode.</p>
-      </div>
-      <div class="archive-card-status">Affaire résolue</div>
-    </a>
-
-    <a href="#" class="archive-card reveal" data-jur="J.03">
-      <div class="archive-card-img"><span class="archive-card-num">N&deg; 009</span><span class="archive-card-jur">J.03</span></div>
-      <div class="archive-card-body">
-        <div class="archive-card-client">Onde Libre</div>
-        <div class="archive-card-type">Motion &amp; Vidéo &mdash; 2022</div>
-        <p class="archive-card-desc">Générique et habillage pour une émission culturelle diffusée en ligne.</p>
-      </div>
-      <div class="archive-card-status">Affaire résolue</div>
-    </a>
-
-    <p id="vide">Aucun dossier classé sous cette juridiction.<br>Le greffe reste ouvert.</p>
-
   </section>
 
-  <div class="feed-end">&mdash; Fin du registre &mdash;</div>
+  <!-- ── 2. DOSSIER 001 ── -->
+  <section class="screen dossier" data-jur="J.01">
+    <div class="dossier-index reveal">N&deg; 001</div>
+    <div class="dossier-jur reveal d1">J.01</div>
+    <h2 class="dossier-client reveal d1">Maison Leroux</h2>
+    <div class="dossier-type reveal d2">Stratégie de marque &mdash; 2024</div>
+    <p class="dossier-desc reveal d2">Identité visuelle complète pour une maison de décoration intérieure haut de gamme.</p>
+    <a href="../single.html" class="dossier-cta reveal d3"><span>Consulter le dossier</span><span>&rarr;</span></a>
+  </section>
+
+  <!-- ── 3. DOSSIER 002 ── -->
+  <section class="screen dossier alt" data-jur="J.02">
+    <div class="dossier-index reveal">N&deg; 002</div>
+    <div class="dossier-jur reveal d1">J.02</div>
+    <h2 class="dossier-client reveal d1">Studio Kōdō</h2>
+    <div class="dossier-type reveal d2">Design d'interface &mdash; 2024</div>
+    <p class="dossier-desc reveal d2">Refonte du site web et design système pour un studio de musique ambiant.</p>
+    <div class="dossier-status reveal d3">Affaire résolue</div>
+  </section>
+
+  <!-- ── 4. DOSSIER 003 ── -->
+  <section class="screen dossier" data-jur="J.01">
+    <div class="dossier-index reveal">N&deg; 003</div>
+    <div class="dossier-jur reveal d1">J.01</div>
+    <h2 class="dossier-client reveal d1">Atelier Vidal</h2>
+    <div class="dossier-type reveal d2">Identité visuelle &mdash; 2024</div>
+    <p class="dossier-desc reveal d2">Création d'identité pour un atelier de céramique artisanale à Lyon.</p>
+    <div class="dossier-status reveal d3">Affaire résolue</div>
+  </section>
+
+  <!-- ── 5. DOSSIER 004 ── -->
+  <section class="screen dossier alt" data-jur="J.03">
+    <div class="dossier-index reveal">N&deg; 004</div>
+    <div class="dossier-jur reveal d1">J.03</div>
+    <h2 class="dossier-client reveal d1">Bureau Nord</h2>
+    <div class="dossier-type reveal d2">Motion &amp; Vidéo &mdash; 2023</div>
+    <p class="dossier-desc reveal d2">Habillage vidéo et motion design pour une agence d'architecture scandinave.</p>
+    <div class="dossier-status reveal d3">Affaire résolue</div>
+  </section>
+
+  <!-- ── 6. DOSSIER 005 ── -->
+  <section class="screen dossier" data-jur="J.01">
+    <div class="dossier-index reveal">N&deg; 005</div>
+    <div class="dossier-jur reveal d1">J.01</div>
+    <h2 class="dossier-client reveal d1">Collectif 44</h2>
+    <div class="dossier-type reveal d2">Direction artistique &mdash; 2023</div>
+    <p class="dossier-desc reveal d2">Direction artistique d'une exposition collective d'art contemporain.</p>
+    <div class="dossier-status reveal d3">Affaire résolue</div>
+  </section>
+
+  <!-- ── 7. DOSSIER 006 ── -->
+  <section class="screen dossier alt" data-jur="J.02">
+    <div class="dossier-index reveal">N&deg; 006</div>
+    <div class="dossier-jur reveal d1">J.02</div>
+    <h2 class="dossier-client reveal d1">Forma Studio</h2>
+    <div class="dossier-type reveal d2">Refonte de site &mdash; 2023</div>
+    <p class="dossier-desc reveal d2">Refonte complète d'un studio de design produit, du branding au digital.</p>
+    <div class="dossier-status reveal d3">Affaire résolue</div>
+  </section>
+
+  <!-- ── 8. DOSSIER 007 ── -->
+  <section class="screen dossier" data-jur="J.01">
+    <div class="dossier-index reveal">N&deg; 007</div>
+    <div class="dossier-jur reveal d1">J.01</div>
+    <h2 class="dossier-client reveal d1">Éditions Brut</h2>
+    <div class="dossier-type reveal d2">Identité visuelle &mdash; 2023</div>
+    <p class="dossier-desc reveal d2">Identité éditoriale pour une maison d'édition de livres d'art indépendante.</p>
+    <div class="dossier-status reveal d3">Affaire résolue</div>
+  </section>
+
+  <!-- ── 9. DOSSIER 008 ── -->
+  <section class="screen dossier alt" data-jur="J.02">
+    <div class="dossier-index reveal">N&deg; 008</div>
+    <div class="dossier-jur reveal d1">J.02</div>
+    <h2 class="dossier-client reveal d1">Capsule Paris</h2>
+    <div class="dossier-type reveal d2">Landing page &mdash; 2022</div>
+    <p class="dossier-desc reveal d2">Design et intégration d'une landing page pour un lancement de produit mode.</p>
+    <div class="dossier-status reveal d3">Affaire résolue</div>
+  </section>
+
+  <!-- ── 10. DOSSIER 009 ── -->
+  <section class="screen dossier" data-jur="J.03">
+    <div class="dossier-index reveal">N&deg; 009</div>
+    <div class="dossier-jur reveal d1">J.03</div>
+    <h2 class="dossier-client reveal d1">Onde Libre</h2>
+    <div class="dossier-type reveal d2">Motion &amp; Vidéo &mdash; 2022</div>
+    <p class="dossier-desc reveal d2">Générique et habillage pour une émission culturelle diffusée en ligne.</p>
+    <div class="dossier-status reveal d3">Affaire résolue</div>
+  </section>
 
 </div>
 
@@ -355,21 +332,18 @@ function initGrain(id){
 initGrain('hero-canvas');
 
 // ── FILTRES ──
+const app=document.getElementById('app');
 const boutons=document.querySelectorAll('.filtre-btn');
-const cartes=document.querySelectorAll('.archive-card');
-const vide=document.getElementById('vide');
+const dossiers=document.querySelectorAll('.dossier');
 boutons.forEach(btn=>{
   btn.addEventListener('click',()=>{
     boutons.forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     const f=btn.dataset.filter;
-    let visibles=0;
-    cartes.forEach(c=>{
-      const ok=(f==='all'||c.dataset.jur===f);
-      c.classList.toggle('is-hidden',!ok);
-      if(ok) visibles++;
+    dossiers.forEach(d=>{
+      d.classList.toggle('is-hidden',!(f==='all'||d.dataset.jur===f));
     });
-    vide.classList.toggle('show',visibles===0);
+    app.scrollTo({top:0,behavior:'smooth'});
   });
 });
 
@@ -378,7 +352,7 @@ const io=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting) e.target.classList.add('in');
   });
-},{root:document.getElementById('app'),threshold:.15});
+},{root:app,threshold:.25});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
