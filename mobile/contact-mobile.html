@@ -179,10 +179,9 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 .shake{animation:shake .4s;}
 
 /* ── ÉTAPE FINALE : confirmation ── */
-.confirm-mark{
-  font-family:var(--display);font-size:2.4rem;color:var(--encre);
-  background:var(--vive);width:74px;height:74px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;margin-bottom:2rem;position:relative;z-index:2;
+.confirm-logo{
+  width:clamp(150px,46vw,190px);height:auto;
+  margin-bottom:2.25rem;position:relative;z-index:2;
 }
 .confirm-title{
   font-family:var(--display);font-size:clamp(2.4rem,11vw,3rem);
@@ -333,7 +332,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 
   <!-- ══ ÉTAPE FINALE — CONFIRMATION ══ -->
   <section class="step">
-    <div class="confirm-mark">✓</div>
+    <img class="confirm-logo" src="../assets/images/logo-light.svg" alt="Studio Toinon">
     <h2 class="confirm-title">Dossier<br><span class="vive">transmis.</span></h2>
     <p class="confirm-sub">Votre message a bien été transmis. On instruit votre affaire et on vous répond sous 48h, en toute confidentialité.</p>
     <div class="confirm-sign">&mdash; Studio Toinon</div>
