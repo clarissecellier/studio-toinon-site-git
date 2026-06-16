@@ -46,6 +46,12 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 #contact-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.045;mix-blend-mode:screen;z-index:0;}
 .c-inner{position:relative;z-index:2;}
 
+/* ── Logo ── */
+.c-logo{
+  display:block;width:clamp(130px,40vw,160px);height:auto;
+  opacity:.92;margin-bottom:2.25rem;
+}
+
 /* ── En-tête ── */
 .c-eyebrow{
   font-family:var(--mono);font-size:.58rem;letter-spacing:.25em;
@@ -135,6 +141,25 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 .c-foot a:active{color:var(--vive);}
 .c-foot .sep{color:rgba(245,240,232,.25);}
 
+/* ── Barre RS + mentions légales ── */
+.c-social{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:1.5rem;padding-top:1.25rem;
+  border-top:1px solid rgba(245,240,232,.1);
+}
+.c-social-rs{display:flex;gap:1.4rem;}
+.c-social-rs a{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(245,240,232,.65);text-decoration:none;
+  font-weight:700;transition:color .2s;
+}
+.c-social-rs a:active{color:var(--vive);}
+.c-social-mentions{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(245,240,232,.35);text-decoration:none;
+}
+.c-social-mentions:active{color:var(--kraft);}
+
 /* ══════════════════════════════
    TAB BAR
 ══════════════════════════════ */
@@ -169,6 +194,9 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   <section id="contact">
     <canvas id="contact-canvas"></canvas>
     <div class="c-inner">
+
+      <!-- Logo -->
+      <img class="c-logo reveal" src="../assets/images/logo-light.svg" alt="Studio Toinon">
 
       <!-- En-tête condensé -->
       <div class="c-eyebrow reveal">L'enquête commence ici</div>
@@ -222,7 +250,6 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
         </div>
 
         <button type="submit" class="cform-submit reveal"><span>Soumettre le dossier</span><span>&rarr;</span></button>
-        <p class="cform-mention reveal">Chaque dossier reçoit une réponse sous 48h. Informations confidentielles.</p>
       </form>
 
       <!-- Pied condensé (infos non dupliquées) -->
@@ -230,6 +257,14 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
         <a href="mailto:contact@studiotoinon.fr">contact@studiotoinon.fr</a>
         <span class="sep">·</span>
         <span>Montpellier, France</span>
+      </div>
+
+      <!-- Barre RS + mentions légales -->
+      <div class="c-social reveal">
+        <div class="c-social-rs">
+          <a href="#" aria-label="Instagram">Ig</a><a href="#" aria-label="LinkedIn">Li</a><a href="#" aria-label="Behance">Be</a>
+        </div>
+        <a href="../mentions-legales.html" class="c-social-mentions">Mentions légales</a>
       </div>
 
     </div>
