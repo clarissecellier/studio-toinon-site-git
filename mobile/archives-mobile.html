@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Archives &mdash; Studio Toinon</title>
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:64px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+/* ── APP SCROLL (feed libre, pas de snap) ── */
+#app{
+  width:100%;max-width:100vw;
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  background:var(--base);
+}
+#app::-webkit-scrollbar{display:none}
+
+/* Révélation au scroll */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+.reveal.d1{transition-delay:.06s}
+.reveal.d2{transition-delay:.12s}
+
+/* ══════════════════════════════
+   1. HERO
+══════════════════════════════ */
+#hero-m{
+  position:relative;overflow:hidden;
+  background:var(--encre);color:var(--base);
+  padding:3.25rem 1.5rem 2.5rem;
+}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.05;mix-blend-mode:screen;z-index:0;}
+.glitch-lines{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(245,240,232,.02) 2px,rgba(245,240,232,.02) 4px);
+}
+.hero-m-content{position:relative;z-index:2;}
+.hero-m-eyebrow{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--kraft);
+  display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;
+  margin-bottom:1.5rem;
+}
+.hero-m-badge{
+  display:inline-flex;align-items:center;background:var(--vive);color:var(--encre);
+  padding:.3rem .75rem;font-size:.58rem;letter-spacing:.15em;
+}
+.hero-m-title{
+  font-family:var(--display);
+  font-size:clamp(2.2rem,11.5vw,3rem);
+  text-transform:uppercase;line-height:.92;letter-spacing:-.03em;
+  overflow-wrap:break-word;
+}
+.hero-m-title .outline{-webkit-text-stroke:1.5px var(--base);color:transparent;}
+.hero-m-sub{
+  font-family:var(--mono);font-size:.72rem;line-height:1.85;font-style:italic;
+  color:rgba(245,240,232,.55);margin-top:1.25rem;
+}
+
+/* ══════════════════════════════
+   2. FILTRES (sticky)
+══════════════════════════════ */
+#filtres{
+  position:sticky;top:0;z-index:10;
+  background:var(--encre);
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;
+  padding:.85rem 1.25rem;
+}
+.filtre-label{
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--kraft);margin-right:.25rem;
+}
+.filtre-btn{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;
+  text-transform:uppercase;
+  background:none;border:1px solid rgba(245,240,232,.22);
+  color:rgba(245,240,232,.6);
+  padding:.45rem .85rem;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.filtre-btn.active{background:var(--vive);border-color:var(--vive);color:var(--encre);}
+
+/* ══════════════════════════════
+   3. GRILLE DOSSIERS
+══════════════════════════════ */
+#grille{padding:1.5rem 1.25rem 3rem;display:flex;flex-direction:column;gap:1.25rem;}
+.archive-card{
+  display:block;text-decoration:none;color:var(--encre);
+  background:#EDE8DC;
+  border:1px solid rgba(26,26,26,.08);
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .15s,box-shadow .2s;
+}
+.archive-card:active{transform:scale(.985);}
+.archive-card.is-hidden{display:none;}
+.archive-card-img{
+  position:relative;height:140px;
+  background:var(--encre);overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding:.85rem;
+}
+.archive-card-img::after{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(135deg,transparent,transparent 7px,rgba(245,240,232,.025) 7px,rgba(245,240,232,.025) 8px);
+}
+.archive-card-num{
+  position:relative;z-index:1;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;
+  color:rgba(245,240,232,.55);
+}
+.archive-card-jur{
+  position:relative;z-index:1;
+  font-family:var(--display);font-size:1.05rem;
+  color:var(--vive);
+}
+.archive-card-body{padding:1rem 1.1rem 1.15rem;}
+.archive-card-client{
+  font-family:var(--display);font-size:1.7rem;line-height:1;
+  text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.5rem;
+}
+.archive-card-type{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;
+}
+.archive-card-desc{
+  font-family:var(--mono);font-size:.72rem;line-height:1.75;
+  color:rgba(26,26,26,.6);
+}
+.archive-card-status{
+  display:flex;align-items:center;gap:.45rem;
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(26,26,26,.42);
+  padding:.7rem 1.1rem;border-top:1px solid rgba(26,26,26,.08);
+}
+.archive-card-status::before{
+  content:"";width:6px;height:6px;border-radius:50%;background:var(--vive);
+}
+
+/* État vide (aucun dossier pour ce filtre) */
+#vide{
+  display:none;
+  font-family:var(--mono);font-size:.75rem;line-height:1.8;
+  color:rgba(26,26,26,.5);text-align:center;padding:3rem 1.5rem;
+}
+#vide.show{display:block;}
+
+/* Pied de page mini */
+.feed-end{
+  text-align:center;padding:1rem 1.5rem 2rem;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(26,26,26,.35);
+}
+
+/* ══════════════════════════════
+   TAB BAR
+══════════════════════════════ */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  height:var(--bar);
+  background:var(--encre);
+  border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);
+  align-items:center;
+  padding:0 .5rem;
+  padding-bottom:env(safe-area-inset-bottom);
+  z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;
+  padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.42rem;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  background:none;border:none;color:rgba(245,240,232,.3);
+  transition:color .2s;
+}
+.tab-item.active,.tab-item:not(.disabled):active{color:var(--vive);}
+.tab-item.disabled{opacity:.32;pointer-events:none;color:rgba(245,240,232,.3);}
+.tab-icon{font-size:1.15rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ── 1. HERO ── -->
+  <header id="hero-m">
+    <canvas id="hero-canvas"></canvas>
+    <div class="glitch-lines"></div>
+    <div class="hero-m-content">
+      <div class="hero-m-eyebrow reveal">
+        <span class="hero-m-badge">Archives</span>
+        Dossiers résolus
+      </div>
+      <h1 class="hero-m-title reveal d1">
+        Toutes<br>les <span class="outline">affaires.</span>
+      </h1>
+      <p class="hero-m-sub reveal d2">Chaque dossier instruit, argumenté, livré.</p>
+    </div>
+  </header>
+
+  <!-- ── 2. FILTRES ── -->
+  <div id="filtres">
+    <span class="filtre-label">Filtrer &mdash;</span>
+    <button class="filtre-btn active" data-filter="all">Tous</button>
+    <button class="filtre-btn" data-filter="J.01">J.01 &mdash; Marque</button>
+    <button class="filtre-btn" data-filter="J.02">J.02 &mdash; Interface</button>
+    <button class="filtre-btn" data-filter="J.03">J.03 &mdash; Motion</button>
+  </div>
+
+  <!-- ── 3. GRILLE ── -->
+  <section id="grille">
+
+    <a href="../single.html" class="archive-card reveal" data-jur="J.01">
+      <div class="archive-card-img"><span class="archive-card-num">N&deg; 001</span><span class="archive-card-jur">J.01</span></div>
+      <div class="archive-card-body">
+        <div class="archive-card-client">Maison Leroux</div>
+        <div class="archive-card-type">Stratégie de marque &mdash; 2024</div>
+        <p class="archive-card-desc">Identité visuelle complète pour une maison de décoration intérieure haut de gamme.</p>
+      </div>
+      <div class="archive-card-status">Affaire résolue</div>
+    </a>
+
+    <a href="#" class="archive-card reveal" data-jur="J.02">
+      <div class="archive-card-img"><span class="archive-card-num">N&deg; 002</span><span class="archive-card-jur">J.02</span></div>
+      <div class="archive-card-body">
+        <div class="archive-card-client">Studio Kōdō</div>
+        <div class="archive-card-type">Design d'interface &mdash; 2024</div>
+        <p class="archive-card-desc">Refonte du site web et design système pour un studio de musique ambiant.</p>
+      </div>
+      <div class="archive-card-status">Affaire résolue</div>
+    </a>
+
+    <a href="#" class="archive-card reveal" data-jur="J.01">
+      <div class="archive-card-img"><span class="archive-card-num">N&deg; 003</span><span class="archive-card-jur">J.01</span></div>
+      <div class="archive-card-body">
+        <div class="archive-card-client">Atelier Vidal</div>
+        <div class="archive-card-type">Identité visuelle &mdash; 2024</div>
+        <p class="archive-card-desc">Création d'identité pour un atelier de céramique artisanale à Lyon.</p>
+      </div>
+      <div class="archive-card-status">Affaire résolue</div>
+    </a>
+
+    <a href="#" class="archive-card reveal" data-jur="J.03">
+      <div class="archive-card-img"><span class="archive-card-num">N&deg; 004</span><span class="archive-card-jur">J.03</span></div>
+      <div class="archive-card-body">
+        <div class="archive-card-client">Bureau Nord</div>
+        <div class="archive-card-type">Motion &amp; Vidéo &mdash; 2023</div>
+        <p class="archive-card-desc">Habillage vidéo et motion design pour une agence d'architecture scandinave.</p>
+      </div>
+      <div class="archive-card-status">Affaire résolue</div>
+    </a>
+
+    <a href="#" class="archive-card reveal" data-jur="J.01">
+      <div class="archive-card-img"><span class="archive-card-num">N&deg; 005</span><span class="archive-card-jur">J.01</span></div>
+      <div class="archive-card-body">
+        <div class="archive-card-client">Collectif 44</div>
+        <div class="archive-card-type">Direction artistique &mdash; 2023</div>
+        <p class="archive-card-desc">Direction artistique d'une exposition collective d'art contemporain.</p>
+      </div>
+      <div class="archive-card-status">Affaire résolue</div>
+    </a>
+
+    <a href="#" class="archive-card reveal" data-jur="J.02">
+      <div class="archive-card-img"><span class="archive-card-num">N&deg; 006</span><span class="archive-card-jur">J.02</span></div>
+      <div class="archive-card-body">
+        <div class="archive-card-client">Forma Studio</div>
+        <div class="archive-card-type">Refonte de site &mdash; 2023</div>
+        <p class="archive-card-desc">Refonte complète d'un studio de design produit, du branding au digital.</p>
+      </div>
+      <div class="archive-card-status">Affaire résolue</div>
+    </a>
+
+    <a href="#" class="archive-card reveal" data-jur="J.01">
+      <div class="archive-card-img"><span class="archive-card-num">N&deg; 007</span><span class="archive-card-jur">J.01</span></div>
+      <div class="archive-card-body">
+        <div class="archive-card-client">Éditions Brut</div>
+        <div class="archive-card-type">Identité visuelle &mdash; 2023</div>
+        <p class="archive-card-desc">Identité éditoriale pour une maison d'édition de livres d'art indépendante.</p>
+      </div>
+      <div class="archive-card-status">Affaire résolue</div>
+    </a>
+
+    <a href="#" class="archive-card reveal" data-jur="J.02">
+      <div class="archive-card-img"><span class="archive-card-num">N&deg; 008</span><span class="archive-card-jur">J.02</span></div>
+      <div class="archive-card-body">
+        <div class="archive-card-client">Capsule Paris</div>
+        <div class="archive-card-type">Landing page &mdash; 2022</div>
+        <p class="archive-card-desc">Design et intégration d'une landing page pour un lancement de produit mode.</p>
+      </div>
+      <div class="archive-card-status">Affaire résolue</div>
+    </a>
+
+    <a href="#" class="archive-card reveal" data-jur="J.03">
+      <div class="archive-card-img"><span class="archive-card-num">N&deg; 009</span><span class="archive-card-jur">J.03</span></div>
+      <div class="archive-card-body">
+        <div class="archive-card-client">Onde Libre</div>
+        <div class="archive-card-type">Motion &amp; Vidéo &mdash; 2022</div>
+        <p class="archive-card-desc">Générique et habillage pour une émission culturelle diffusée en ligne.</p>
+      </div>
+      <div class="archive-card-status">Affaire résolue</div>
+    </a>
+
+    <p id="vide">Aucun dossier classé sous cette juridiction.<br>Le greffe reste ouvert.</p>
+
+  </section>
+
+  <div class="feed-end">&mdash; Fin du registre &mdash;</div>
+
+</div>
+
+<!-- ── TAB BAR ── -->
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives-mobile.html" class="tab-item active"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <span class="tab-item disabled" aria-disabled="true"><span class="tab-icon">✉</span><span>Contact</span></span>
+</nav>
+
+<script>
+// ── GRAIN ──
+function initGrain(id){
+  const c=document.getElementById(id);if(!c)return;
+  const ctx=c.getContext('2d');
+  function r(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
+  r();window.addEventListener('resize',r);
+  function d(){
+    const w=c.width,h=c.height,img=ctx.createImageData(w,h),px=img.data;
+    for(let i=0;i<px.length;i+=4){
+      const v=Math.random()*255|0;
+      px[i]=v;px[i+1]=Math.round(v*.92);px[i+2]=Math.round(v*.78);px[i+3]=Math.random()*32|0;
+    }
+    ctx.putImageData(img,0,0);requestAnimationFrame(d);
+  }
+  d();
+}
+initGrain('hero-canvas');
+
+// ── FILTRES ──
+const boutons=document.querySelectorAll('.filtre-btn');
+const cartes=document.querySelectorAll('.archive-card');
+const vide=document.getElementById('vide');
+boutons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    boutons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    let visibles=0;
+    cartes.forEach(c=>{
+      const ok=(f==='all'||c.dataset.jur===f);
+      c.classList.toggle('is-hidden',!ok);
+      if(ok) visibles++;
+    });
+    vide.classList.toggle('show',visibles===0);
+  });
+});
+
+// ── RÉVÉLATION AU SCROLL ──
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('in');
+  });
+},{root:document.getElementById('app'),threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
