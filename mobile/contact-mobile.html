@@ -19,120 +19,54 @@
 }
 html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
 
-/* ── APP SCROLL (une seule section, défilement libre) ── */
+/* ── Conteneur étapes ── */
 #app{
+  position:relative;overflow:hidden;
   height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
-  overflow-y:scroll;overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
   background:var(--encre);
 }
-#app::-webkit-scrollbar{display:none}
 
-/* Révélation au scroll */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-.reveal.in{opacity:1;transform:none;}
-.reveal.d1{transition-delay:.07s}
-.reveal.d2{transition-delay:.14s}
-.reveal.d3{transition-delay:.21s}
+/* Barre de progression */
+#progress{position:absolute;top:0;left:0;right:0;height:2px;background:rgba(245,240,232,.08);z-index:60;}
+#progress-fill{height:100%;width:0;background:var(--vive);transition:width .55s cubic-bezier(.16,1,.3,1);}
 
-/* ══════════════════════════════
-   SECTION UNIQUE
-══════════════════════════════ */
-#contact{
-  position:relative;overflow:hidden;
-  padding:3.25rem 1.5rem calc(2.5rem + var(--bar));
+/* ── Étape (plein écran, une seule visible) ── */
+.step{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  padding:3.25rem 1.6rem;
+  opacity:0;transform:translateY(48px);pointer-events:none;
+  transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1);
+  overflow-y:auto;scrollbar-width:none;
 }
-#contact-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.045;mix-blend-mode:screen;z-index:0;}
-.c-inner{position:relative;z-index:2;}
+.step::-webkit-scrollbar{display:none}
+.step.active{opacity:1;transform:none;pointer-events:auto;}
+.step.up{opacity:0;transform:translateY(-48px);}
 
-/* ── Logo ── */
-.c-logo{
-  display:block;width:clamp(130px,40vw,160px);height:auto;
-  opacity:.92;margin-bottom:2.25rem;
-}
+#step-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.045;mix-blend-mode:screen;z-index:0;}
 
-/* ── En-tête ── */
+/* ── ÉTAPE 1 : HERO ── */
+.step--hero{justify-content:space-between;}
+.c-logo{display:block;width:clamp(130px,40vw,160px);height:auto;opacity:.92;position:relative;z-index:2;}
+.hero-block{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
 .c-eyebrow{
   font-family:var(--mono);font-size:.58rem;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--kraft);margin-bottom:1.5rem;
+  text-transform:uppercase;color:var(--kraft);margin-bottom:1.4rem;
 }
 .c-title{
-  font-family:var(--display);
-  font-size:clamp(2.6rem,13vw,3.4rem);
+  font-family:var(--display);font-size:clamp(2.6rem,13vw,3.4rem);
   text-transform:uppercase;line-height:.9;letter-spacing:-.02em;
   color:var(--base);overflow-wrap:break-word;
 }
 .c-title .vive{color:var(--vive);}
 .c-sub{
-  font-family:var(--mono);font-size:.74rem;line-height:1.85;
-  color:rgba(245,240,232,.5);
-  border-left:2px solid var(--vive);padding-left:1rem;
-  margin-top:1.5rem;
+  font-family:var(--mono);font-size:.74rem;line-height:1.8;
+  color:rgba(245,240,232,.5);max-width:30ch;margin-top:1.4rem;
 }
-
-/* ── Numéro de dossier ── */
-.c-dossier-num{
-  font-family:var(--mono);font-size:.55rem;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--kraft);
-  display:flex;align-items:center;gap:.7rem;
-  margin:2.75rem 0 .5rem;
-}
-.c-dossier-num::after{content:'';flex:1;height:1px;background:rgba(245,240,232,.12);}
-
-/* ── Formulaire ── */
-.cform-group{border-top:1px solid rgba(245,240,232,.12);}
-.cform-group:last-of-type{border-bottom:1px solid rgba(245,240,232,.12);margin-bottom:2rem;}
-.cform-label{
-  display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;
-  text-transform:uppercase;color:rgba(245,240,232,.6);
-  padding:1.1rem 0 0;font-weight:700;transition:color .2s;
-}
-.cform-group:focus-within .cform-label{color:var(--vive);}
-.cform-input,.cform-textarea{
-  display:block;width:100%;background:transparent;border:none;outline:none;
-  font-family:var(--mono);font-size:.95rem;color:var(--base);
-  padding:.5rem 0 1.1rem;resize:none;
-}
-.cform-input::placeholder,.cform-textarea::placeholder{color:rgba(245,240,232,.28);}
-.cform-textarea{min-height:90px;}
-
-/* Juridiction (pills radio) */
-.jur-options{display:flex;flex-wrap:wrap;gap:.45rem;padding:.85rem 0 1.2rem;}
-.jur-option input[type="radio"]{display:none;}
-.jur-option-label{
-  display:inline-flex;align-items:center;gap:.55rem;
-  font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;
-  color:rgba(245,240,232,.6);
-  border:1px solid rgba(245,240,232,.2);
-  padding:.5rem .85rem;cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-  transition:background .2s,color .2s,border-color .2s;
-}
-.jur-option-num{font-size:.55rem;color:var(--accent);letter-spacing:.12em;flex-shrink:0;}
-.jur-option input:checked + .jur-option-label{background:var(--vive);color:var(--encre);border-color:var(--vive);}
-.jur-option input:checked + .jur-option-label .jur-option-num{color:var(--encre);}
-
-/* ── Bas de formulaire ── */
-.cform-submit{
-  width:100%;display:inline-flex;align-items:center;justify-content:center;gap:1rem;
-  background:var(--vive);color:var(--encre);
-  font-family:var(--display);font-size:1.05rem;
-  text-transform:uppercase;letter-spacing:.08em;
-  padding:1.1rem 2rem;border:none;cursor:pointer;
-  -webkit-tap-highlight-color:transparent;transition:background .2s,color .2s;
-}
-.cform-submit:active{background:var(--accent);color:var(--base);}
-.cform-mention{
-  font-family:var(--mono);font-size:.56rem;line-height:1.8;
-  color:rgba(245,240,232,.3);text-align:center;margin-top:1.25rem;
-}
-
-/* ── Pied : contact ── */
+.hero-foot{position:relative;z-index:2;width:100%;}
 .c-foot{
-  display:flex;flex-wrap:wrap;gap:.4rem .9rem;justify-content:center;align-items:center;
-  margin-top:2.5rem;padding-top:1.75rem;
-  border-top:1px solid rgba(245,240,232,.1);
+  display:flex;flex-wrap:wrap;gap:.35rem .85rem;justify-content:center;align-items:center;
 }
 .c-foot a,.c-foot span{
   font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;
@@ -140,18 +74,15 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 }
 .c-foot a:active{color:var(--vive);}
 .c-foot .sep{color:rgba(245,240,232,.25);}
-
-/* ── Barre RS + mentions légales ── */
 .c-social{
   display:flex;align-items:center;justify-content:space-between;
-  margin-top:1.5rem;padding-top:1.25rem;
+  margin-top:1.4rem;padding-top:1.1rem;
   border-top:1px solid rgba(245,240,232,.1);
 }
 .c-social-rs{display:flex;gap:1.4rem;}
 .c-social-rs a{
   font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;
-  text-transform:uppercase;color:rgba(245,240,232,.65);text-decoration:none;
-  font-weight:700;transition:color .2s;
+  text-transform:uppercase;color:rgba(245,240,232,.65);text-decoration:none;font-weight:700;transition:color .2s;
 }
 .c-social-rs a:active{color:var(--vive);}
 .c-social-mentions{
@@ -160,28 +91,126 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 }
 .c-social-mentions:active{color:var(--kraft);}
 
-/* ══════════════════════════════
-   TAB BAR
-══════════════════════════════ */
+/* ── Boutons ── */
+.btn-go,.step-submit{
+  display:inline-flex;align-items:center;justify-content:center;gap:.9rem;
+  background:var(--vive);color:var(--encre);
+  font-family:var(--display);font-size:1.05rem;
+  text-transform:uppercase;letter-spacing:.08em;
+  padding:1rem 2.5rem;border:none;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;transition:background .2s,color .2s;
+}
+.btn-go:active,.step-submit:active{background:var(--accent);color:var(--base);}
+.btn-go{margin-top:2.25rem;}
+.step-submit{width:100%;max-width:340px;margin-top:2rem;}
+
+.step-back{
+  position:absolute;top:1.4rem;left:1.4rem;z-index:5;
+  background:none;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(245,240,232,.45);
+}
+.step-back:active{color:var(--vive);}
+
+/* ── Étapes formulaire ── */
+.step-num{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--kraft);margin-bottom:1.5rem;
+}
+.step-q{
+  font-family:var(--display);font-size:clamp(1.9rem,8.5vw,2.6rem);
+  text-transform:uppercase;line-height:.95;letter-spacing:-.01em;
+  color:var(--base);margin-bottom:2rem;max-width:14ch;
+}
+.step-fields{width:100%;max-width:340px;}
+
+.cform-group{border-top:1px solid rgba(245,240,232,.14);text-align:left;}
+.cform-group:last-of-type{border-bottom:1px solid rgba(245,240,232,.14);}
+.cform-label{
+  display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(245,240,232,.55);padding:.95rem 0 0;font-weight:700;transition:color .2s;
+}
+.cform-group:focus-within .cform-label{color:var(--vive);}
+.cform-input,.cform-textarea{
+  display:block;width:100%;background:transparent;border:none;outline:none;
+  font-family:var(--mono);font-size:.95rem;color:var(--base);
+  padding:.45rem 0 .95rem;resize:none;
+}
+.cform-input::placeholder,.cform-textarea::placeholder{color:rgba(245,240,232,.28);}
+.cform-textarea{min-height:80px;}
+
+/* Juridiction : empilé, prend la place qu'il faut */
+.jur-list{display:flex;flex-direction:column;gap:.6rem;width:100%;max-width:340px;text-align:left;}
+.jur-option input[type="radio"]{display:none;}
+.jur-option-label{
+  display:flex;align-items:center;gap:.85rem;
+  font-family:var(--mono);font-size:.85rem;letter-spacing:.03em;
+  color:rgba(245,240,232,.7);
+  border:1px solid rgba(245,240,232,.2);
+  padding:.95rem 1.1rem;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.jur-option-num{font-family:var(--display);font-size:.95rem;color:var(--accent);flex-shrink:0;min-width:2.4em;}
+.jur-option input:checked + .jur-option-label{background:var(--vive);color:var(--encre);border-color:var(--vive);}
+.jur-option input:checked + .jur-option-label .jur-option-num{color:var(--encre);}
+
+/* RGPD */
+.rgpd{display:flex;align-items:flex-start;gap:.65rem;text-align:left;margin-top:1.4rem;cursor:pointer;-webkit-tap-highlight-color:transparent;max-width:340px;}
+.rgpd input{display:none;}
+.rgpd-box{
+  flex-shrink:0;width:18px;height:18px;margin-top:1px;
+  border:1px solid rgba(245,240,232,.35);position:relative;transition:background .2s,border-color .2s;
+}
+.rgpd input:checked + .rgpd-box{background:var(--vive);border-color:var(--vive);}
+.rgpd input:checked + .rgpd-box::after{
+  content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;
+  border:solid var(--encre);border-width:0 2px 2px 0;transform:rotate(45deg);
+}
+.rgpd-text{font-family:var(--mono);font-size:.62rem;line-height:1.7;color:rgba(245,240,232,.5);}
+.rgpd-text a{color:var(--kraft);}
+
+/* Erreur de validation */
+.step-error{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;
+  color:var(--accent);min-height:1.1rem;margin-top:1rem;opacity:0;transition:opacity .2s;
+}
+.step-error.show{opacity:1;}
+@keyframes shake{10%,90%{transform:translateX(-2px)}30%,70%{transform:translateX(4px)}50%{transform:translateX(-6px)}}
+.shake{animation:shake .4s;}
+
+/* ── ÉTAPE FINALE : confirmation ── */
+.confirm-mark{
+  font-family:var(--display);font-size:2.4rem;color:var(--encre);
+  background:var(--vive);width:74px;height:74px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin-bottom:2rem;position:relative;z-index:2;
+}
+.confirm-title{
+  font-family:var(--display);font-size:clamp(2.4rem,11vw,3rem);
+  text-transform:uppercase;line-height:.92;color:var(--base);position:relative;z-index:2;
+}
+.confirm-title .vive{color:var(--vive);}
+.confirm-sub{
+  font-family:var(--mono);font-size:.74rem;line-height:1.9;color:rgba(245,240,232,.5);
+  max-width:30ch;margin-top:1.5rem;position:relative;z-index:2;
+}
+.confirm-sign{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--kraft);margin-top:1.75rem;font-style:italic;position:relative;z-index:2;}
+.confirm-home{
+  margin-top:2.5rem;position:relative;z-index:2;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(245,240,232,.6);text-decoration:none;border-bottom:1px solid rgba(245,240,232,.25);padding-bottom:.25rem;
+}
+
+/* ── TAB BAR ── */
 #tab-bar{
-  position:fixed;bottom:0;left:0;right:0;
-  height:var(--bar);
-  background:var(--encre);
-  border-top:1px solid rgba(255,255,255,.08);
-  display:grid;grid-template-columns:repeat(4,1fr);
-  align-items:center;
-  padding:0 .5rem;
-  padding-bottom:env(safe-area-inset-bottom);
-  z-index:200;
+  position:fixed;bottom:0;left:0;right:0;height:var(--bar);
+  background:var(--encre);border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;
+  padding:0 .5rem;padding-bottom:env(safe-area-inset-bottom);z-index:200;
 }
 .tab-item{
-  display:flex;flex-direction:column;align-items:center;gap:.3rem;
-  padding:.5rem;text-decoration:none;
-  font-family:var(--mono);font-size:.42rem;letter-spacing:.1em;
-  text-transform:uppercase;cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-  background:none;border:none;color:rgba(245,240,232,.3);
-  transition:color .2s;
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;background:none;border:none;color:rgba(245,240,232,.3);transition:color .2s;
 }
 .tab-item.active,.tab-item:not(.disabled):active{color:var(--vive);}
 .tab-icon{font-size:1.15rem;line-height:1;}
@@ -190,84 +219,125 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 <body>
 
 <div id="app">
+  <div id="progress"><div id="progress-fill"></div></div>
+  <canvas id="step-canvas"></canvas>
 
-  <section id="contact">
-    <canvas id="contact-canvas"></canvas>
-    <div class="c-inner">
-
-      <!-- Logo -->
-      <img class="c-logo reveal" src="../assets/images/logo-light.svg" alt="Studio Toinon">
-
-      <!-- En-tête condensé -->
-      <div class="c-eyebrow reveal">L'enquête commence ici</div>
-      <h1 class="c-title reveal d1">Ouvrir<br>un <span class="vive">dossier.</span></h1>
-      <p class="c-sub reveal d2">Décrivez votre affaire, on s'en charge. Réponse sous 48h, en toute confidentialité.</p>
-
-      <!-- Formulaire -->
-      <form id="c-form">
-        <div class="c-dossier-num reveal">Dossier N&deg; &mdash; En cours d'ouverture</div>
-
-        <div class="cform-group reveal">
-          <label class="cform-label" for="nom-projet">Nom du projet</label>
-          <input class="cform-input" type="text" id="nom-projet" placeholder="Le nom de votre affaire">
-        </div>
-
-        <div class="cform-group reveal">
-          <label class="cform-label" for="identite">Votre identité</label>
-          <input class="cform-input" type="text" id="identite" placeholder="Nom, prénom ou raison sociale">
-        </div>
-
-        <div class="cform-group reveal">
-          <label class="cform-label" for="coordonnees">Coordonnées</label>
-          <input class="cform-input" type="email" id="coordonnees" placeholder="Votre adresse email">
-        </div>
-
-        <div class="cform-group reveal">
-          <label class="cform-label">Juridiction concernée</label>
-          <div class="jur-options">
-            <label class="jur-option">
-              <input type="radio" name="juridiction" value="Stratégie de marque">
-              <span class="jur-option-label"><span class="jur-option-num">J.01</span>Stratégie de marque</span>
-            </label>
-            <label class="jur-option">
-              <input type="radio" name="juridiction" value="Design d'interface">
-              <span class="jur-option-label"><span class="jur-option-num">J.02</span>Design d'interface</span>
-            </label>
-            <label class="jur-option">
-              <input type="radio" name="juridiction" value="Motion & Vidéo">
-              <span class="jur-option-label"><span class="jur-option-num">J.03</span>Motion &amp; Vidéo</span>
-            </label>
-            <label class="jur-option">
-              <input type="radio" name="juridiction" value="Plusieurs juridictions">
-              <span class="jur-option-label"><span class="jur-option-num">&mdash;</span>Plusieurs juridictions</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="cform-group reveal">
-          <label class="cform-label" for="dossier">Description du dossier</label>
-          <textarea class="cform-textarea" id="dossier" placeholder="Décrivez votre projet, votre contexte, vos objectifs…"></textarea>
-        </div>
-
-        <button type="submit" class="cform-submit reveal"><span>Soumettre le dossier</span><span>&rarr;</span></button>
-      </form>
-
-      <!-- Pied condensé (infos non dupliquées) -->
-      <div class="c-foot reveal">
+  <!-- ══ ÉTAPE 1 — HERO ══ -->
+  <section class="step step--hero active">
+    <img class="c-logo" src="../assets/images/logo-light.svg" alt="Studio Toinon">
+    <div class="hero-block">
+      <div class="c-eyebrow">L'enquête commence ici</div>
+      <h1 class="c-title">Ouvrir<br>un <span class="vive">dossier.</span></h1>
+      <p class="c-sub">Décrivez votre affaire, on s'en charge. Réponse sous 48h, en toute confidentialité.</p>
+      <button class="btn-go" data-next>Go <span>&rarr;</span></button>
+    </div>
+    <div class="hero-foot">
+      <div class="c-foot">
         <a href="mailto:contact@studiotoinon.fr">contact@studiotoinon.fr</a>
         <span class="sep">·</span>
         <span>Montpellier, France</span>
       </div>
-
-      <!-- Barre RS + mentions légales -->
-      <div class="c-social reveal">
+      <div class="c-social">
         <div class="c-social-rs">
           <a href="#" aria-label="Instagram">Ig</a><a href="#" aria-label="LinkedIn">Li</a><a href="#" aria-label="Behance">Be</a>
         </div>
         <a href="../mentions-legales.html" class="c-social-mentions">Mentions légales</a>
       </div>
-
     </div>
+  </section>
+
+  <!-- ══ ÉTAPE 2 — IDENTITÉ ══ -->
+  <section class="step">
+    <button class="step-back" data-back>&larr; Retour</button>
+    <div class="step-num">01 / 04 &mdash; Identité</div>
+    <h2 class="step-q">Qui ouvre le dossier&nbsp;?</h2>
+    <div class="step-fields">
+      <div class="cform-group">
+        <label class="cform-label" for="nom">Nom</label>
+        <input class="cform-input" type="text" id="nom" autocomplete="family-name" placeholder="Votre nom">
+      </div>
+      <div class="cform-group">
+        <label class="cform-label" for="prenom">Prénom</label>
+        <input class="cform-input" type="text" id="prenom" autocomplete="given-name" placeholder="Votre prénom">
+      </div>
+    </div>
+    <button class="step-submit" data-next><span>Soumettre</span><span>&rarr;</span></button>
+    <div class="step-error"></div>
+  </section>
+
+  <!-- ══ ÉTAPE 3 — COORDONNÉES ══ -->
+  <section class="step">
+    <button class="step-back" data-back>&larr; Retour</button>
+    <div class="step-num">02 / 04 &mdash; Coordonnées</div>
+    <h2 class="step-q">Comment vous joindre&nbsp;?</h2>
+    <div class="step-fields">
+      <div class="cform-group">
+        <label class="cform-label" for="email">Email</label>
+        <input class="cform-input" type="email" id="email" autocomplete="email" placeholder="votre@email.fr">
+      </div>
+      <div class="cform-group">
+        <label class="cform-label" for="tel">Téléphone</label>
+        <input class="cform-input" type="tel" id="tel" autocomplete="tel" placeholder="Optionnel">
+      </div>
+    </div>
+    <button class="step-submit" data-next><span>Soumettre</span><span>&rarr;</span></button>
+    <div class="step-error"></div>
+  </section>
+
+  <!-- ══ ÉTAPE 4 — JURIDICTION ══ -->
+  <section class="step">
+    <button class="step-back" data-back>&larr; Retour</button>
+    <div class="step-num">03 / 04 &mdash; Juridiction</div>
+    <h2 class="step-q">Quelle juridiction&nbsp;?</h2>
+    <div class="jur-list">
+      <label class="jur-option">
+        <input type="radio" name="juridiction" value="Stratégie de marque">
+        <span class="jur-option-label"><span class="jur-option-num">J.01</span>Stratégie de marque</span>
+      </label>
+      <label class="jur-option">
+        <input type="radio" name="juridiction" value="Design d'interface">
+        <span class="jur-option-label"><span class="jur-option-num">J.02</span>Design d'interface</span>
+      </label>
+      <label class="jur-option">
+        <input type="radio" name="juridiction" value="Motion & Vidéo">
+        <span class="jur-option-label"><span class="jur-option-num">J.03</span>Motion &amp; Vidéo</span>
+      </label>
+      <label class="jur-option">
+        <input type="radio" name="juridiction" value="Plusieurs juridictions">
+        <span class="jur-option-label"><span class="jur-option-num">&mdash;</span>Plusieurs juridictions</span>
+      </label>
+    </div>
+    <button class="step-submit" data-next><span>Soumettre</span><span>&rarr;</span></button>
+    <div class="step-error"></div>
+  </section>
+
+  <!-- ══ ÉTAPE 5 — DESCRIPTION + RGPD ══ -->
+  <section class="step">
+    <button class="step-back" data-back>&larr; Retour</button>
+    <div class="step-num">04 / 04 &mdash; Le dossier</div>
+    <h2 class="step-q">Décrivez votre projet</h2>
+    <div class="step-fields">
+      <div class="cform-group">
+        <label class="cform-label" for="description">Description du dossier</label>
+        <textarea class="cform-textarea" id="description" placeholder="Votre projet, votre contexte, vos objectifs…"></textarea>
+      </div>
+    </div>
+    <label class="rgpd">
+      <input type="checkbox" id="rgpd">
+      <span class="rgpd-box"></span>
+      <span class="rgpd-text">J'accepte que mes données soient utilisées pour traiter ma demande. <a href="../mentions-legales.html">Mentions légales</a></span>
+    </label>
+    <button class="step-submit" data-next><span>Soumettre le dossier</span><span>&rarr;</span></button>
+    <div class="step-error"></div>
+  </section>
+
+  <!-- ══ ÉTAPE FINALE — CONFIRMATION ══ -->
+  <section class="step">
+    <div class="confirm-mark">✓</div>
+    <h2 class="confirm-title">Dossier<br><span class="vive">transmis.</span></h2>
+    <p class="confirm-sub">Votre message a bien été transmis. On instruit votre affaire et on vous répond sous 48h, en toute confidentialité.</p>
+    <div class="confirm-sign">&mdash; Studio Toinon</div>
+    <a href="index-mobile.html" class="confirm-home">Retour à l'accueil</a>
   </section>
 
 </div>
@@ -283,7 +353,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 <script>
 // ── GRAIN ──
 (function(){
-  const c=document.getElementById('contact-canvas');if(!c)return;
+  const c=document.getElementById('step-canvas');if(!c)return;
   const ctx=c.getContext('2d');
   function r(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
   r();window.addEventListener('resize',r);
@@ -291,42 +361,77 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
     const w=c.width,h=c.height,img=ctx.createImageData(w,h),px=img.data;
     for(let i=0;i<px.length;i+=4){
       const v=Math.random()*255|0;
-      px[i]=v;px[i+1]=Math.round(v*.92);px[i+2]=Math.round(v*.78);px[i+3]=Math.random()*18|0;
+      px[i]=v;px[i+1]=Math.round(v*.92);px[i+2]=Math.round(v*.78);px[i+3]=Math.random()*16|0;
     }
     ctx.putImageData(img,0,0);requestAnimationFrame(d);
   }
   d();
 })();
 
-// ── NUMÉRO DE DOSSIER DYNAMIQUE ──
-const numEl=document.querySelector('.c-dossier-num');
-if(numEl){
-  const n=String(Math.floor(Math.random()*900)+100);
-  numEl.textContent='Dossier N° '+n+' — En cours d\'ouverture';
+// ── WIZARD ──
+const steps=[].slice.call(document.querySelectorAll('.step'));
+const fill=document.getElementById('progress-fill');
+const LAST_INPUT=4; // index de l'étape description (dernière saisie)
+let cur=0;
+
+function show(n){
+  cur=n;
+  steps.forEach((s,i)=>{
+    s.classList.remove('active','up');
+    if(i<n) s.classList.add('up');
+    else if(i===n) s.classList.add('active');
+  });
+  steps[n].scrollTop=0;
+  fill.style.width=(n/(steps.length-1))*100+'%';
 }
 
-// ── SOUMISSION → MAILTO ──
-const form=document.getElementById('c-form');
-form.addEventListener('submit',function(e){
-  e.preventDefault();
-  const v=id=>(document.getElementById(id).value||'').trim();
-  const jurEl=document.querySelector('input[name="juridiction"]:checked');
-  const jur=jurEl?jurEl.value:'Non précisée';
-  const sujet='Nouveau dossier — '+(v('nom-projet')||'Studio Toinon');
-  const corps=
-    'Projet : '+v('nom-projet')+'\n'+
-    'Identité : '+v('identite')+'\n'+
-    'Email : '+v('coordonnees')+'\n'+
-    'Juridiction : '+jur+'\n\n'+
-    v('dossier');
-  window.location.href='mailto:contact@studiotoinon.fr?subject='+encodeURIComponent(sujet)+'&body='+encodeURIComponent(corps);
-});
+function val(id){return (document.getElementById(id).value||'').trim();}
+function setErr(stepEl,msg){
+  const e=stepEl.querySelector('.step-error');
+  if(e){e.textContent=msg;e.classList.add('show');}
+  const f=stepEl.querySelector('.step-fields,.jur-list');
+  if(f){f.classList.remove('shake');void f.offsetWidth;f.classList.add('shake');}
+  return false;
+}
+function clearErr(stepEl){const e=stepEl.querySelector('.step-error');if(e){e.classList.remove('show');}}
 
-// ── RÉVÉLATION AU SCROLL ──
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
-},{root:document.getElementById('app'),threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function validate(i){
+  const el=steps[i];clearErr(el);
+  if(i===1){ if(!val('nom')||!val('prenom')) return setErr(el,'Renseignez votre nom et prénom.'); }
+  if(i===2){ const m=val('email'); if(!m||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)) return setErr(el,'Une adresse email valide est requise.'); }
+  if(i===3){ if(!document.querySelector('input[name="juridiction"]:checked')) return setErr(el,'Choisissez une juridiction.'); }
+  if(i===4){
+    if(!val('description')) return setErr(el,'Décrivez votre projet.');
+    if(!document.getElementById('rgpd').checked) return setErr(el,'Cochez la case pour continuer.');
+  }
+  return true;
+}
+
+function submitDossier(){
+  const jurEl=document.querySelector('input[name="juridiction"]:checked');
+  const sujet='Nouveau dossier — '+(val('prenom')+' '+val('nom')).trim();
+  const corps=
+    'Identité : '+val('prenom')+' '+val('nom')+'\n'+
+    'Email : '+val('email')+'\n'+
+    'Téléphone : '+(val('tel')||'—')+'\n'+
+    'Juridiction : '+(jurEl?jurEl.value:'—')+'\n\n'+
+    val('description');
+  setTimeout(function(){
+    window.location.href='mailto:contact@studiotoinon.fr?subject='+encodeURIComponent(sujet)+'&body='+encodeURIComponent(corps);
+  },450);
+}
+
+document.querySelectorAll('[data-next]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    if(cur===0){ show(1); return; }
+    if(!validate(cur)) return;
+    if(cur===LAST_INPUT){ show(cur+1); submitDossier(); return; }
+    show(cur+1);
+  });
+});
+document.querySelectorAll('[data-back]').forEach(btn=>{
+  btn.addEventListener('click',()=>{ if(cur>0) show(cur-1); });
+});
 </script>
 </body>
 </html>
