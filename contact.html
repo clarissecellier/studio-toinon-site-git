@@ -3,6 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Redirection mobile : les petits écrans (≤ 768px) basculent sur la version
+       dédiée. Exécuté avant tout affichage pour éviter le clignotement.
+       Échappatoire : ajouter ?desktop à l'URL pour forcer la version bureau. */
+    (function () {
+      try {
+        var forceDesktop = location.search.indexOf('desktop') !== -1
+          || localStorage.getItem('viewMode') === 'desktop';
+        if (!forceDesktop && window.matchMedia('(max-width: 768px)').matches) {
+          location.replace('mobile/contact-mobile.html');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <title>Contact &mdash; Studio Toinon</title>
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/main.css">
@@ -33,7 +47,7 @@
         </div>
         <div class="contact-info-item">
           <span class="contact-info-label">Bas&eacute; &agrave;</span>
-          <span class="contact-info-val">Paris, France</span>
+          <span class="contact-info-val">Montpellier, France</span>
         </div>
         <div class="contact-info-item">
           <span class="contact-info-label">Disponibilit&eacute;</span>

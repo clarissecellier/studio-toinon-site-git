@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Contact &mdash; Studio Toinon</title>
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:64px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+/* ── APP SCROLL (une seule section, défilement libre) ── */
+#app{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  background:var(--encre);
+}
+#app::-webkit-scrollbar{display:none}
+
+/* Révélation au scroll */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+.reveal.d1{transition-delay:.07s}
+.reveal.d2{transition-delay:.14s}
+.reveal.d3{transition-delay:.21s}
+
+/* ══════════════════════════════
+   SECTION UNIQUE
+══════════════════════════════ */
+#contact{
+  position:relative;overflow:hidden;
+  padding:3.25rem 1.5rem calc(2.5rem + var(--bar));
+}
+#contact-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.045;mix-blend-mode:screen;z-index:0;}
+.c-inner{position:relative;z-index:2;}
+
+/* ── En-tête ── */
+.c-eyebrow{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--kraft);margin-bottom:1.5rem;
+}
+.c-title{
+  font-family:var(--display);
+  font-size:clamp(2.6rem,13vw,3.4rem);
+  text-transform:uppercase;line-height:.9;letter-spacing:-.02em;
+  color:var(--base);overflow-wrap:break-word;
+}
+.c-title .vive{color:var(--vive);}
+.c-sub{
+  font-family:var(--mono);font-size:.74rem;line-height:1.85;
+  color:rgba(245,240,232,.5);
+  border-left:2px solid var(--vive);padding-left:1rem;
+  margin-top:1.5rem;
+}
+
+/* ── Numéro de dossier ── */
+.c-dossier-num{
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--kraft);
+  display:flex;align-items:center;gap:.7rem;
+  margin:2.75rem 0 .5rem;
+}
+.c-dossier-num::after{content:'';flex:1;height:1px;background:rgba(245,240,232,.12);}
+
+/* ── Formulaire ── */
+.cform-group{border-top:1px solid rgba(245,240,232,.12);}
+.cform-group:last-of-type{border-bottom:1px solid rgba(245,240,232,.12);margin-bottom:2rem;}
+.cform-label{
+  display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(245,240,232,.6);
+  padding:1.1rem 0 0;font-weight:700;transition:color .2s;
+}
+.cform-group:focus-within .cform-label{color:var(--vive);}
+.cform-input,.cform-textarea{
+  display:block;width:100%;background:transparent;border:none;outline:none;
+  font-family:var(--mono);font-size:.95rem;color:var(--base);
+  padding:.5rem 0 1.1rem;resize:none;
+}
+.cform-input::placeholder,.cform-textarea::placeholder{color:rgba(245,240,232,.28);}
+.cform-textarea{min-height:90px;}
+
+/* Juridiction (pills radio) */
+.jur-options{display:flex;flex-wrap:wrap;gap:.45rem;padding:.85rem 0 1.2rem;}
+.jur-option input[type="radio"]{display:none;}
+.jur-option-label{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;
+  color:rgba(245,240,232,.6);
+  border:1px solid rgba(245,240,232,.2);
+  padding:.5rem .85rem;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.jur-option-num{font-size:.55rem;color:var(--accent);letter-spacing:.12em;flex-shrink:0;}
+.jur-option input:checked + .jur-option-label{background:var(--vive);color:var(--encre);border-color:var(--vive);}
+.jur-option input:checked + .jur-option-label .jur-option-num{color:var(--encre);}
+
+/* ── Bas de formulaire ── */
+.cform-submit{
+  width:100%;display:inline-flex;align-items:center;justify-content:center;gap:1rem;
+  background:var(--vive);color:var(--encre);
+  font-family:var(--display);font-size:1.05rem;
+  text-transform:uppercase;letter-spacing:.08em;
+  padding:1.1rem 2rem;border:none;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;transition:background .2s,color .2s;
+}
+.cform-submit:active{background:var(--accent);color:var(--base);}
+.cform-mention{
+  font-family:var(--mono);font-size:.56rem;line-height:1.8;
+  color:rgba(245,240,232,.3);text-align:center;margin-top:1.25rem;
+}
+
+/* ── Pied : contact ── */
+.c-foot{
+  display:flex;flex-wrap:wrap;gap:.4rem .9rem;justify-content:center;align-items:center;
+  margin-top:2.5rem;padding-top:1.75rem;
+  border-top:1px solid rgba(245,240,232,.1);
+}
+.c-foot a,.c-foot span{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;
+  color:rgba(245,240,232,.55);text-decoration:none;
+}
+.c-foot a:active{color:var(--vive);}
+.c-foot .sep{color:rgba(245,240,232,.25);}
+
+/* ══════════════════════════════
+   TAB BAR
+══════════════════════════════ */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  height:var(--bar);
+  background:var(--encre);
+  border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);
+  align-items:center;
+  padding:0 .5rem;
+  padding-bottom:env(safe-area-inset-bottom);
+  z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;
+  padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.42rem;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  background:none;border:none;color:rgba(245,240,232,.3);
+  transition:color .2s;
+}
+.tab-item.active,.tab-item:not(.disabled):active{color:var(--vive);}
+.tab-icon{font-size:1.15rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <section id="contact">
+    <canvas id="contact-canvas"></canvas>
+    <div class="c-inner">
+
+      <!-- En-tête condensé -->
+      <div class="c-eyebrow reveal">L'enquête commence ici</div>
+      <h1 class="c-title reveal d1">Ouvrir<br>un <span class="vive">dossier.</span></h1>
+      <p class="c-sub reveal d2">Décrivez votre affaire, on s'en charge. Réponse sous 48h, en toute confidentialité.</p>
+
+      <!-- Formulaire -->
+      <form id="c-form">
+        <div class="c-dossier-num reveal">Dossier N&deg; &mdash; En cours d'ouverture</div>
+
+        <div class="cform-group reveal">
+          <label class="cform-label" for="nom-projet">Nom du projet</label>
+          <input class="cform-input" type="text" id="nom-projet" placeholder="Le nom de votre affaire">
+        </div>
+
+        <div class="cform-group reveal">
+          <label class="cform-label" for="identite">Votre identité</label>
+          <input class="cform-input" type="text" id="identite" placeholder="Nom, prénom ou raison sociale">
+        </div>
+
+        <div class="cform-group reveal">
+          <label class="cform-label" for="coordonnees">Coordonnées</label>
+          <input class="cform-input" type="email" id="coordonnees" placeholder="Votre adresse email">
+        </div>
+
+        <div class="cform-group reveal">
+          <label class="cform-label">Juridiction concernée</label>
+          <div class="jur-options">
+            <label class="jur-option">
+              <input type="radio" name="juridiction" value="Stratégie de marque">
+              <span class="jur-option-label"><span class="jur-option-num">J.01</span>Stratégie de marque</span>
+            </label>
+            <label class="jur-option">
+              <input type="radio" name="juridiction" value="Design d'interface">
+              <span class="jur-option-label"><span class="jur-option-num">J.02</span>Design d'interface</span>
+            </label>
+            <label class="jur-option">
+              <input type="radio" name="juridiction" value="Motion & Vidéo">
+              <span class="jur-option-label"><span class="jur-option-num">J.03</span>Motion &amp; Vidéo</span>
+            </label>
+            <label class="jur-option">
+              <input type="radio" name="juridiction" value="Plusieurs juridictions">
+              <span class="jur-option-label"><span class="jur-option-num">&mdash;</span>Plusieurs juridictions</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="cform-group reveal">
+          <label class="cform-label" for="dossier">Description du dossier</label>
+          <textarea class="cform-textarea" id="dossier" placeholder="Décrivez votre projet, votre contexte, vos objectifs…"></textarea>
+        </div>
+
+        <button type="submit" class="cform-submit reveal"><span>Soumettre le dossier</span><span>&rarr;</span></button>
+        <p class="cform-mention reveal">Chaque dossier reçoit une réponse sous 48h. Informations confidentielles.</p>
+      </form>
+
+      <!-- Pied condensé (infos non dupliquées) -->
+      <div class="c-foot reveal">
+        <a href="mailto:contact@studiotoinon.fr">contact@studiotoinon.fr</a>
+        <span class="sep">·</span>
+        <span>Montpellier, France</span>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- ── TAB BAR ── -->
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives-mobile.html" class="tab-item"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <a href="contact-mobile.html" class="tab-item active"><span class="tab-icon">✉</span><span>Contact</span></a>
+</nav>
+
+<script>
+// ── GRAIN ──
+(function(){
+  const c=document.getElementById('contact-canvas');if(!c)return;
+  const ctx=c.getContext('2d');
+  function r(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
+  r();window.addEventListener('resize',r);
+  function d(){
+    const w=c.width,h=c.height,img=ctx.createImageData(w,h),px=img.data;
+    for(let i=0;i<px.length;i+=4){
+      const v=Math.random()*255|0;
+      px[i]=v;px[i+1]=Math.round(v*.92);px[i+2]=Math.round(v*.78);px[i+3]=Math.random()*18|0;
+    }
+    ctx.putImageData(img,0,0);requestAnimationFrame(d);
+  }
+  d();
+})();
+
+// ── NUMÉRO DE DOSSIER DYNAMIQUE ──
+const numEl=document.querySelector('.c-dossier-num');
+if(numEl){
+  const n=String(Math.floor(Math.random()*900)+100);
+  numEl.textContent='Dossier N° '+n+' — En cours d\'ouverture';
+}
+
+// ── SOUMISSION → MAILTO ──
+const form=document.getElementById('c-form');
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  const v=id=>(document.getElementById(id).value||'').trim();
+  const jurEl=document.querySelector('input[name="juridiction"]:checked');
+  const jur=jurEl?jurEl.value:'Non précisée';
+  const sujet='Nouveau dossier — '+(v('nom-projet')||'Studio Toinon');
+  const corps=
+    'Projet : '+v('nom-projet')+'\n'+
+    'Identité : '+v('identite')+'\n'+
+    'Email : '+v('coordonnees')+'\n'+
+    'Juridiction : '+jur+'\n\n'+
+    v('dossier');
+  window.location.href='mailto:contact@studiotoinon.fr?subject='+encodeURIComponent(sujet)+'&body='+encodeURIComponent(corps);
+});
+
+// ── RÉVÉLATION AU SCROLL ──
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{root:document.getElementById('app'),threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
