@@ -143,7 +143,10 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   padding-top:calc(.6rem + env(safe-area-inset-top));
   background:rgba(26,26,26,.6);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  opacity:0;pointer-events:none;transform:translateY(-110%);
+  transition:opacity .35s ease,transform .35s ease;
 }
+#filtres.show{opacity:1;pointer-events:auto;transform:none;}
 .filtre-btn{
   font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;
   text-transform:uppercase;
@@ -333,6 +336,7 @@ initGrain('hero-canvas');
 
 // ── FILTRES ──
 const app=document.getElementById('app');
+const filtres=document.getElementById('filtres');
 const boutons=document.querySelectorAll('.filtre-btn');
 const dossiers=document.querySelectorAll('.dossier');
 boutons.forEach(btn=>{
@@ -343,9 +347,18 @@ boutons.forEach(btn=>{
     dossiers.forEach(d=>{
       d.classList.toggle('is-hidden',!(f==='all'||d.dataset.jur===f));
     });
-    app.scrollTo({top:0,behavior:'smooth'});
+    // aller au premier dossier correspondant (pas au hero)
+    const premier=document.querySelector('.dossier:not(.is-hidden)');
+    if(premier) premier.scrollIntoView({behavior:'smooth'});
   });
 });
+
+// La barre de filtres n'apparaît qu'à partir des dossiers (cachée sur le hero)
+function majFiltres(){
+  filtres.classList.toggle('show', app.scrollTop > app.clientHeight*0.5);
+}
+app.addEventListener('scroll',majFiltres,{passive:true});
+majFiltres();
 
 // ── RÉVÉLATION AU SCROLL ──
 const io=new IntersectionObserver((entries)=>{
