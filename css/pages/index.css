@@ -137,27 +137,28 @@
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .archives-link:hover { background: var(--encre); color: var(--base); border-color: var(--encre); }
-.archives-track-wrap { overflow-x: auto; overflow-y: visible; position: relative; padding-bottom: 3rem; z-index: 2; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; }
+.archives-track-wrap { overflow: hidden; position: relative; padding-bottom: 3rem; z-index: 2; cursor: grab; }
 .archives-track-wrap:active { cursor: grabbing; }
-.archives-track-wrap::-webkit-scrollbar { display: none; }
-.archives-track { display: flex; gap: 0; width: max-content; user-select: none; animation: archiveScroll 40s linear infinite; }
-.archives-track.dragging { animation-play-state: paused; }
-.archives-track-wrap:hover .archives-track { animation-play-state: paused; }
-@keyframes archiveScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.dossier-item { display: flex; align-items: stretch; border-right: 1px solid rgba(26,26,26,0.1); min-width: 300px; position: relative; transition: background 0.3s; cursor: none; }
+.archives-track { display: flex; gap: 0; width: max-content; user-select: none; will-change: transform; }
+.dossier-item { display: flex; align-items: stretch; border-right: 1px solid rgba(26,26,26,0.1); min-width: 420px; position: relative; transition: background 0.3s; cursor: none; }
 .dossier-item:hover { background: rgba(26,26,26,0.05); }
-.dossier-item:hover .dossier-preview { opacity: 1; transform: translateX(-50%) scale(1); }
-.dossier-inner { padding: 1.75rem 2.25rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
-.dossier-num { font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
-.dossier-client { font-family: var(--display); font-size: 1.5rem; text-transform: uppercase; color: var(--encre); line-height: 1; letter-spacing: -0.01em; }
-.dossier-meta { display: flex; flex-direction: column; gap: 0.2rem; margin-top: auto; }
-.dossier-type { font-family: var(--mono); font-size: 0.72rem; color: rgba(26,26,26,0.55); letter-spacing: 0.08em; }
-.dossier-year { font-family: var(--mono); font-size: 0.68rem; color: rgba(26,26,26,0.35); letter-spacing: 0.1em; }
-.dossier-status { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,26,26,0.35); }
-.dossier-status.resolu::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--encre); opacity: 0.3; flex-shrink: 0; }
-.dossier-preview { position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%) scale(0.94); width: 220px; height: 145px; opacity: 0; transition: opacity 0.25s, transform 0.25s; pointer-events: none; z-index: 30; border: 1px solid rgba(26,26,26,0.12); overflow: hidden; }
-.dossier-preview img { width: 100%; height: 100%; object-fit: cover; }
-.dossier-preview-placeholder { width: 100%; height: 100%; background: var(--kraft); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.1em; color: rgba(26,26,26,0.3); text-transform: uppercase; }
+.dossier-inner { padding: 2.5rem 3rem; display: flex; flex-direction: column; gap: 1rem; flex: 1; }
+.dossier-num { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+.dossier-client { font-family: var(--display); font-size: 2.7rem; text-transform: uppercase; color: var(--encre); line-height: 0.95; letter-spacing: -0.01em; }
+.dossier-meta { display: flex; flex-direction: column; gap: 0.35rem; margin-top: auto; }
+.dossier-type { font-family: var(--mono); font-size: 0.92rem; color: rgba(26,26,26,0.6); letter-spacing: 0.06em; }
+.dossier-year { font-family: var(--mono); font-size: 0.8rem; color: rgba(26,26,26,0.4); letter-spacing: 0.1em; }
+.dossier-status { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,26,26,0.4); }
+.dossier-status.resolu::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--encre); opacity: 0.3; flex-shrink: 0; }
+/* Vignette flottante qui suit le curseur */
+.archive-float { position: fixed; top: 0; left: 0; width: 260px; pointer-events: none; z-index: 999; opacity: 0; transform: translate(-50%, -116%) scale(0.92); transition: opacity 0.22s ease, transform 0.22s ease; will-change: transform, opacity; }
+.archive-float.show { opacity: 1; transform: translate(-50%, -110%) scale(1); }
+.archive-float-img { position: relative; width: 100%; height: 175px; border-radius: 14px; overflow: hidden; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; box-shadow: 0 18px 40px rgba(26,26,26,0.28); }
+.archive-float-num { font-family: var(--display); font-size: 3.5rem; color: rgba(255,255,255,0.18); text-transform: uppercase; letter-spacing: 0.02em; }
+.archive-float.has-img .archive-float-num { display: none; }
+.archive-float-cap { display: flex; flex-direction: column; gap: 0.15rem; margin-top: 0.7rem; padding: 0 0.15rem; }
+.archive-float-client { font-family: var(--display); font-size: 1.05rem; text-transform: uppercase; color: var(--encre); line-height: 1; }
+.archive-float-type { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,26,26,0.5); }
 
 /* ══════════════════════════════
    SECTION EYEBROW
@@ -252,8 +253,10 @@ footer#site-footer.light .footer-copy { color: var(--kraft); }
   .about-title { position: static; font-size: clamp(2rem, 10vw, 3.5rem); }
   #archives { padding: 0; }
   .archives-header { padding: 1.5rem 1.5rem 1rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
-  .dossier-item { min-width: 260px; }
-  .dossier-client { font-size: 1.2rem; }
+  .dossier-item { min-width: 300px; }
+  .dossier-inner { padding: 1.75rem 2rem; }
+  .dossier-client { font-size: 1.9rem; }
+  .archive-float { display: none; }
   #juridictions-section { padding: 0 1.5rem; }
   .juridiction { grid-template-columns: 60px 1fr auto; padding: 1.5rem 0; }
   .jur-name { font-size: clamp(1.5rem, 8vw, 2.5rem); }
