@@ -46,7 +46,7 @@ window.addEventListener('includes-ready', function () {
     var offset = 0;                  // translation courante (négatif = vers la gauche)
     var halfWidth = 0;               // largeur d'un set (contenu dupliqué x2)
     var paused = false;
-    var dragging = false, dragStartX = 0, dragStartOffset = 0;
+    var dragging = false, dragStartX = 0, dragStartOffset = 0, moved = false;
 
     function measure() { halfWidth = track.scrollWidth / 2; }
     measure();
@@ -74,12 +74,13 @@ window.addEventListener('includes-ready', function () {
 
     /* glisser pour parcourir */
     trackWrap.addEventListener('mousedown', function (e) {
-      dragging = true; dragStartX = e.pageX; dragStartOffset = offset;
+      dragging = true; moved = false; dragStartX = e.pageX; dragStartOffset = offset;
       track.classList.add('dragging');
     });
     window.addEventListener('mousemove', function (e) {
       if (!dragging) return;
       e.preventDefault();
+      if (Math.abs(e.pageX - dragStartX) > 4) moved = true;
       offset = dragStartOffset + (e.pageX - dragStartX);
       normalize();
     });
@@ -120,6 +121,12 @@ window.addEventListener('includes-ready', function () {
     Array.prototype.forEach.call(items, function (item) {
       item.addEventListener('mouseenter', function () { showFloat(item); });
       item.addEventListener('mousemove', moveFloat);
+      var href = item.getAttribute('data-href');
+      if (href && href !== '#') item.classList.add('is-link');
+      item.addEventListener('click', function () {
+        if (moved) return;                       // c'etait un glisser, pas un clic
+        if (href && href !== '#') window.location.href = href;
+      });
     });
   }
 
