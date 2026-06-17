@@ -80,8 +80,11 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   text-transform:uppercase;line-height:.88;
   letter-spacing:-.02em;color:var(--encre);margin-bottom:1.5rem;
 }
-.hero-tagline .accent{color:var(--accent);}
+.hero-tagline .accent{color:var(--encre);}
+.hero-tagline .type-caret{display:inline-block;width:.07em;height:.72em;background:var(--vive);margin-left:.06em;vertical-align:baseline;animation:caretBlink 1s steps(1) infinite;}
+@keyframes caretBlink{0%,50%{opacity:1;}50.01%,100%{opacity:0;}}
 .hero-tagline .dot{color:var(--vive);}
+.hero-tagline .souligne-vert{text-decoration:underline;text-decoration-color:var(--vive);text-decoration-thickness:.06em;text-underline-offset:.08em;}
 .hero-sub{
   font-family:var(--mono);font-size:.8rem;line-height:1.85;
   color:rgba(26,26,26,.6);
@@ -418,8 +421,8 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
     <div class="hero-badge">Studio de design d'investigation</div>
     <h1 class="hero-tagline">
       Rendre<br>
-      <span class="accent">justice</span><br>
-      à vos projets<span class="dot">.</span>
+      <span class="accent"><span id="type-word">justice</span><span class="type-caret" aria-hidden="true"></span></span><br>
+      à vos <span class="souligne-vert">projets</span><span class="dot">.</span>
     </h1>
     <p class="hero-sub">On instruit avant de construire,<br>on questionne avant de livrer.</p>
   </div>
@@ -714,6 +717,23 @@ const jurData=[
   {num:'J.02',title:'Design d\'interface',desc:'Un espace digital construit avec méthode. Chaque décision est argumentée, chaque choix est défendable.',items:['Conception de site web','Refonte de site','Landing page','UI / UX Design','Design système','Intégration WordPress']},
   {num:'J.03',title:'Motion & Vidéo',desc:'On reste sur l\'affaire. Pour que chaque pièce visuelle soit cohérente, défendable, et fidèle à ce qu\'on a construit ensemble.',items:['Motion design','Animation de logo','Vidéo editing','Contenu social media','Habillage vidéo','Générique / titrage']}
 ];
+</script>
+<script>
+(function(){
+  var el=document.getElementById('type-word');
+  if(!el) return;
+  var WORDS=['justice','un sens'], TYPE=110, DEL=65, HOLD=1500, HOLD_EMPTY=350;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=WORDS[0];return;}
+  var w=0,i=0,del=false;
+  function tick(){
+    var word=WORDS[w];
+    if(!del){ i++; el.textContent=word.slice(0,i);
+      if(i>=word.length){del=true;return setTimeout(tick,HOLD);} return setTimeout(tick,TYPE); }
+    i--; el.textContent=word.slice(0,i);
+    if(i<=0){del=false;w=(w+1)%WORDS.length;return setTimeout(tick,HOLD_EMPTY);} return setTimeout(tick,DEL);
+  }
+  el.textContent=''; setTimeout(tick,500);
+})();
 </script>
 </body>
 </html>

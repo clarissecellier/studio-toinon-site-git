@@ -58,9 +58,18 @@
   text-transform: uppercase; line-height: 0.9; letter-spacing: -0.02em; color: var(--encre);
   position: relative; z-index: 2;
 }
-.hero-tagline .accent-word { color: var(--accent); transition: color 0.2s; cursor: none; }
-.hero-tagline .accent-word:hover { color: var(--vive); }
+.hero-tagline .accent-word { color: var(--encre); cursor: none; }
+.hero-tagline .type-caret {
+  display: inline-block; width: 0.07em; height: 0.72em; background: var(--vive);
+  margin-left: 0.06em; vertical-align: baseline;
+  animation: caretBlink 1s steps(1) infinite;
+}
+@keyframes caretBlink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
 .hero-tagline .dot-vert { color: var(--vive); }
+.hero-tagline .souligne-vert {
+  text-decoration: underline; text-decoration-color: var(--vive);
+  text-decoration-thickness: 0.06em; text-underline-offset: 0.08em;
+}
 .hero-bottom {
   display: flex; justify-content: space-between; align-items: flex-end; margin-top: 3rem;
   position: relative; z-index: 2;
