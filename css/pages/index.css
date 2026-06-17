@@ -142,7 +142,7 @@
 .archives-track { display: flex; gap: 0; width: max-content; user-select: none; will-change: transform; }
 .dossier-item { display: flex; align-items: stretch; border-right: 1px solid rgba(26,26,26,0.1); min-width: 420px; position: relative; transition: background 0.3s; cursor: none; }
 .dossier-item:hover { background: rgba(26,26,26,0.05); }
-.dossier-item.is-link { cursor: pointer; }
+.dossier-item.is-link { cursor: none; }
 .dossier-inner { padding: 2.5rem 3rem; display: flex; flex-direction: column; gap: 1rem; flex: 1; }
 .dossier-num { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
 .dossier-client { font-family: var(--display); font-size: 2.7rem; text-transform: uppercase; color: var(--encre); line-height: 0.95; letter-spacing: -0.01em; }

@@ -14,6 +14,8 @@
 html { scroll-behavior: smooth; }
 body { background: var(--encre); color: var(--base); font-family: var(--mono); overflow-x: hidden; cursor: none; min-height: 100vh; }
 body.page-light { background: #EDE8DC; color: var(--encre); }
+/* Pas de main native au survol : on ne garde que le rond personnalisé (qui grossit) */
+a, button, input, textarea, select, label, [data-cursor] { cursor: none; }
 
 /* ══════════════════════════════
    CURSEUR
