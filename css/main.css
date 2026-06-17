@@ -5,7 +5,7 @@
 
 :root {
   --base: #F5F0E8; --vive: #D4E842; --encre: #1A1A1A;
-  --accent: #E8462A; --kraft: #C8B89A;
+  --accent: #E8462A; --kraft: #C8B89A; --label: #8C7A56;
   --display: 'MomoTrust','Arial Narrow',Arial,sans-serif;
   --mono: 'Space Mono','Courier New',Courier,monospace;
   --bar: 64px;

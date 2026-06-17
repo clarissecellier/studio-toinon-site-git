@@ -31,7 +31,7 @@ nav#site-nav {
 .contact-info-val:hover { color: var(--vive); }
 
 .contact-right { background: var(--base); padding: 10rem 3.5rem 4rem 4rem; display: flex; flex-direction: column; justify-content: center; }
-.form-dossier-num { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--kraft); margin-bottom: 3rem; display: flex; align-items: center; gap: 0.75rem; }
+.form-dossier-num { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--label); margin-bottom: 3rem; display: flex; align-items: center; gap: 0.75rem; }
 .form-dossier-num::after { content: ''; flex: 1; height: 1px; background: rgba(26,26,26,0.1); }
 .form-group { margin-bottom: 0; border-top: 1px solid rgba(26,26,26,0.1); position: relative; }
 .form-group:last-of-type { border-bottom: 1px solid rgba(26,26,26,0.1); margin-bottom: 2.5rem; }

@@ -20,7 +20,7 @@
 #manifeste-body { background: var(--base); }
 .manifeste-intro { padding: 8rem 3.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
 .manifeste-intro-left { position: sticky; top: 8rem; }
-.manifeste-num { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--kraft); margin-bottom: 1.5rem; }
+.manifeste-num { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--label); margin-bottom: 1.5rem; }
 .manifeste-pull { font-family: var(--display); font-size: clamp(2rem, 3.5vw, 3rem); text-transform: uppercase; line-height: 0.95; color: var(--encre); }
 .manifeste-pull .dot-accent { color: var(--accent); }
 .manifeste-intro-right p { font-family: var(--mono); font-size: 0.78rem; line-height: 2.1; color: rgba(26,26,26,0.65); margin-bottom: 1.5rem; }
@@ -29,7 +29,7 @@
 .belief { display: grid; grid-template-columns: 80px 1fr; gap: 3rem; padding: 4rem 0; border-top: 1px solid rgba(26,26,26,0.08); }
 .belief:first-child { border-top: none; padding-top: 6rem; }
 .belief:last-child { border-bottom: 1px solid rgba(26,26,26,0.08); }
-.belief-index { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--kraft); padding-top: 0.4rem; }
+.belief-index { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--label); padding-top: 0.4rem; }
 .belief-title { font-family: var(--display); font-size: clamp(2rem, 3.5vw, 3.2rem); text-transform: uppercase; color: var(--encre); line-height: 0.95; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
 .belief-title .vive { color: var(--vive); }
 .belief-title .accent { color: var(--accent); }

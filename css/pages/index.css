@@ -102,7 +102,7 @@
    ABOUT
 ══════════════════════════════ */
 #about { background: var(--base); padding: 10rem 3.5rem; }
-.about-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--kraft); margin-bottom: 4rem; }
+.about-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--label); margin-bottom: 4rem; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
 .about-title { font-family: var(--display); font-size: clamp(3rem, 5vw, 5.5rem); text-transform: uppercase; line-height: 0.92; color: var(--encre); position: sticky; top: 8rem; }
 .about-title .outline { -webkit-text-stroke: 1.5px var(--encre); color: transparent; }
@@ -162,7 +162,7 @@
 /* ══════════════════════════════
    SECTION EYEBROW
 ══════════════════════════════ */
-.section-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--kraft); margin-bottom: 4rem; display: flex; align-items: center; gap: 1rem; }
+.section-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--label); margin-bottom: 4rem; display: flex; align-items: center; gap: 1rem; }
 .section-eyebrow::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
 
 /* ══════════════════════════════
