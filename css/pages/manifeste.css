@@ -26,14 +26,14 @@
 .manifeste-intro-right p { font-family: var(--mono); font-size: 0.78rem; line-height: 2.1; color: rgba(26,26,26,0.65); margin-bottom: 1.5rem; }
 .manifeste-intro-right p strong { color: var(--encre); font-weight: normal; }
 .manifeste-beliefs { padding: 0 3.5rem; }
-.belief { display: grid; grid-template-columns: 80px 1fr; gap: 3rem; padding: 4rem 0; border-top: 1px solid rgba(26,26,26,0.08); }
+.belief { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.25rem; padding: 4rem 0; border-top: 1px solid rgba(26,26,26,0.08); }
 .belief:first-child { border-top: none; padding-top: 6rem; }
 .belief:last-child { border-bottom: 1px solid rgba(26,26,26,0.08); }
-.belief-index { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--label); padding-top: 0.4rem; }
+.belief-index { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--label); }
 .belief-title { font-family: var(--display); font-size: clamp(2rem, 3.5vw, 3.2rem); text-transform: uppercase; color: var(--encre); line-height: 0.95; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
 .belief-title .vive { color: var(--vive); }
 .belief-title .accent { color: var(--accent); }
-.belief-body { font-family: var(--mono); font-size: 0.78rem; line-height: 2.1; color: rgba(26,26,26,0.6); max-width: 680px; }
+.belief-body { font-family: var(--mono); font-size: 0.78rem; line-height: 2.1; color: rgba(26,26,26,0.85); max-width: 680px; margin: 0 auto; }
 
 /* ══════════════════════════════
    VERDICT
