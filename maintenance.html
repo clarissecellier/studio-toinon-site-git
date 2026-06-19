@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Studio Toinon — Bientôt en ligne</title>
+  <meta name="description" content="Studio Toinon, studio de design d'investigation basé à Montpellier. Stratégie de marque, design d'interface, motion & vidéo. Le site ouvre très bientôt.">
+
+  <!-- Police monospace : Space Mono (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+
+  <style>
+    /* ══════════════════════════════
+       VARIABLES & RESET
+    ══════════════════════════════ */
+    @font-face {
+      font-family: 'MomoTrust';
+      src: url('assets/fonts/MomoTrust.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    :root {
+      --base: #F5F0E8; --vive: #D4E842; --encre: #1A1A1A;
+      --accent: #E8462A; --kraft: #C8B89A; --label: #8C7A56;
+      --display: 'MomoTrust','Arial Narrow',Arial,sans-serif;
+      --mono: 'Space Mono','Courier New',Courier,monospace;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--encre); color: var(--base);
+      font-family: var(--mono); overflow: hidden;
+      min-height: 100vh; cursor: none;
+      display: flex; flex-direction: column;
+    }
+    a { color: inherit; text-decoration: none; cursor: none; }
+
+    /* ══════════════════════════════
+       GRAIN / TEXTURE
+    ══════════════════════════════ */
+    .grain {
+      position: fixed; inset: 0; z-index: 5; pointer-events: none;
+      opacity: 0.04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    /* halo lumineux discret derrière le titre */
+    .glow {
+      position: fixed; top: 50%; left: 50%; z-index: 0;
+      width: 80vw; max-width: 900px; height: 80vw; max-height: 900px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(212,232,66,0.07) 0%, rgba(26,26,26,0) 65%);
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════
+       CURSEUR PERSONNALISÉ
+    ══════════════════════════════ */
+    #cursor {
+      position: fixed; width: 10px; height: 10px; background: var(--accent);
+      border-radius: 50%; pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%); mix-blend-mode: difference;
+      transition: width 0.2s, height 0.2s, background 0.2s;
+    }
+    #cursor.big { width: 56px; height: 56px; background: var(--vive); }
+    #cursor-trail {
+      position: fixed; width: 38px; height: 38px;
+      border: 1px solid rgba(232,70,42,0.35); border-radius: 50%;
+      pointer-events: none; z-index: 9998; transform: translate(-50%,-50%);
+    }
+
+    /* ══════════════════════════════
+       MISE EN PAGE
+    ══════════════════════════════ */
+    .page {
+      position: relative; z-index: 2;
+      flex: 1; display: flex; flex-direction: column;
+      min-height: 100vh; padding: 2.5rem 3.5rem;
+    }
+
+    /* — HEADER — */
+    .top {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1.5rem;
+    }
+    .brand {
+      font-family: var(--display); font-size: 1.1rem;
+      letter-spacing: 0.02em; line-height: 1;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--kraft); border: 1px solid rgba(200,184,154,0.25);
+      padding: 0.5rem 0.9rem;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--vive);
+      box-shadow: 0 0 0 0 rgba(212,232,66,0.55);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(212,232,66,0.55); }
+      70%  { box-shadow: 0 0 0 9px rgba(212,232,66,0); }
+      100% { box-shadow: 0 0 0 0 rgba(212,232,66,0); }
+    }
+
+    /* — CENTRE — */
+    .center {
+      flex: 1; display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      max-width: 1100px; margin: 0 auto; width: 100%;
+    }
+    .eyebrow {
+      font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--label); margin-bottom: 1.8rem;
+    }
+    .eyebrow .num { color: var(--accent); }
+
+    h1 {
+      font-family: var(--display); font-weight: 400;
+      font-size: clamp(3.2rem, 11vw, 9.5rem); line-height: 0.92;
+      letter-spacing: -0.01em; text-transform: none;
+    }
+    h1 .line2 { display: block; }
+    h1 .accent { color: var(--vive); }
+    h1 .dot-red { color: var(--accent); }
+    /* curseur clignotant façon machine à écrire */
+    .caret {
+      display: inline-block; width: 0.5ch; height: 0.82em;
+      background: var(--accent); margin-left: 0.08em;
+      transform: translateY(0.08em);
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .lead {
+      margin-top: 2.4rem; max-width: 46ch;
+      font-size: clamp(0.85rem, 1.4vw, 1.02rem); line-height: 1.9;
+      color: rgba(245,240,232,0.78);
+    }
+    .lead strong { color: var(--base); font-weight: 700; }
+
+    .contact { margin-top: 2.8rem; }
+    .contact-label {
+      display: block; font-size: 0.6rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--label); margin-bottom: 0.7rem;
+    }
+    .mail {
+      font-family: var(--display); font-size: clamp(1.3rem, 3vw, 2rem);
+      color: var(--base); letter-spacing: 0.01em;
+      border-bottom: 1px solid rgba(212,232,66,0.4);
+      padding-bottom: 0.15rem; transition: color 0.25s, border-color 0.25s;
+    }
+    .mail:hover { color: var(--vive); border-color: var(--vive); }
+    .signature {
+      margin-top: 2.4rem; font-size: 0.66rem; letter-spacing: 0.04em;
+      color: rgba(200,184,154,0.55); font-style: italic;
+    }
+
+    /* — FOOTER — */
+    .bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1.5rem; flex-wrap: wrap;
+      font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(200,184,154,0.45);
+    }
+    /* ══════════════════════════════
+       TICKER
+    ══════════════════════════════ */
+    .marquee {
+      position: relative; z-index: 2;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden; white-space: nowrap; padding: 0.9rem 0;
+    }
+    .marquee-track {
+      display: inline-block; white-space: nowrap;
+      animation: scroll 28s linear infinite;
+    }
+    .marquee-track span {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--kraft);
+    }
+    .marquee-track .sep { color: var(--accent); margin: 0 1.4rem; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 768px) {
+      body { cursor: auto; overflow-x: hidden; overflow-y: auto; }
+      #cursor, #cursor-trail { display: none; }
+      a { cursor: pointer; }
+      .page { padding: 1.8rem 1.5rem; }
+      .top { flex-direction: row; }
+      .badge { font-size: 0.5rem; padding: 0.45rem 0.7rem; letter-spacing: 0.16em; }
+      .center { align-items: flex-start; }
+      h1 { font-size: clamp(2.8rem, 16vw, 5rem); }
+      .lead { margin-top: 1.8rem; line-height: 1.8; }
+      .actions { margin-top: 2.2rem; gap: 1.1rem; }
+      .bottom { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .dot, .caret, .marquee-track { animation: none; }
+      #cursor, #cursor-trail { display: none; } body { cursor: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow"></div>
+  <div class="grain"></div>
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <div class="page">
+
+    <header class="top">
+      <div class="brand">Studio Toinon</div>
+      <span class="badge"><span class="dot"></span>Bient&ocirc;t en ligne</span>
+    </header>
+
+    <main class="center">
+      <div class="eyebrow">Studio Toinon &mdash; <span class="num">Design d'investigation</span></div>
+      <h1>
+        Le site arrive<br>
+        <span class="line2">tr&egrave;s <span class="accent">bient&ocirc;t</span><span class="dot-red">.</span><span class="caret" aria-hidden="true"></span></span>
+      </h1>
+      <p class="lead">
+        Strat&eacute;gie de marque, design d'interface, motion &amp; vid&eacute;o.
+        Studio ind&eacute;pendant bas&eacute; &agrave; Montpellier, <strong>d&eacute;j&agrave; joignable</strong>.
+      </p>
+      <div class="contact">
+        <span class="contact-label">Une affaire &agrave; nous confier ?</span>
+        <a class="mail" href="mailto:clarisse@studio-toinon.fr">clarisse@studio-toinon.fr</a>
+      </div>
+      <p class="signature">On instruit avant de construire, on questionne avant de livrer.</p>
+    </main>
+
+    <footer class="bottom">
+      <span>Studio Toinon &mdash; Branding · Web · Digital &middot; Montpellier</span>
+      <span>clarisse@studio-toinon.fr</span>
+    </footer>
+
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="ticker"></div>
+  </div>
+
+  <script>
+    /* — Ticker : on duplique le contenu pour une boucle continue — */
+    (function () {
+      var items = [
+        'Bientôt en ligne', 'Site en préparation',
+        'Stratégie de marque', 'Design d’interface', 'Motion & Vidéo',
+        'Lancement imminent'
+      ];
+      var unit = items.map(function (t) {
+        return '<span>' + t + '</span><span class="sep">✦</span>';
+      }).join('');
+      document.getElementById('ticker').innerHTML = unit + unit;
+    })();
+
+    /* — Curseur personnalisé (desktop uniquement) — */
+    (function () {
+      if (window.matchMedia('(max-width: 768px)').matches) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var cur = document.getElementById('cursor');
+      var trail = document.getElementById('cursor-trail');
+      var tx = 0, ty = 0, cx = 0, cy = 0;
+      document.addEventListener('mousemove', function (e) {
+        cx = e.clientX; cy = e.clientY;
+        cur.style.left = cx + 'px'; cur.style.top = cy + 'px';
+      });
+      (function loop() {
+        tx += (cx - tx) * 0.15; ty += (cy - ty) * 0.15;
+        trail.style.left = tx + 'px'; trail.style.top = ty + 'px';
+        requestAnimationFrame(loop);
+      })();
+      document.querySelectorAll('a').forEach(function (el) {
+        el.addEventListener('mouseenter', function () { cur.classList.add('big'); });
+        el.addEventListener('mouseleave', function () { cur.classList.remove('big'); });
+      });
+    })();
+  </script>
+
+</body>
+</html>
