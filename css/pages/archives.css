@@ -41,7 +41,7 @@
 #filtres {
   background: rgba(237,232,220,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   padding: 1.5rem 3.5rem; border-bottom: 1px solid rgba(26,26,26,0.1);
-  display: flex; align-items: center; gap: 0; position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; gap: 0; position: sticky; top: 5.25rem; z-index: 100;
 }
 .filtre-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(26,26,26,0.5); margin-right: 1.5rem; flex-shrink: 0; }
 .filtres-list { display: flex; gap: 0; list-style: none; border: 1px solid rgba(26,26,26,0.18); }

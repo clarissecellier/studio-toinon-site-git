@@ -26,7 +26,7 @@ window.addEventListener('includes-ready', function () {
       btn.classList.add('active');
       var filter = btn.dataset.filter;
       cards.forEach(function (card) {
-        if (filter === 'tous') { card.style.display = ''; return; }
+        if (filter === 'all') { card.style.display = ''; return; }
         var jur = card.querySelector('.archive-card-jur');
         card.style.display = (jur && jur.textContent.trim() === filter) ? '' : 'none';
       });
