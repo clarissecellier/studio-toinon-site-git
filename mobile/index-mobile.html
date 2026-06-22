@@ -724,7 +724,7 @@ const jurData=[
   if(!el) return;
   var WORDS=['justice','un sens'], TYPE=110, DEL=65, HOLD=1500, HOLD_EMPTY=350;
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=WORDS[0];return;}
-  var w=0,i=0,del=false;
+  var w=0,i=WORDS[0].length,del=true;
   function tick(){
     var word=WORDS[w];
     if(!del){ i++; el.textContent=word.slice(0,i);
@@ -732,7 +732,7 @@ const jurData=[
     i--; el.textContent=word.slice(0,i);
     if(i<=0){del=false;w=(w+1)%WORDS.length;return setTimeout(tick,HOLD_EMPTY);} return setTimeout(tick,DEL);
   }
-  el.textContent=''; setTimeout(tick,500);
+  el.textContent=WORDS[0]; setTimeout(tick,HOLD);
 })();
 </script>
 </body>
