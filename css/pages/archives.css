@@ -20,7 +20,14 @@
 }
 
 /* La nav (transparente + contraste adaptatif) est gérée globalement
-   dans main.css / main.js via la classe .on-light. */
+   dans main.css / main.js via la classe .on-light.
+   Ici seulement : fond crème floutée, raccord avec la barre de filtres.
+   Limité à la page Archives via body[data-page="archives"]. */
+body[data-page="archives"] nav#site-nav.on-light {
+  background: rgba(237,232,220,0.88);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,26,26,0.1);
+}
 
 /* ══════════════════════════════
    HERO ARCHIVES

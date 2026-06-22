@@ -66,11 +66,6 @@ nav#site-nav {
    Par défaut la nav est en mode clair (texte/logo blancs) pour les fonds sombres.
    .on-light est ajoutée par main.js quand la nav passe au-dessus d'un fond clair :
    le texte, les bordures et le burger passent alors en foncé. */
-nav#site-nav.on-light {
-  background: rgba(237,232,220,0.88);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(26,26,26,0.1);
-}
 nav#site-nav.on-light .nav-center { border-color: rgba(26,26,26,0.18); }
 nav#site-nav.on-light .nav-center a { color: var(--encre); border-right-color: rgba(26,26,26,0.12); }
 nav#site-nav.on-light .nav-center a:hover { background: var(--encre); color: var(--base); }

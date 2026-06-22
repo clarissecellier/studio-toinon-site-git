@@ -15,7 +15,7 @@
     return;
   }
 
-  var w = 0, i = 0, deleting = false;
+  var w = 0, i = WORDS[0].length, deleting = true;
 
   function tick() {
     var word = WORDS[w];
@@ -31,6 +31,8 @@
     return setTimeout(tick, DEL);
   }
 
-  el.textContent = '';
-  setTimeout(tick, 500);
+  // "justice" est déjà affiché (présent dans le HTML) : on tient le mot, puis on
+  // lance le cycle par l'effacement vers le mot suivant.
+  el.textContent = WORDS[0];
+  setTimeout(tick, HOLD);
 })();
