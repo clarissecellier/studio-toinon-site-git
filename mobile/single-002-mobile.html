@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>N&icirc;mes M&eacute;tropole Entreprises &mdash; Studio Toinon</title>
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:64px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+/* ── Scroll plein écran, section par section ── */
+#app{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+#app::-webkit-scrollbar{display:none}
+
+.screen{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  scroll-snap-align:start;scroll-snap-stop:always;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:3rem 1.5rem;
+}
+.hatch{
+  position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(135deg,transparent,transparent 9px,rgba(245,240,232,.02) 9px,rgba(245,240,232,.02) 10px);
+}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+
+/* ══════ HERO ══════ */
+.s-hero{background:var(--encre);color:var(--base);}
+.s-back{
+  position:absolute;top:1.4rem;left:1.4rem;z-index:3;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(245,240,232,.55);text-decoration:none;
+}
+.s-back:active{color:var(--vive);}
+.s-hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
+.s-hero-top{display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem;flex-wrap:wrap;justify-content:center;}
+.s-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.s-statut{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.5);
+}
+.s-statut::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--vive);}
+.s-title{
+  font-family:var(--display);font-size:clamp(1.9rem,8.2vw,2.6rem);
+  text-transform:uppercase;line-height:.92;letter-spacing:-.02em;margin-bottom:2rem;
+}
+.s-meta{display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:320px;}
+.s-meta-item{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;border-top:1px solid rgba(245,240,232,.12);padding-top:.65rem;}
+.s-meta-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4);}
+.s-meta-val{font-family:var(--mono);font-size:.74rem;color:var(--base);text-align:right;}
+.s-scroll-hint{position:absolute;bottom:1.5rem;left:0;right:0;z-index:2;font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.35);}
+
+/* ══════ Visuels plein écran ══════ */
+.s-visual{background:var(--encre);padding:0;}
+.s-visual-label{
+  position:relative;z-index:2;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,232,.4);
+}
+.s-visual-cap{position:absolute;bottom:1.4rem;left:1.4rem;z-index:2;font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.3);}
+
+/* ══════ Texte (contexte / méthode / résultat) ══════ */
+.s-text{background:var(--base);}
+.s-text.alt{background:#EDE8DC;}
+.s-col-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.s-col-title{font-family:var(--display);font-size:clamp(2.4rem,11vw,3.2rem);text-transform:uppercase;line-height:.95;color:var(--encre);margin-bottom:1.6rem;}
+.s-col-body{font-family:var(--mono);font-size:.84rem;line-height:2;color:rgba(26,26,26,.62);max-width:32ch;}
+
+/* ══════ Pièces du dossier ══════ */
+.s-pieces{background:var(--encre);padding:0;}
+.pieces-wrap{width:100%;height:100%;display:flex;flex-direction:column;gap:.5rem;padding:4.75rem 1rem 1.5rem;}
+.pieces-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);text-align:left;margin-bottom:.3rem;}
+.ph{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#161616;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.32);}
+.ph .hatch{opacity:1;}
+.piece-main{flex:1.8;}
+.pieces-duo{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+.pieces-duo .ph{height:100%;}
+
+/* ══════ Verdict ══════ */
+.s-verdict{background:var(--encre);color:var(--base);}
+.s-verdict-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--kraft);margin-bottom:1.1rem;}
+.s-verdict-title{font-family:var(--display);font-size:clamp(2.6rem,13vw,3.4rem);text-transform:uppercase;line-height:.9;margin-bottom:1.6rem;overflow-wrap:break-word;}
+.s-verdict-title .vive{color:var(--vive);}
+.s-verdict-stamp{display:inline-block;font-family:var(--mono);font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--vive);border:1px solid rgba(212,232,66,.4);padding:.4rem .85rem;margin-bottom:1.9rem;}
+.s-verdict-body{font-family:var(--mono);font-size:.82rem;line-height:1.95;color:rgba(245,240,232,.6);max-width:34ch;}
+
+/* ══════ Livrables ══════ */
+.s-livrables{background:var(--base);}
+.s-livrables-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem;}
+.s-livrables-list{width:100%;max-width:330px;}
+.s-livrable{font-family:var(--display);font-size:clamp(1.3rem,6vw,1.7rem);text-transform:uppercase;color:var(--encre);border-top:1px solid rgba(26,26,26,.14);padding:.85rem 0;text-align:left;}
+.s-livrable:last-child{border-bottom:1px solid rgba(26,26,26,.14);}
+
+/* ══════ Clôture (navigation + footer) ══════ */
+.s-end{background:var(--encre);color:var(--base);justify-content:space-between;padding:4rem 1.4rem 2rem;}
+.s-end-head{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--kraft);}
+.s-end-nav{width:100%;max-width:340px;display:flex;flex-direction:column;gap:.85rem;}
+.s-nav-item{display:flex;flex-direction:column;gap:.35rem;text-decoration:none;border:1px solid rgba(245,240,232,.16);padding:1.1rem 1.2rem;-webkit-tap-highlight-color:transparent;text-align:left;transition:border-color .2s;}
+.s-nav-item:active{border-color:var(--vive);}
+.s-nav-item.next{text-align:right;align-items:flex-end;}
+.s-nav-dir{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+.s-nav-name{font-family:var(--display);font-size:1.3rem;text-transform:uppercase;color:var(--base);line-height:1;}
+.s-nav-type{font-family:var(--mono);font-size:.55rem;letter-spacing:.05em;text-transform:uppercase;color:rgba(245,240,232,.4);}
+.s-end-foot{width:100%;display:flex;align-items:center;justify-content:space-between;padding-top:1.2rem;border-top:1px solid rgba(245,240,232,.1);}
+.s-foot-rs{display:flex;gap:1.3rem;}
+.s-foot-rs a{font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.6);text-decoration:none;font-weight:700;}
+.s-foot-rs a:active{color:var(--vive);}
+.s-foot-mentions{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.35);text-decoration:none;}
+
+/* ══════ TAB BAR ══════ */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;height:var(--bar);
+  background:var(--encre);border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;
+  padding:0 .5rem;padding-bottom:env(safe-area-inset-bottom);z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;background:none;border:none;color:rgba(245,240,232,.3);transition:color .2s;
+}
+.tab-item.active,.tab-item:not(.disabled):active{color:var(--vive);}
+.tab-icon{font-size:1.15rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ══ 1. HERO ══ -->
+  <section class="screen s-hero">
+    <div class="hatch"></div>
+    <a class="s-back" href="archives-mobile.html">&larr; Archives</a>
+    <div class="s-hero-inner">
+      <div class="s-hero-top reveal">
+        <span class="s-num">Dossier N&deg; 002</span>
+        <span class="s-statut">Affaire résolue</span>
+      </div>
+      <h1 class="s-title reveal d1">N&icirc;mes<br>M&eacute;tropole<br>Entreprises</h1>
+      <div class="s-meta reveal d2">
+        <div class="s-meta-item"><span class="s-meta-label">Client</span><span class="s-meta-val">N&icirc;mes M&eacute;tropole</span></div>
+        <div class="s-meta-item"><span class="s-meta-label">Juridiction</span><span class="s-meta-val">J.02 &mdash; Design d'interface</span></div>
+        <div class="s-meta-item"><span class="s-meta-label">Année</span><span class="s-meta-val">2024</span></div>
+      </div>
+    </div>
+    <div class="s-scroll-hint">Faites défiler &darr;</div>
+  </section>
+
+  <!-- ══ 2. VISUEL PRINCIPAL ══ -->
+  <section class="screen s-visual">
+    <img src="../assets/images/dossiers/002-nimes-metropole-entreprises/cover.jpg" alt="N&icirc;mes M&eacute;tropole Entreprises &mdash; visuel principal" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+    <span class="s-visual-cap">N&icirc;mes M&eacute;tropole Entreprises &mdash; 2024</span>
+  </section>
+
+  <!-- ══ 3. LE CONTEXTE ══ -->
+  <section class="screen s-text">
+    <div class="s-col-label reveal">L'affaire</div>
+    <h2 class="s-col-title reveal d1">Le contexte</h2>
+    <p class="s-col-body reveal d2">N&icirc;mes M&eacute;tropole avait une offre économique riche, mais éparpillée. Des aides, des services, des interlocuteurs &mdash; partout, mais nulle part vraiment. Les entreprises cherchaient des réponses ; il leur manquait l'endroit pour les trouver.</p>
+  </section>
+
+  <!-- ══ 4. LA MÉTHODE ══ -->
+  <section class="screen s-text alt">
+    <div class="s-col-label reveal">L'enquête</div>
+    <h2 class="s-col-title reveal d1">La méthode</h2>
+    <p class="s-col-body reveal d2">Mission menée au sein de l'agence SEDICOM, avec les équipes. Une interface pensée comme un annuaire doublé d'une boîte à outils : intuitive, accessible à tous les acteurs économiques. Charte, modules, style guide, animations &mdash; tout mène à la réponse.</p>
+  </section>
+
+  <!-- ══ 5. LE RÉSULTAT ══ -->
+  <section class="screen s-text">
+    <div class="s-col-label reveal">Le verdict</div>
+    <h2 class="s-col-title reveal d1">Le résultat</h2>
+    <p class="s-col-body reveal d2">Une interface simple, claire et directe, pensée pour tous les acteurs du territoire.</p>
+  </section>
+
+  <!-- ══ 6. PIÈCES DU DOSSIER ══ -->
+  <section class="screen s-pieces">
+    <div class="pieces-wrap">
+      <div class="pieces-label reveal">Pièces du dossier</div>
+      <div class="ph piece-main reveal d1"><img src="../assets/images/dossiers/002-nimes-metropole-entreprises/piece-01.jpg" alt="N&icirc;mes M&eacute;tropole Entreprises &mdash; pièce 01" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+      <div class="pieces-duo">
+        <div class="ph reveal d1"><img src="../assets/images/dossiers/002-nimes-metropole-entreprises/piece-02.jpg" alt="N&icirc;mes M&eacute;tropole Entreprises &mdash; pièce 02" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <div class="ph reveal d2"><img src="../assets/images/dossiers/002-nimes-metropole-entreprises/piece-03.jpg" alt="N&icirc;mes M&eacute;tropole Entreprises &mdash; pièce 03" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 7. VERDICT ══ -->
+  <section class="screen s-verdict">
+    <div class="hatch"></div>
+    <div class="s-verdict-label reveal">Le verdict</div>
+    <h2 class="s-verdict-title reveal d1">Justice<br>est<br><span class="vive">rendue.</span></h2>
+    <div class="s-verdict-stamp reveal d1">Affaire résolue</div>
+    <p class="s-verdict-body reveal d2">Un portail qui ne perd personne. Navigation limpide, information structurée, mise en relation facilitée. Chaque écran s'adresse à tous : trouver vite, comprendre clair, agir sans friction.</p>
+  </section>
+
+  <!-- ══ 8. LIVRABLES ══ -->
+  <section class="screen s-livrables">
+    <div class="s-livrables-label reveal">Livrables</div>
+    <div class="s-livrables-list">
+      <div class="s-livrable reveal">Maquette webdesign</div>
+      <div class="s-livrable reveal d1">Charte &amp; identité</div>
+      <div class="s-livrable reveal d2">Style guide &amp; modules</div>
+    </div>
+  </section>
+
+  <!-- ══ 9. CLÔTURE ══ -->
+  <section class="screen s-end">
+    <div class="s-end-head reveal">Dossiers liés</div>
+    <div class="s-end-nav">
+      <a href="single-mobile.html" class="s-nav-item prev reveal">
+        <span class="s-nav-dir">&larr; Précédent</span>
+        <span class="s-nav-name">Mont Saint Clair</span>
+        <span class="s-nav-type">Création de site e-commerce &mdash; 2025</span>
+      </a>
+      <a href="#" class="s-nav-item next reveal d1">
+        <span class="s-nav-dir">Suivant &rarr;</span>
+        <span class="s-nav-name">Atelier Vidal</span>
+        <span class="s-nav-type">Identité visuelle &mdash; 2024</span>
+      </a>
+    </div>
+    <div class="s-end-foot">
+      <div class="s-foot-rs">
+        <a href="#" aria-label="Instagram">Ig</a><a href="#" aria-label="LinkedIn">Li</a><a href="#" aria-label="Behance">Be</a>
+      </div>
+      <a href="../mentions-legales.html" class="s-foot-mentions">Mentions légales</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ── TAB BAR ── -->
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives-mobile.html" class="tab-item active"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <a href="contact-mobile.html" class="tab-item"><span class="tab-icon">✉</span><span>Contact</span></a>
+</nav>
+
+<script>
+const app=document.getElementById('app');
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{root:app,threshold:.2});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
