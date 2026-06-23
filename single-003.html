@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Redirection mobile : les petits écrans (≤ 768px) basculent sur la version
+       dédiée. Exécuté avant tout affichage pour éviter le clignotement.
+       Échappatoire : ajouter ?desktop à l'URL pour forcer la version bureau. */
+    (function () {
+      try {
+        var forceDesktop = location.search.indexOf('desktop') !== -1
+          || localStorage.getItem('viewMode') === 'desktop';
+        if (!forceDesktop && window.matchMedia('(max-width: 768px)').matches) {
+          location.replace('mobile/single-003-mobile.html');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <title>Doli &mdash; Studio Toinon</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/single.css">
+  <style>
+    /* ── Spécifique dossier Doli (J.03 Motion) : grille de carrés vidéo + lightbox ── */
+    .video-grid{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;
+      max-width:900px;margin:0 auto;
+    }
+    .video-tile{
+      position:relative;aspect-ratio:1/1;overflow:hidden;
+      border:none;padding:0;margin:0;background:#161616;display:block;width:100%;min-width:0;
+      cursor:pointer;
+    }
+    .video-tile video{width:100%;height:100%;object-fit:cover;display:block;}
+    .video-tile-badge{
+      position:absolute;top:.9rem;left:.9rem;z-index:2;
+      width:38px;height:38px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(26,26,26,.45);backdrop-filter:blur(2px);
+      color:#F5F0E8;font-size:.7rem;padding-left:2px;
+      transition:background .3s,transform .3s;
+    }
+    .video-tile:hover .video-tile-badge{background:var(--accent);transform:scale(1.08);}
+    .video-tile-cue{
+      position:absolute;left:0;right:0;bottom:0;z-index:2;
+      padding:1rem 1.1rem;display:flex;align-items:center;gap:.5rem;
+      font-family:var(--mono);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:#F5F0E8;
+      background:linear-gradient(to top,rgba(26,26,26,.78),transparent);
+      opacity:0;transition:opacity .3s;
+    }
+    .video-tile:hover .video-tile-cue{opacity:1;}
+    /* Lightbox / lecteur dédié */
+    .video-lightbox{
+      position:fixed;inset:0;z-index:9999;
+      background:rgba(12,12,12,.93);
+      display:flex;align-items:center;justify-content:center;padding:5vw;
+      opacity:0;visibility:hidden;transition:opacity .3s;cursor:auto;
+    }
+    .video-lightbox.open{opacity:1;visibility:visible;}
+    .video-lightbox video{
+      max-width:min(90vw,640px);max-height:86vh;width:auto;height:auto;
+      background:#000;display:block;outline:none;
+    }
+    .vl-close{
+      position:absolute;top:1.5rem;right:1.5rem;cursor:pointer;
+      width:46px;height:46px;border-radius:50%;
+      background:none;border:1px solid rgba(245,240,232,.4);color:#F5F0E8;
+      font-size:1.1rem;line-height:1;display:flex;align-items:center;justify-content:center;
+      transition:border-color .2s,background .2s;
+    }
+    .vl-close:hover{border-color:var(--vive);background:rgba(245,240,232,.06);}
+    @media (max-width:768px){
+      .video-grid{gap:.75rem;}
+    }
+  </style>
+</head>
+<body class="page-light" data-page="single" data-default-dark="false">
+
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <div id="site-header-placeholder"></div>
+
+  <section id="hero">
+    <div class="hero-top reveal">
+      <div class="hero-breadcrumb">
+        <a href="archives.html">Archives</a>
+        <span class="sep">&mdash;</span>
+        <span>Dossier N&deg; 003</span>
+      </div>
+      <div class="hero-statut">Affaire r&eacute;solue</div>
+    </div>
+    <div class="hero-main">
+      <div>
+        <div class="hero-num reveal">Dossier N&deg; 003</div>
+        <h1 class="hero-title reveal reveal-d1">Doli</h1>
+      </div>
+      <div class="hero-meta reveal reveal-d2">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Client</span>
+          <span class="hero-meta-val">SICTOM</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Juridiction</span>
+          <span class="hero-meta-val">J.03 &mdash; Motion &amp; Vid&eacute;o</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Ann&eacute;e</span>
+          <span class="hero-meta-val">2023</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="cover" class="reveal">
+    <img src="assets/images/dossiers/003-doli/cover.jpg" alt="Doli &mdash; visuel principal">
+  </div>
+
+  <div id="corps">
+
+    <div class="projet-intro">
+      <div class="projet-intro-col reveal">
+        <div class="col-label">L'affaire</div>
+        <div class="col-title">Le contexte</div>
+        <p class="col-body">Comment expliquer le tri &agrave; des enfants de 3 &agrave; 6 ans ? Pas avec des sch&eacute;mas ni de grands discours. Le d&eacute;fi : leur faire comprendre, en quelques secondes, qu'un d&eacute;chet ne dispara&icirc;t pas, il se transforme. Chaque objet jet&eacute; devient un nouvel objet. Pas le processus industriel, non : la magie de la m&eacute;tamorphose.</p>
+      </div>
+      <div class="projet-intro-col reveal reveal-d1">
+        <div class="col-label">L'enqu&ecirc;te</div>
+        <div class="col-title">La m&eacute;thode</div>
+        <p class="col-body">On a donn&eacute; un visage &agrave; l'id&eacute;e : Doli, un petit monstre attachant, n&eacute; pour capter l'attention des tout-petits. Autour de lui, douze illustrations de d&eacute;chets, douze m&eacute;tamorphoses. Le format : des mini-vid&eacute;os tr&egrave;s courtes, 8 &agrave; 15 secondes, le temps d'attention d'un enfant de 4 ans, pas une seconde de plus. Chaque film tient sur un effet sp&eacute;cial : le d&eacute;chet entre, l'objet ressort.</p>
+      </div>
+      <div class="projet-intro-col reveal reveal-d2">
+        <div class="col-label">Le verdict</div>
+        <div class="col-title">Le r&eacute;sultat</div>
+        <p class="col-body">Douze mini-films ludiques o&ugrave; chaque d&eacute;chet devient un nouvel objet sous l'&oelig;il de Doli. Le tri, version magique.</p>
+      </div>
+    </div>
+
+    <div class="images-section reveal">
+      <div class="images-label">Pi&egrave;ces du dossier &mdash; en mouvement</div>
+      <div class="video-grid">
+        <button class="video-tile" data-src="assets/images/dossiers/003-doli/videos/video-01.mp4" aria-label="Lire la vid&eacute;o 1 avec le son">
+          <video src="assets/images/dossiers/003-doli/videos/video-01.mp4" muted loop autoplay playsinline preload="metadata"></video>
+          <span class="video-tile-badge">&#9654;</span>
+          <span class="video-tile-cue">Lire avec le son</span>
+        </button>
+        <button class="video-tile" data-src="assets/images/dossiers/003-doli/videos/video-02.mp4" aria-label="Lire la vid&eacute;o 2 avec le son">
+          <video src="assets/images/dossiers/003-doli/videos/video-02.mp4" muted loop autoplay playsinline preload="metadata"></video>
+          <span class="video-tile-badge">&#9654;</span>
+          <span class="video-tile-cue">Lire avec le son</span>
+        </button>
+        <button class="video-tile" data-src="assets/images/dossiers/003-doli/videos/video-03.mp4" aria-label="Lire la vid&eacute;o 3 avec le son">
+          <video src="assets/images/dossiers/003-doli/videos/video-03.mp4" muted loop autoplay playsinline preload="metadata"></video>
+          <span class="video-tile-badge">&#9654;</span>
+          <span class="video-tile-cue">Lire avec le son</span>
+        </button>
+        <button class="video-tile" data-src="assets/images/dossiers/003-doli/videos/video-04.mp4" aria-label="Lire la vid&eacute;o 4 avec le son">
+          <video src="assets/images/dossiers/003-doli/videos/video-04.mp4" muted loop autoplay playsinline preload="metadata"></video>
+          <span class="video-tile-badge">&#9654;</span>
+          <span class="video-tile-cue">Lire avec le son</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="verdict-section">
+      <div class="verdict-left reveal">
+        <div>
+          <div class="col-label">Le verdict</div>
+          <div class="verdict-title">Justice<br>est <span class="vive">rendue.</span></div>
+        </div>
+        <div class="verdict-stamp">Affaire r&eacute;solue</div>
+      </div>
+      <div class="verdict-right reveal reveal-d1">
+        <p class="verdict-body">Douze mini-films d'animation, un personnage qui marque les esprits, et une id&eacute;e simple grav&eacute;e chez les tout-petits : rien ne se perd, tout se transforme. Le tri n'est plus une corv&eacute;e qu'on explique, c'est un tour de magie qu'on a envie de revoir.</p>
+        <div class="verdict-livrables">
+          <div class="verdict-livrables-label">Livrables</div>
+          <div class="livrable-item">Cr&eacute;ation &amp; animation du personnage Doli</div>
+          <div class="livrable-item">12 illustrations de d&eacute;chets</div>
+          <div class="livrable-item">12 mini-vid&eacute;os anim&eacute;es (8-15 s)</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="projet-nav">
+    <a href="single-002.html" class="projet-nav-item reveal">
+      <span class="projet-nav-direction">&larr; Dossier pr&eacute;c&eacute;dent</span>
+      <span class="projet-nav-name">N&icirc;mes M&eacute;tropole</span>
+      <span class="projet-nav-type">Design d'interface &mdash; 2024</span>
+    </a>
+    <a href="#" class="projet-nav-item reveal reveal-d1">
+      <span class="projet-nav-direction">Dossier suivant &rarr;</span>
+      <span class="projet-nav-name">Bureau Nord</span>
+      <span class="projet-nav-type">Motion &amp; Vid&eacute;o &mdash; 2023</span>
+    </a>
+  </div>
+
+  <!-- Lecteur dédié (lightbox) -->
+  <div id="video-lightbox" class="video-lightbox" aria-hidden="true">
+    <button class="vl-close" aria-label="Fermer le lecteur">&#10005;</button>
+    <video id="vl-player" controls playsinline preload="auto"></video>
+  </div>
+
+  <div id="site-footer-placeholder"></div>
+  <div id="tab-bar-placeholder"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages/single.js"></script>
+  <script>
+    /* Lecteur vidéo dédié : clic sur un carré → lecture plein écran avec son + contrôles */
+    (function () {
+      var lb = document.getElementById('video-lightbox');
+      var player = document.getElementById('vl-player');
+      if (!lb || !player) return;
+      function open(src) {
+        player.src = src;
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        try { player.currentTime = 0; player.play(); } catch (e) {}
+      }
+      function close() {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        player.pause();
+        player.removeAttribute('src');
+        player.load();
+      }
+      document.querySelectorAll('.video-tile').forEach(function (t) {
+        t.addEventListener('click', function () { open(t.getAttribute('data-src')); });
+      });
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+      var c = lb.querySelector('.vl-close');
+      if (c) c.addEventListener('click', close);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>
+
+</body>
+</html>
