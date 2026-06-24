@@ -155,9 +155,9 @@
 .archive-float { position: fixed; top: 0; left: 0; width: 260px; pointer-events: none; z-index: 999; opacity: 0; transform: translate(-50%, -116%) scale(0.92); transition: opacity 0.22s ease, transform 0.22s ease; will-change: transform, opacity; }
 .archive-float.show { opacity: 1; transform: translate(-50%, -110%) scale(1); }
 .archive-float-img { position: relative; width: 100%; height: 175px; border-radius: 14px; overflow: hidden; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; box-shadow: 0 18px 40px rgba(26,26,26,0.28); }
-.archive-float-num { font-family: var(--display); font-size: 3.5rem; color: rgba(255,255,255,0.18); text-transform: uppercase; letter-spacing: 0.02em; }
-.archive-float.has-img .archive-float-num { display: none; }
-.archive-float-cap { display: flex; flex-direction: column; gap: 0.15rem; margin-top: 0.7rem; padding: 0 0.15rem; }
+/* survol carrousel : on n'affiche que la vignette, sans texte (ni numéro, ni légende) */
+.archive-float-num { display: none; }
+.archive-float-cap { display: none; }
 .archive-float-client { font-family: var(--display); font-size: 1.05rem; text-transform: uppercase; color: var(--encre); line-height: 1; }
 .archive-float-type { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,26,26,0.5); }
 

@@ -96,6 +96,7 @@ window.addEventListener('includes-ready', function () {
       var type = item.querySelector('.dossier-type');
       var accent = item.getAttribute('data-accent') || '#1A1A1A';
       var img = item.getAttribute('data-img');
+      if (!img) { floatEl.classList.remove('show'); return; }   // pas de vignette → pas de survol
       var imgEl = floatEl.querySelector('.archive-float-img');
       floatEl.querySelector('.archive-float-num').textContent = num ? num.textContent : '';
       floatEl.querySelector('.archive-float-client').textContent = client ? client.textContent : '';
