@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Redirection mobile : les petits écrans (≤ 768px) basculent sur la version
+       dédiée. Exécuté avant tout affichage pour éviter le clignotement.
+       Échappatoire : ajouter ?desktop à l'URL pour forcer la version bureau. */
+    (function () {
+      try {
+        var forceDesktop = location.search.indexOf('desktop') !== -1
+          || localStorage.getItem('viewMode') === 'desktop';
+        if (!forceDesktop && window.matchMedia('(max-width: 768px)').matches) {
+          location.replace('mobile/single-004-mobile.html');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <title>TATA FINA — Studio Toinon</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/single.css">
+</head>
+<body class="page-light" data-page="single" data-default-dark="false">
+
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <div id="site-header-placeholder"></div>
+
+  <section id="hero">
+    <div class="hero-top reveal">
+      <div class="hero-breadcrumb">
+        <a href="archives.html">Archives</a>
+        <span class="sep">—</span>
+        <span>Dossier N° 004</span>
+      </div>
+      <div class="hero-statut">Affaire résolue</div>
+    </div>
+    <div class="hero-main">
+      <div>
+        <div class="hero-num reveal">Dossier N° 004</div>
+        <h1 class="hero-title reveal reveal-d1">TATA<br>FINA</h1>
+      </div>
+      <div class="hero-meta reveal reveal-d2">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Client</span>
+          <span class="hero-meta-val">TATA FINA</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Juridiction</span>
+          <span class="hero-meta-val">J.01 — Stratégie de marque</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Année</span>
+          <span class="hero-meta-val">2025</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="cover" class="reveal">
+    <img src="assets/images/dossiers/004-tata-fina/cover.jpg" alt="TATA FINA — visuel principal">
+  </div>
+
+  <div id="corps">
+
+    <div class="projet-intro">
+      <div class="projet-intro-col reveal">
+        <div class="col-label">L'affaire</div>
+        <div class="col-title">Le contexte</div>
+        <p class="col-body">TATA FINA fait vivre la culture andalouse et le flamenco. Pour son événement de l'été, l'association voulait sa propre collection de merch à vendre : prolonger la fête au-delà d'une soirée, et financer la suite. Encore fallait-il une signature assez forte pour qu'on ait envie de la porter.</p>
+      </div>
+      <div class="projet-intro-col reveal reveal-d1">
+        <div class="col-label">L'enquête</div>
+        <div class="col-title">La méthode</div>
+        <p class="col-body">On a construit une signature à elle : une typo qui claque et une série d'illustrations qui piochent dans le vocabulaire du flamenco, le duende, la soleá, les palmas. Le ton ? Fier et un brin moqueur, comme un soir de feria. De « Tortillas Sangria Flamenca » à « J'ai les palmas dans la peau », chaque pièce porte un slogan qui se retient.</p>
+      </div>
+      <div class="projet-intro-col reveal reveal-d2">
+        <div class="col-label">Le verdict</div>
+        <div class="col-title">Le résultat</div>
+        <p class="col-body">Une collection cohérente et désirable, fidèle à l'esprit de TATA FINA.</p>
+      </div>
+    </div>
+
+    <div class="images-section reveal">
+      <div class="images-label">Pièces du dossier</div>
+      <div class="images-grid">
+        <div class="img-block tall">
+          <img src="assets/images/dossiers/004-tata-fina/piece-01.jpg" alt="TATA FINA — pièce 01">
+        </div>
+        <div class="images-grid-right">
+          <div class="img-block">
+            <img src="assets/images/dossiers/004-tata-fina/piece-02.jpg" alt="TATA FINA — pièce 02">
+          </div>
+          <div class="img-block">
+            <img src="assets/images/dossiers/004-tata-fina/piece-03.jpg" alt="TATA FINA — pièce 03">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict-section">
+      <div class="verdict-left reveal">
+        <div>
+          <div class="col-label">Le verdict</div>
+          <div class="verdict-title">Justice<br>est <span class="vive">rendue.</span></div>
+        </div>
+        <div class="verdict-stamp">Affaire résolue</div>
+      </div>
+      <div class="verdict-right reveal reveal-d1">
+        <p class="verdict-body">Des illustrations originales déclinées en tee-shirts unisexes et en posters encadrés. Un merch qu'on porte par envie, pas par soutien, et une nouvelle source de revenus pour l'association.</p>
+        <div class="verdict-livrables">
+          <div class="verdict-livrables-label">Livrables</div>
+          <div class="livrable-item">Direction artistique &amp; signature de collection</div>
+          <div class="livrable-item">Slogans &amp; illustrations originales</div>
+          <div class="livrable-item">Tee-shirts unisexes &amp; posters</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="projet-nav">
+    <a href="single-003.html" class="projet-nav-item reveal">
+      <span class="projet-nav-direction">← Dossier précédent</span>
+      <span class="projet-nav-name">SICTOM</span>
+      <span class="projet-nav-type">Motion design — 2023</span>
+    </a>
+    <a href="#" class="projet-nav-item reveal reveal-d1">
+      <span class="projet-nav-direction">Dossier suivant →</span>
+      <span class="projet-nav-name">Collectif 44</span>
+      <span class="projet-nav-type">Direction artistique — 2023</span>
+    </a>
+  </div>
+
+  <div id="site-footer-placeholder"></div>
+  <div id="tab-bar-placeholder"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages/single.js"></script>
+
+</body>
+</html>
