@@ -21,6 +21,13 @@
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/pages/single.css">
+  <style>
+    /* Pièces du dossier 005 : disposition 2fr/1fr, largeur fixée à 1200px
+       centrée, avec des marges entre les visuels (au lieu des filets 1px). */
+    .pieces-005 .images-label { max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .pieces-005 .images-grid { max-width: 1200px; margin: 0 auto; gap: 1.2rem; background: transparent; }
+    .pieces-005 .images-grid-right { gap: 1.2rem; }
+  </style>
 </head>
 <body class="page-light" data-page="single" data-default-dark="false">
 
@@ -84,7 +91,7 @@
       </div>
     </div>
 
-    <div class="images-section reveal">
+    <div class="images-section reveal pieces-005">
       <div class="images-label">Pièces du dossier</div>
       <div class="images-grid">
         <div class="img-block tall">
