@@ -86,4 +86,18 @@ window.addEventListener('includes-ready', function () {
   applyNavTheme();
   window.addEventListener('scroll', applyNavTheme, { passive: true });
 
+  /* Fond de nav « solide » (crème floutée) activé une fois le hero passé.
+     Utilisé par l'accueil pour basculer en blur à la fin de la section hero
+     (le CSS du blur est scopé par page). */
+  var heroEl = document.getElementById('hero');
+  function applyNavSolid() {
+    if (!navEl) return;
+    var solid = heroEl
+      ? heroEl.getBoundingClientRect().bottom <= 80
+      : window.scrollY > 10;
+    navEl.classList.toggle('nav-solid', solid);
+  }
+  applyNavSolid();
+  window.addEventListener('scroll', applyNavSolid, { passive: true });
+
 });
