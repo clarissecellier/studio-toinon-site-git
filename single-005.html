@@ -21,17 +21,6 @@
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/pages/single.css">
-  <style>
-    /* Pièces du dossier 005 : même disposition que la fiche mobile
-       (une grande pièce en haut, deux côte à côte en dessous),
-       visuels affichés en entier (contain), hauteurs compactes. */
-    .pieces-005 .p-grid { display: flex; flex-direction: column; gap: 0.7rem; }
-    .pieces-005 .img-block { aspect-ratio: auto; position: relative; overflow: hidden; }
-    .pieces-005 .p-main { height: clamp(420px, 52vw, 600px); max-width: 680px; margin: 0 auto; width: 100%; }
-    .pieces-005 .p-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
-    .pieces-005 .p-duo .img-block { height: clamp(220px, 24vw, 320px); }
-    .pieces-005 .img-block img { position: absolute; inset: 0; width: 100%; height: 100%; }
-  </style>
 </head>
 <body class="page-light" data-page="single" data-default-dark="false">
 
@@ -95,13 +84,13 @@
       </div>
     </div>
 
-    <div class="images-section reveal pieces-005">
+    <div class="images-section reveal">
       <div class="images-label">Pièces du dossier</div>
-      <div class="p-grid">
-        <div class="img-block p-main">
+      <div class="images-grid">
+        <div class="img-block tall">
           <img src="assets/images/dossiers/005-action-mini-grue/piece-01.jpg" alt="ACTION MINI GRUE — site mobile, page Levage vitrage" style="object-fit:contain;background:#10182e;">
         </div>
-        <div class="p-duo">
+        <div class="images-grid-right">
           <div class="img-block">
             <img src="assets/images/dossiers/005-action-mini-grue/piece-02.jpg" alt="ACTION MINI GRUE — logo" style="object-fit:contain;background:#1c2a4a;">
           </div>
