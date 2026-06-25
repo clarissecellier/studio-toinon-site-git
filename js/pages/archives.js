@@ -27,8 +27,9 @@ window.addEventListener('includes-ready', function () {
       var filter = btn.dataset.filter;
       cards.forEach(function (card) {
         if (filter === 'all') { card.style.display = ''; return; }
-        var jur = card.querySelector('.archive-card-jur');
-        card.style.display = (jur && jur.textContent.trim() === filter) ? '' : 'none';
+        // data-jur peut contenir plusieurs juridictions (ex. "J.01 J.02")
+        var jurs = (card.dataset.jur || '').split(/\s+/);
+        card.style.display = (jurs.indexOf(filter) > -1) ? '' : 'none';
       });
     });
   });

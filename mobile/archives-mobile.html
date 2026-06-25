@@ -256,13 +256,13 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   </section>
 
   <!-- ── 6. DOSSIER 005 ── -->
-  <section class="screen dossier" data-jur="J.01">
+  <section class="screen dossier" data-jur="J.01 J.02">
     <div class="dossier-index reveal">N&deg; 005</div>
-    <div class="dossier-jur reveal d1">J.01</div>
-    <h2 class="dossier-client reveal d1">Collectif 44</h2>
-    <div class="dossier-type reveal d2">Direction artistique &mdash; 2023</div>
-    <p class="dossier-desc reveal d2">Direction artistique d'une exposition collective d'art contemporain.</p>
-    <div class="dossier-status reveal d3">Affaire résolue</div>
+    <div class="dossier-jur reveal d1">J.01 &middot; J.02</div>
+    <h2 class="dossier-client reveal d1">ACTION MINI GRUE</h2>
+    <div class="dossier-type reveal d2">Identité &amp; site vitrine &mdash; 2025</div>
+    <p class="dossier-desc reveal d2">Identité de marque et site vitrine pour un opérateur de mini grue araignée qui se lance à son compte.</p>
+    <a href="single-005-mobile.html" class="dossier-cta reveal d3"><span>Consulter le dossier</span><span>&rarr;</span></a>
   </section>
 
   <!-- ── 7. DOSSIER 006 ── -->
@@ -345,7 +345,9 @@ boutons.forEach(btn=>{
     btn.classList.add('active');
     const f=btn.dataset.filter;
     dossiers.forEach(d=>{
-      d.classList.toggle('is-hidden',!(f==='all'||d.dataset.jur===f));
+      // data-jur peut contenir plusieurs juridictions (ex. "J.01 J.02")
+      const jurs=(d.dataset.jur||'').split(/\s+/);
+      d.classList.toggle('is-hidden',!(f==='all'||jurs.indexOf(f)>-1));
     });
     // aller au premier dossier correspondant (pas au hero)
     const premier=document.querySelector('.dossier:not(.is-hidden)');
