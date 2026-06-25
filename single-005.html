@@ -22,11 +22,12 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/pages/single.css">
   <style>
-    /* Pièces du dossier 005 : disposition 2fr/1fr, largeur fixée à 1200px
-       centrée, avec des marges entre les visuels (au lieu des filets 1px). */
-    .pieces-005 .images-label { max-width: 1200px; margin-left: auto; margin-right: auto; }
-    .pieces-005 .images-grid { max-width: 1200px; margin: 0 auto; gap: 1.2rem; background: transparent; }
-    .pieces-005 .images-grid-right { gap: 1.2rem; }
+    /* Pièces du dossier 005 : chaque case est calée sur le ratio de son
+       image (téléphone 3:4, logo & devis 4:3) pour remplir pile, sans
+       rognage ni marge. Colonnes rééquilibrées pour aligner les hauteurs. */
+    .pieces-005 .images-grid { grid-template-columns: 9fr 8fr; gap: 1rem; background: transparent; }
+    .pieces-005 .images-grid-right { gap: 1rem; }
+    .pieces-005 .images-grid-right .img-block { aspect-ratio: 4 / 3; }
   </style>
 </head>
 <body class="page-light" data-page="single" data-default-dark="false">
@@ -95,14 +96,14 @@
       <div class="images-label">Pièces du dossier</div>
       <div class="images-grid">
         <div class="img-block tall">
-          <img src="assets/images/dossiers/005-action-mini-grue/piece-01.jpg" alt="ACTION MINI GRUE — site mobile, page Levage vitrage" style="object-fit:contain;background:#10182e;">
+          <img src="assets/images/dossiers/005-action-mini-grue/piece-01.jpg" alt="ACTION MINI GRUE — site mobile, page Levage vitrage">
         </div>
         <div class="images-grid-right">
           <div class="img-block">
-            <img src="assets/images/dossiers/005-action-mini-grue/piece-02.jpg" alt="ACTION MINI GRUE — logo" style="object-fit:contain;background:#1c2a4a;">
+            <img src="assets/images/dossiers/005-action-mini-grue/piece-02.jpg" alt="ACTION MINI GRUE — logo">
           </div>
           <div class="img-block">
-            <img src="assets/images/dossiers/005-action-mini-grue/piece-03.jpg" alt="ACTION MINI GRUE — formulaire de demande de devis" style="object-fit:contain;background:#ece6da;">
+            <img src="assets/images/dossiers/005-action-mini-grue/piece-03.jpg" alt="ACTION MINI GRUE — formulaire de demande de devis">
           </div>
         </div>
       </div>
