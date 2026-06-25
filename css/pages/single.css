@@ -71,6 +71,15 @@
 .img-block:hover img { transform: scale(1.02); }
 .img-placeholder { width: 100%; height: 100%; min-height: 200px; background: linear-gradient(135deg, rgba(200,184,154,0.2) 0%, rgba(200,184,154,0.06) 100%); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(26,26,26,0.2); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
 .img-block:hover .img-placeholder { transform: scale(1.02); }
+
+/* Variante « pieces-std » : cases calées sur le ratio des visuels (téléphone
+   3:4, logo & autres 4:3) pour remplir sans rognage ni marge, colonnes
+   rééquilibrées (hauteurs alignées), grille centrée à 1400px avec gaps.
+   Appliquée via la classe sur .images-section (sauf SICTOM, grille vidéo). */
+.images-section.pieces-std .images-label { max-width: 1400px; margin-left: auto; margin-right: auto; }
+.images-section.pieces-std .images-grid { grid-template-columns: 9fr 8fr; gap: 1rem; background: transparent; max-width: 1400px; margin: 0 auto; }
+.images-section.pieces-std .images-grid-right { gap: 1rem; }
+.images-section.pieces-std .images-grid-right .img-block { aspect-ratio: 4 / 3; }
 .verdict-section { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid rgba(26,26,26,0.08); }
 .verdict-left { padding: 5rem 3.5rem; border-right: 1px solid rgba(26,26,26,0.08); display: flex; flex-direction: column; justify-content: space-between; }
 .verdict-title { font-family: var(--display); font-size: clamp(3rem, 5vw, 5rem); text-transform: uppercase; line-height: 0.9; color: var(--encre); }
