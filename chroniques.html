@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Redirection mobile : les petits écrans (≤ 768px) basculent sur la version
+       dédiée. Exécuté avant tout affichage pour éviter le clignotement.
+       Échappatoire : ajouter ?desktop à l'URL pour forcer la version bureau. */
+    (function () {
+      try {
+        var forceDesktop = location.search.indexOf('desktop') !== -1
+          || localStorage.getItem('viewMode') === 'desktop';
+        if (!forceDesktop && window.matchMedia('(max-width: 768px)').matches) {
+          location.replace('mobile/chroniques-mobile.html');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <title>Chroniques &mdash; Studio Toinon</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/chroniques.css">
+</head>
+<body data-page="chroniques" data-default-dark="true">
+
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <div id="site-header-placeholder"></div>
+
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-badge">Chroniques</span>
+          Notes d'instruction
+        </div>
+        <h1 class="hero-title">
+          Le dossier<br>
+          <span class="outline">continue.</span>
+        </h1>
+      </div>
+      <div class="hero-right">
+        <p class="hero-lede">Entre deux affaires, on prend des notes. M&eacute;thode, tendances, prises de position : ce que le studio pense du design, vers&eacute; au d&eacute;bat public.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="journal">
+    <div class="chro-grid">
+
+      <!-- ⚠️ CHRONIQUES D'EXEMPLE — à remplacer par tes vrais articles.
+           Dupliquer chronique-001.html (+ mobile) pour chaque nouvelle chronique.
+           Image : remplacer le <div class="chro-card-ph"> par
+           <img src="assets/images/chroniques/NNN.jpg" alt="..."> quand le visuel est prêt. -->
+
+      <a href="chronique-001.html" class="chro-card reveal" data-jur="J.01">
+        <div class="chro-card-img"><div class="chro-card-ph">Visuel à venir</div><div class="chro-card-overlay"><span class="chro-card-cta">Lire la chronique &rarr;</span></div></div>
+        <div class="chro-card-body">
+          <div class="chro-card-top"><span class="chro-card-num">Note N&deg; 001</span><span class="chro-card-cat">J.01</span></div>
+          <div class="chro-card-title">Un logo ne fait pas une marque.</div>
+          <div class="chro-card-type">Stratégie de marque &mdash; à dater</div>
+          <p class="chro-card-desc">[Texte d'exemple] On vous a vendu un joli symbole. Mais une marque, c'est ce qui reste quand on retire le logo. Petite enqu&ecirc;te sur ce qui tient vraiment dans le temps.</p>
+        </div>
+        <div class="chro-card-status">~ 4 min de lecture</div>
+      </a>
+
+      <a href="chronique-001.html" class="chro-card reveal" data-jur="méthode">
+        <div class="chro-card-img"><div class="chro-card-ph">Visuel à venir</div><div class="chro-card-overlay"><span class="chro-card-cta">Lire la chronique &rarr;</span></div></div>
+        <div class="chro-card-body">
+          <div class="chro-card-top"><span class="chro-card-num">Note N&deg; 002</span><span class="chro-card-cat">Méthode</span></div>
+          <div class="chro-card-title">Le brief est un interrogatoire.</div>
+          <div class="chro-card-type">Méthode &mdash; à dater</div>
+          <p class="chro-card-desc">[Texte d'exemple] Avant de cr&eacute;er, on instruit. Pourquoi les bonnes questions valent mieux que les bonnes id&eacute;es, et comment un premier rendez-vous d&eacute;cide d&eacute;j&agrave; du r&eacute;sultat.</p>
+        </div>
+        <div class="chro-card-status">~ 3 min de lecture</div>
+      </a>
+
+      <a href="chronique-001.html" class="chro-card reveal" data-jur="J.02">
+        <div class="chro-card-img"><div class="chro-card-ph">Visuel à venir</div><div class="chro-card-overlay"><span class="chro-card-cta">Lire la chronique &rarr;</span></div></div>
+        <div class="chro-card-body">
+          <div class="chro-card-top"><span class="chro-card-num">Note N&deg; 003</span><span class="chro-card-cat">J.02</span></div>
+          <div class="chro-card-title">Un site rapide est un site honnête.</div>
+          <div class="chro-card-type">Design d'interface &mdash; à dater</div>
+          <p class="chro-card-desc">[Texte d'exemple] La performance n'est pas un d&eacute;tail technique, c'est un acte de respect envers le visiteur. Ce qu'un temps de chargement dit de votre s&eacute;rieux.</p>
+        </div>
+        <div class="chro-card-status">~ 4 min de lecture</div>
+      </a>
+
+    </div>
+
+    <p class="chro-soon">Instruction en cours &mdash; d'autres chroniques à venir</p>
+  </section>
+
+  <div id="site-footer-placeholder"></div>
+  <div id="tab-bar-placeholder"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

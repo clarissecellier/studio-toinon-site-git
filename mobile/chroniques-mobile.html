@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Chroniques &mdash; Studio Toinon</title>
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;--label:#8C7A56;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:64px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+#app{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+#app::-webkit-scrollbar{display:none}
+
+.screen{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  padding:2.5rem 1.5rem;
+}
+
+.glitch-lines{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(245,240,232,.02) 2px,rgba(245,240,232,.02) 4px);
+  animation:scan 8s linear infinite;
+}
+@keyframes scan{0%{background-position:0 0}100%{background-position:0 100px}}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
+
+/* ── HERO ── */
+#s-hero{background:var(--encre);}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.05;mix-blend-mode:screen;z-index:0;}
+.hero-m-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
+.hero-logo{width:clamp(140px,42vw,180px);height:auto;margin-bottom:2rem;opacity:.92;}
+.hero-m-eyebrow{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--kraft);
+  display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.75rem;
+}
+.hero-m-badge{display:inline-flex;align-items:center;background:var(--vive);color:var(--encre);padding:.3rem .75rem;font-size:.58rem;letter-spacing:.15em;}
+.hero-m-title{
+  font-family:var(--display);font-size:clamp(2.2rem,11.5vw,3rem);
+  text-transform:uppercase;line-height:.92;letter-spacing:-.03em;
+  color:var(--base);max-width:100%;overflow-wrap:break-word;
+}
+.hero-m-title .outline{-webkit-text-stroke:1.5px var(--base);color:transparent;}
+.hero-m-sub{font-family:var(--mono);font-size:.78rem;line-height:1.9;font-style:italic;color:rgba(245,240,232,.55);margin-top:1.75rem;}
+
+/* ── CHRONIQUES (plein écran) ── */
+.chro{background:var(--base);}
+.chro.alt{background:#EDE8DC;}
+.chro-index{font-family:var(--mono);font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--label);margin-bottom:.9rem;}
+.chro-cat{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(26,26,26,.6);border:1px solid rgba(26,26,26,.25);padding:.25rem .65rem;margin-bottom:1.4rem;}
+.chro-date{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;}
+.chro-title{
+  font-family:var(--display);font-size:clamp(2.1rem,10vw,3rem);
+  text-transform:uppercase;line-height:.95;letter-spacing:-.01em;
+  color:var(--encre);max-width:100%;overflow-wrap:break-word;margin-bottom:1.1rem;
+}
+.chro-desc{font-family:var(--mono);font-size:.8rem;line-height:2;color:rgba(26,26,26,.62);max-width:34ch;margin-bottom:1.6rem;}
+.chro-cta{
+  margin-top:.4rem;display:inline-flex;align-items:center;gap:.8rem;
+  background:var(--encre);color:var(--base);
+  font-family:var(--display);font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;
+  padding:.85rem 1.75rem;text-decoration:none;
+  -webkit-tap-highlight-color:transparent;transition:background .2s;
+}
+.chro-cta:active{background:var(--accent);}
+.chro-soon{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4);}
+
+/* ── TAB BAR ── */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;height:var(--bar);
+  background:var(--encre);border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;
+  padding:0 .5rem;padding-bottom:env(safe-area-inset-bottom);z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;
+  padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;background:none;border:none;color:rgba(245,240,232,.3);transition:color .2s;
+}
+.tab-item.active,.tab-item:not(.disabled):active{color:var(--vive);}
+.tab-icon{font-size:1.15rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ── 1. HERO ── -->
+  <section class="screen" id="s-hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="glitch-lines"></div>
+    <div class="hero-m-content">
+      <img class="hero-logo reveal" src="../assets/images/logo-light.svg" alt="Studio Toinon">
+      <div class="hero-m-eyebrow reveal d1">
+        <span class="hero-m-badge">Chroniques</span>
+        Notes d'instruction
+      </div>
+      <h1 class="hero-m-title reveal d2">
+        Le dossier<br><span class="outline">continue.</span>
+      </h1>
+      <p class="hero-m-sub reveal d3">Ce que le studio pense du design, versé au débat public.</p>
+    </div>
+  </section>
+
+  <!-- ⚠️ CHRONIQUES D'EXEMPLE — à remplacer par tes vrais articles. -->
+
+  <!-- ── 2. NOTE 001 ── -->
+  <section class="screen chro">
+    <div class="chro-index reveal">Note N&deg; 001</div>
+    <div class="chro-cat reveal d1">J.01 &mdash; Marque</div>
+    <div class="chro-date reveal d1">à dater</div>
+    <h2 class="chro-title reveal d2">Un logo ne fait pas une marque.</h2>
+    <p class="chro-desc reveal d2">[Exemple] Une marque, c'est ce qui reste quand on retire le logo.</p>
+    <a href="chronique-001-mobile.html" class="chro-cta reveal d3"><span>Lire la chronique</span><span>&rarr;</span></a>
+  </section>
+
+  <!-- ── 3. NOTE 002 ── -->
+  <section class="screen chro alt">
+    <div class="chro-index reveal">Note N&deg; 002</div>
+    <div class="chro-cat reveal d1">Méthode</div>
+    <div class="chro-date reveal d1">à dater</div>
+    <h2 class="chro-title reveal d2">Le brief est un interrogatoire.</h2>
+    <p class="chro-desc reveal d2">[Exemple] Les bonnes questions valent mieux que les bonnes idées.</p>
+    <a href="chronique-001-mobile.html" class="chro-cta reveal d3"><span>Lire la chronique</span><span>&rarr;</span></a>
+  </section>
+
+  <!-- ── 4. NOTE 003 ── -->
+  <section class="screen chro">
+    <div class="chro-index reveal">Note N&deg; 003</div>
+    <div class="chro-cat reveal d1">J.02 &mdash; Interface</div>
+    <div class="chro-date reveal d1">à dater</div>
+    <h2 class="chro-title reveal d2">Un site rapide est un site honnête.</h2>
+    <p class="chro-desc reveal d2">[Exemple] La performance est un acte de respect envers le visiteur.</p>
+    <a href="chronique-001-mobile.html" class="chro-cta reveal d3"><span>Lire la chronique</span><span>&rarr;</span></a>
+  </section>
+
+  <!-- ── 5. À SUIVRE ── -->
+  <section class="screen" style="background:var(--encre);">
+    <div class="glitch-lines"></div>
+    <p class="chro-soon reveal">Instruction en cours &mdash; d'autres chroniques à venir</p>
+  </section>
+
+</div>
+
+<!-- ── TAB BAR (inchangée : 4 onglets) ── -->
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives-mobile.html" class="tab-item"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <a href="contact-mobile.html" class="tab-item"><span class="tab-icon">✉</span><span>Contact</span></a>
+</nav>
+
+<script>
+// ── GRAIN ──
+function initGrain(id){
+  const c=document.getElementById(id);if(!c)return;
+  const ctx=c.getContext('2d');
+  function r(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
+  r();window.addEventListener('resize',r);
+  function d(){
+    const w=c.width,h=c.height,img=ctx.createImageData(w,h),px=img.data;
+    for(let i=0;i<px.length;i+=4){
+      const v=Math.random()*255|0;
+      px[i]=v;px[i+1]=Math.round(v*.92);px[i+2]=Math.round(v*.78);px[i+3]=Math.random()*32|0;
+    }
+    ctx.putImageData(img,0,0);requestAnimationFrame(d);
+  }
+  d();
+}
+initGrain('hero-canvas');
+
+// ── RÉVÉLATION AU SCROLL ──
+const app=document.getElementById('app');
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+},{root:app,threshold:.25});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script src="../js/consent.js"></script>
+</body>
+</html>

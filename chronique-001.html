@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Redirection mobile : les petits écrans (≤ 768px) basculent sur la version
+       dédiée. Échappatoire : ?desktop dans l'URL pour forcer la version bureau. */
+    (function () {
+      try {
+        var forceDesktop = location.search.indexOf('desktop') !== -1
+          || localStorage.getItem('viewMode') === 'desktop';
+        if (!forceDesktop && window.matchMedia('(max-width: 768px)').matches) {
+          location.replace('mobile/chronique-001-mobile.html');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <title>Un logo ne fait pas une marque &mdash; Chroniques &mdash; Studio Toinon</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/chronique.css">
+</head>
+<body class="page-light" data-page="chronique" data-default-dark="false">
+
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <div id="site-header-placeholder"></div>
+
+  <!-- ⚠️ ARTICLE D'EXEMPLE — gabarit à dupliquer pour chaque vraie chronique.
+       Remplacer titre, méta, et le contenu de <article class="chro-corps">. -->
+
+  <section id="hero">
+    <div class="hero-top reveal">
+      <div class="hero-breadcrumb">
+        <a href="chroniques.html">Chroniques</a>
+        <span class="sep">&mdash;</span>
+        <span>Note N&deg; 001</span>
+      </div>
+      <span class="hero-cat">J.01 &mdash; Marque</span>
+    </div>
+    <h1 class="hero-title reveal reveal-d1">Un logo ne fait pas une marque.</h1>
+    <div class="hero-meta reveal reveal-d2">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Publié le</span>
+        <span class="hero-meta-val">à dater</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Rubrique</span>
+        <span class="hero-meta-val">Stratégie de marque</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Lecture</span>
+        <span class="hero-meta-val">~ 4 min</span>
+      </div>
+    </div>
+  </section>
+
+  <div id="corps">
+
+    <p class="chro-lede reveal">[Chapô d'exemple] On vous a vendu un joli symbole et on vous a dit que c'&eacute;tait votre marque. C'est faux. Une marque, c'est ce qui reste quand on retire le logo.</p>
+
+    <article class="chro-corps reveal reveal-d1">
+      <p>[Texte d'exemple &mdash; remplace ce contenu par ta vraie chronique.] Lorem ipsum sur la diff&eacute;rence entre une identit&eacute; visuelle et une marque. Le logo n'est que la signature au bas du dossier ; la marque, c'est tout le dossier.</p>
+
+      <h2>Le logo est une cons&eacute;quence</h2>
+      <p>[Texte d'exemple.] Un bon logo ne pr&eacute;c&egrave;de pas la r&eacute;flexion, il la conclut. Avant de dessiner quoi que ce soit, il faut instruire : qui &ecirc;tes-vous, &agrave; qui parlez-vous, qu'est-ce qui vous distingue r&eacute;ellement ?</p>
+
+      <blockquote>
+        <p>Ce qui reste quand on retire le logo, <span class="vive">c'est &ccedil;a, la marque.</span></p>
+      </blockquote>
+
+      <h2>Ce qui tient dans le temps</h2>
+      <p>[Texte d'exemple.] Une marque solide survit &agrave; un changement de logo. Elle vit dans le ton, les choix, la coh&eacute;rence des d&eacute;cisions &mdash; pas dans un fichier vectoriel.</p>
+
+      <div class="chro-sign">&mdash; Studio Toinon</div>
+    </article>
+
+  </div>
+
+  <div class="projet-nav">
+    <a href="chroniques.html" class="projet-nav-item reveal">
+      <span class="projet-nav-direction">&larr; Toutes les chroniques</span>
+      <span class="projet-nav-name">Le journal</span>
+      <span class="projet-nav-type">Retour au sommaire</span>
+    </a>
+    <a href="chronique-001.html" class="projet-nav-item reveal reveal-d1">
+      <span class="projet-nav-direction">Chronique suivante &rarr;</span>
+      <span class="projet-nav-name">À venir</span>
+      <span class="projet-nav-type">Prochainement</span>
+    </a>
+  </div>
+
+  <div id="site-footer-placeholder"></div>
+  <div id="tab-bar-placeholder"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

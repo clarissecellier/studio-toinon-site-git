@@ -1,0 +1,79 @@
+/* ══════════════════════════════
+   CHRONIQUES — Le journal de bord du studio
+   Structure identique aux Archives, en version FOND NOIR.
+══════════════════════════════ */
+
+/* Grain & scanlines (repris des Archives, adaptés au fond sombre) */
+#global-canvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; opacity: 0.06; mix-blend-mode: screen; }
+.glitch-overlay {
+  position: fixed; inset: 0; pointer-events: none; z-index: 2;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(245,240,232,0.02) 2px, rgba(245,240,232,0.02) 4px);
+  animation: scanlines 8s linear infinite;
+}
+@keyframes scanlines { 0% { background-position: 0 0; } 100% { background-position: 0 100px; } }
+
+/* Nav : fond noir flouté une fois le hero passé */
+body[data-page="chroniques"] nav#site-nav.nav-solid {
+  background: rgba(26,26,26,0.85);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+#hero { background: transparent; padding: 12rem 3.5rem 5rem; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.hero-inner { display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 4; }
+.hero-eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.55); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+.hero-eyebrow-badge { background: var(--vive); color: var(--encre); padding: 0.28rem 0.7rem; font-size: 0.55rem; letter-spacing: 0.15em; }
+.hero-title { font-family: var(--display); font-size: clamp(4rem, 9vw, 8.5rem); text-transform: uppercase; line-height: 0.88; letter-spacing: -0.02em; color: var(--base); }
+.hero-title .outline { -webkit-text-stroke: 1.5px var(--base); color: transparent; }
+.hero-right { text-align: right; padding-bottom: 0.6rem; }
+.hero-lede { font-family: var(--mono); font-size: 0.78rem; line-height: 2; color: rgba(245,240,232,0.55); max-width: 30ch; border-left: 2px solid var(--vive); padding-left: 1rem; }
+
+/* ══════════════════════════════
+   GRILLE (structure Archives, 3 colonnes, fond noir)
+══════════════════════════════ */
+#journal { background: transparent; padding: 4rem 3.5rem 7rem; position: relative; z-index: 4; }
+.chro-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(245,240,232,0.1); }
+.chro-card { background: var(--encre); text-decoration: none; color: inherit; display: flex; flex-direction: column; cursor: none; transition: background 0.3s; position: relative; }
+.chro-card:hover { background: #242424; }
+.chro-card:hover .chro-card-overlay { opacity: 1; }
+.chro-card:hover .chro-card-ph { transform: scale(1.03); }
+
+.chro-card-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; position: relative; background: rgba(245,240,232,0.04); }
+.chro-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+.chro-card-ph { width: 100%; height: 100%; background: linear-gradient(135deg, rgba(245,240,232,0.07) 0%, rgba(245,240,232,0.015) 100%); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.25); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+.chro-card-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+.chro-card-cta { font-family: var(--display); font-size: 1rem; text-transform: uppercase; color: var(--vive); letter-spacing: 0.05em; }
+
+.chro-card-body { padding: 1.75rem 2rem 1rem; flex: 1; }
+.chro-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.chro-card-num { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+.chro-card-cat { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.6); border: 1px solid rgba(245,240,232,0.25); padding: 0.2rem 0.5rem; }
+.chro-card-title { font-family: var(--display); font-size: 1.8rem; text-transform: uppercase; color: var(--base); line-height: 1; letter-spacing: -0.01em; margin-bottom: 0.5rem; transition: color 0.25s; }
+.chro-card:hover .chro-card-title { color: var(--vive); }
+.chro-card-type { font-family: var(--mono); font-size: 0.72rem; color: rgba(245,240,232,0.7); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+.chro-card-desc { font-family: var(--mono); font-size: 0.72rem; line-height: 1.9; color: rgba(245,240,232,0.6); }
+.chro-card-status { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.5); padding: 0 2rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.chro-card-status::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--vive); opacity: 0.6; }
+
+/* État « en cours d'instruction » (placeholder, pas encore d'article) */
+.chro-soon { margin: 4rem auto 0; text-align: center; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.4); display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
+.chro-soon::before, .chro-soon::after { content: ''; height: 1px; width: 3rem; background: rgba(245,240,232,0.2); }
+
+/* ══════════════════════════════
+   RESPONSIVE (sécurité ; mobile redirige vers /mobile)
+══════════════════════════════ */
+@media (max-width: 1000px) {
+  #journal { padding: 3rem 2rem 5rem; }
+  .chro-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  #hero { padding: 7rem 1.5rem 3rem; }
+  .hero-title { font-size: clamp(3rem, 12vw, 5rem); }
+  .hero-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .hero-right { text-align: left; }
+  #journal { padding: 2rem 1.5rem 4rem; }
+  .chro-grid { grid-template-columns: 1fr; }
+}

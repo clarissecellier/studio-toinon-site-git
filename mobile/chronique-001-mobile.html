@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Un logo ne fait pas une marque &mdash; Chroniques</title>
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;--label:#8C7A56;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:64px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+/* Article = lecture continue (pas de scroll-snap) */
+#app{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  background:#EDE8DC;
+}
+#app::-webkit-scrollbar{display:none}
+
+/* ── HERO ── */
+#hero{background:var(--encre);padding:3.5rem 1.5rem 2.5rem;}
+.breadcrumb{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.5);display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;}
+.breadcrumb a{color:rgba(245,240,232,.5);text-decoration:none;}
+.breadcrumb .sep{opacity:.4;}
+.h-cat{display:inline-flex;background:var(--vive);color:var(--encre);font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .7rem;margin-bottom:1.25rem;}
+.h-title{font-family:var(--display);font-size:clamp(2.1rem,10vw,3rem);text-transform:uppercase;line-height:.95;letter-spacing:-.02em;color:var(--base);}
+.h-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.75rem;}
+.h-meta-item{display:flex;flex-direction:column;gap:.3rem;}
+.h-meta-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4);}
+.h-meta-val{font-family:var(--mono);font-size:.72rem;color:var(--kraft);}
+
+/* ── CORPS ── */
+#corps{padding:2.5rem 1.5rem 3rem;}
+.lede{font-family:var(--mono);font-size:.92rem;line-height:1.85;font-style:italic;color:var(--encre);border-left:2px solid var(--vive);padding-left:1rem;margin-bottom:2.5rem;}
+.corps p{font-family:var(--mono);font-size:.82rem;line-height:2;color:rgba(26,26,26,.8);margin-bottom:1.4rem;}
+.corps h2{font-family:var(--display);font-size:clamp(1.4rem,7vw,1.9rem);text-transform:uppercase;line-height:1;color:var(--encre);margin:2.5rem 0 1.1rem;}
+.corps h2::before{content:'§ ';color:var(--accent);}
+.corps blockquote{margin:2.2rem 0;padding-left:1rem;border-left:3px solid var(--accent);}
+.corps blockquote p{font-family:var(--display);font-size:clamp(1.3rem,6vw,1.7rem);line-height:1.15;text-transform:uppercase;color:var(--encre);font-style:normal;}
+.corps .vive{color:var(--accent);}
+.sign{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(26,26,26,.14);font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(26,26,26,.5);}
+
+/* ── RETOUR ── */
+.back{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.75rem 1.5rem 3rem;border-top:1px solid rgba(26,26,26,.12);text-decoration:none;}
+.back-dir{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+.back-name{font-family:var(--display);font-size:1.4rem;text-transform:uppercase;color:var(--encre);line-height:1;}
+
+/* ── TAB BAR ── */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;height:var(--bar);
+  background:var(--encre);border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;
+  padding:0 .5rem;padding-bottom:env(safe-area-inset-bottom);z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;
+  -webkit-tap-highlight-color:transparent;background:none;border:none;color:rgba(245,240,232,.3);transition:color .2s;
+}
+.tab-item:active{color:var(--vive);}
+.tab-icon{font-size:1.15rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<!-- ⚠️ ARTICLE D'EXEMPLE — gabarit à dupliquer pour chaque vraie chronique. -->
+
+<div id="app">
+
+  <section id="hero">
+    <div class="breadcrumb">
+      <a href="chroniques-mobile.html">Chroniques</a>
+      <span class="sep">&mdash;</span>
+      <span>Note N&deg; 001</span>
+    </div>
+    <span class="h-cat">J.01 &mdash; Marque</span>
+    <h1 class="h-title">Un logo ne fait pas une marque.</h1>
+    <div class="h-meta">
+      <div class="h-meta-item"><span class="h-meta-label">Publié le</span><span class="h-meta-val">à dater</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Rubrique</span><span class="h-meta-val">Marque</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Lecture</span><span class="h-meta-val">~ 4 min</span></div>
+    </div>
+  </section>
+
+  <div id="corps">
+    <p class="lede">[Chapô d'exemple] On vous a vendu un joli symbole et on vous a dit que c'&eacute;tait votre marque. C'est faux. Une marque, c'est ce qui reste quand on retire le logo.</p>
+
+    <article class="corps">
+      <p>[Texte d'exemple &mdash; remplace ce contenu par ta vraie chronique.] La diff&eacute;rence entre une identit&eacute; visuelle et une marque : le logo n'est que la signature au bas du dossier ; la marque, c'est tout le dossier.</p>
+
+      <h2>Le logo est une cons&eacute;quence</h2>
+      <p>[Texte d'exemple.] Un bon logo ne pr&eacute;c&egrave;de pas la r&eacute;flexion, il la conclut. Avant de dessiner, il faut instruire : qui &ecirc;tes-vous, &agrave; qui parlez-vous, qu'est-ce qui vous distingue ?</p>
+
+      <blockquote><p>Ce qui reste quand on retire le logo, <span class="vive">c'est &ccedil;a, la marque.</span></p></blockquote>
+
+      <h2>Ce qui tient dans le temps</h2>
+      <p>[Texte d'exemple.] Une marque solide survit &agrave; un changement de logo. Elle vit dans le ton, les choix, la coh&eacute;rence des d&eacute;cisions.</p>
+
+      <div class="sign">&mdash; Studio Toinon</div>
+    </article>
+  </div>
+
+  <a href="chroniques-mobile.html" class="back">
+    <span class="back-dir">&larr; Toutes les chroniques</span>
+    <span class="back-name">Le journal</span>
+  </a>
+
+</div>
+
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives-mobile.html" class="tab-item"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <a href="contact-mobile.html" class="tab-item"><span class="tab-icon">✉</span><span>Contact</span></a>
+</nav>
+
+<script src="../js/consent.js"></script>
+</body>
+</html>

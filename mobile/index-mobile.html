@@ -403,6 +403,24 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   text-decoration:none;
 }
 .mini-footer-mentions:active{color:var(--kraft);}
+
+/* ══════════════════════════════
+   7. CHRONIQUES (section finale)
+══════════════════════════════ */
+#s-chroniques{background:var(--encre);justify-content:center;padding:2rem 1.5rem;gap:1.5rem;}
+.chro-m-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--kraft);display:flex;align-items:center;gap:.7rem;}
+.chro-m-badge{display:inline-flex;align-items:center;background:var(--vive);color:var(--encre);padding:.3rem .7rem;font-size:.55rem;letter-spacing:.15em;}
+.chro-m-title{font-family:var(--display);font-size:clamp(2.8rem,14vw,5rem);text-transform:uppercase;line-height:.92;color:var(--base);}
+.chro-m-title .vive{color:var(--vive);}
+.chro-m-sub{font-family:var(--mono);font-size:.8rem;line-height:1.9;color:rgba(245,240,232,.55);border-left:2px solid var(--vive);padding-left:1rem;max-width:34ch;}
+.chro-m-cta{
+  display:inline-flex;align-items:center;gap:1rem;align-self:flex-start;
+  background:var(--vive);color:var(--encre);
+  font-family:var(--display);font-size:1rem;
+  text-transform:uppercase;letter-spacing:.08em;
+  padding:1rem 1.75rem;text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
+}
 </style>
 </head>
 <body>
@@ -614,6 +632,17 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
     </div>
   </div>
   <a href="contact-mobile.html" class="tarif-m-cta"><span>Réserver un appel</span><span>→</span></a>
+</section>
+
+<!-- ── 7. CHRONIQUES (section finale) ── -->
+<section class="screen" id="s-chroniques">
+  <div class="chro-m-label">
+    <span class="chro-m-badge">Chroniques</span>
+    Notes d'instruction
+  </div>
+  <div class="chro-m-title">Le dossier<br><span class="vive">continue.</span></div>
+  <p class="chro-m-sub">Entre deux affaires, on prend des notes. Méthode, tendances, prises de position : ce que le studio pense du design, versé au débat public.</p>
+  <a href="chroniques-mobile.html" class="chro-m-cta"><span>Lire les chroniques</span><span>→</span></a>
   <div class="mini-footer">
     <div class="mini-footer-rs">
       <a href="#">Ig</a><a href="#">Li</a><a href="#">Be</a>

@@ -1,0 +1,64 @@
+/* ══════════════════════════════
+   CHRONIQUE — article long format (lecture)
+══════════════════════════════ */
+
+body[data-page="chronique"] nav#site-nav.on-light {
+  background: rgba(237,232,220,0.88);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,26,26,0.1);
+}
+
+/* ══════════════════════════════
+   HERO ARTICLE
+══════════════════════════════ */
+#hero { padding: 11rem 3.5rem 3rem; border-bottom: 1px solid rgba(26,26,26,0.1); }
+.hero-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3.5rem; }
+.hero-breadcrumb { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; color: rgba(26,26,26,0.55); display: flex; align-items: center; gap: 0.75rem; }
+.hero-breadcrumb a { color: rgba(26,26,26,0.55); text-decoration: none; transition: color 0.2s; }
+.hero-breadcrumb a:hover { color: var(--accent); }
+.hero-breadcrumb .sep { opacity: 0.4; }
+.hero-cat { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--encre); background: var(--vive); padding: 0.3rem 0.7rem; }
+
+.hero-title { font-family: var(--display); font-size: clamp(2.6rem, 6vw, 5.5rem); text-transform: uppercase; line-height: 0.92; letter-spacing: -0.02em; color: var(--encre); max-width: 18ch; }
+
+.hero-meta { display: flex; gap: 3rem; margin-top: 2.5rem; flex-wrap: wrap; }
+.hero-meta-item { display: flex; flex-direction: column; gap: 0.4rem; }
+.hero-meta-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(26,26,26,0.45); }
+.hero-meta-val { font-family: var(--mono); font-size: 0.78rem; color: var(--encre); }
+
+/* ══════════════════════════════
+   CORPS
+══════════════════════════════ */
+#corps { max-width: 720px; margin: 0 auto; padding: 4.5rem 1.5rem 6rem; }
+
+.chro-lede { font-family: var(--mono); font-size: 1.05rem; line-height: 1.9; color: var(--encre); font-style: italic; border-left: 2px solid var(--vive); padding-left: 1.5rem; margin-bottom: 3.5rem; }
+
+.chro-corps p { font-family: var(--mono); font-size: 0.92rem; line-height: 2.05; color: rgba(26,26,26,0.82); margin-bottom: 1.75rem; }
+.chro-corps h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.3rem); text-transform: uppercase; line-height: 1; letter-spacing: -0.01em; color: var(--encre); margin: 3.5rem 0 1.5rem; }
+.chro-corps h2::before { content: '§ '; color: var(--accent); }
+.chro-corps blockquote { margin: 3rem 0; padding-left: 1.5rem; border-left: 3px solid var(--accent); }
+.chro-corps blockquote p { font-family: var(--display); font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.2; text-transform: uppercase; color: var(--encre); font-style: normal; }
+.chro-corps .vive { color: var(--accent); }
+.chro-corps a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+.chro-sign { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(26,26,26,0.14); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(26,26,26,0.5); }
+
+/* ══════════════════════════════
+   NAV INTER-CHRONIQUES (repris des dossiers)
+══════════════════════════════ */
+.projet-nav { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(26,26,26,0.12); }
+.projet-nav-item { padding: 3rem 3.5rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 0.6rem; cursor: none; transition: background 0.3s; }
+.projet-nav-item:first-child { border-right: 1px solid rgba(26,26,26,0.12); }
+.projet-nav-item:hover { background: #E5DFD3; }
+.projet-nav-item:last-child { text-align: right; align-items: flex-end; }
+.projet-nav-direction { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+.projet-nav-name { font-family: var(--display); font-size: 1.6rem; text-transform: uppercase; color: var(--encre); line-height: 1; }
+.projet-nav-type { font-family: var(--mono); font-size: 0.68rem; color: rgba(26,26,26,0.55); }
+
+@media (max-width: 768px) {
+  #hero { padding: 7rem 1.5rem 2.5rem; }
+  .hero-top { margin-bottom: 2rem; }
+  .projet-nav { grid-template-columns: 1fr; }
+  .projet-nav-item { padding: 2rem 1.5rem; }
+  .projet-nav-item:first-child { border-right: none; border-bottom: 1px solid rgba(26,26,26,0.12); }
+}
