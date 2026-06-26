@@ -80,6 +80,52 @@ body[data-page="index"] nav#site-nav.nav-solid.on-light {
   text-decoration: underline; text-decoration-color: var(--vive);
   text-decoration-thickness: 0.06em; text-underline-offset: 0.08em;
 }
+
+/* ── DEPLIEMENT « JEU DE CARTES » AU SURVOL DE « PROJETS » ──
+   Au hover du mot, 3 vignettes de projets (les mêmes que le carrousel d'accueil)
+   se déplient en éventail au-dessus du mot, vers le haut à droite. */
+.projets-trigger { position: relative; display: inline-block; }
+
+/* pont invisible : garde le survol actif entre le mot et l'éventail (pas de coupure) */
+.projets-trigger::after {
+  content: ""; position: absolute; bottom: 100%; right: -1.4rem;
+  width: 15rem; height: 9rem; pointer-events: none;
+}
+.projets-trigger:hover::after { pointer-events: auto; }
+
+.projets-cards {
+  position: absolute; bottom: 100%; right: 0; width: 0; height: 0;
+  z-index: -1;            /* derrière le texte du titre : les cartes émergent des lettres */
+  pointer-events: none;
+}
+.projets-cards .pcard {
+  position: absolute; bottom: -0.18em; right: 0;
+  width: clamp(140px, 12vw, 215px);   /* cartes plus grosses */
+  border-radius: 5px; overflow: hidden;
+  box-shadow: 0 14px 34px rgba(26,26,26,0.32);
+  cursor: none;
+  transform-origin: bottom right;
+  transform: rotate(0deg) translate(0, 12px) scale(0.6);
+  opacity: 0;
+  transition: transform 0.55s cubic-bezier(0.22,0.9,0.27,1), opacity 0.4s ease, box-shadow 0.3s ease;
+  transition-delay: calc(var(--i) * 70ms);
+}
+/* ratio d'origine des vignettes conservé (pas de recadrage) */
+.projets-cards .pcard img { width: 100%; height: auto; display: block; }
+
+/* déploiement */
+.projets-trigger:hover .projets-cards { pointer-events: auto; }
+.projets-trigger:hover .pcard { opacity: 1; }
+.projets-trigger:hover .pcard:nth-child(1) { transform: rotate(8deg)  translate(-26px, -18px) scale(1); }
+.projets-trigger:hover .pcard:nth-child(2) { transform: rotate(23deg) translate(34px, -54px)  scale(1); }
+.projets-trigger:hover .pcard:nth-child(3) { transform: rotate(41deg) translate(104px, -28px) scale(1); }
+
+/* petit relèvement de la carte survolée individuellement */
+.projets-cards .pcard:hover { box-shadow: 0 20px 44px rgba(26,26,26,0.4); }
+
+@media (prefers-reduced-motion: reduce) {
+  .projets-cards .pcard { transition: opacity 0.2s ease; transform: none; }
+}
 .hero-bottom {
   display: flex; justify-content: space-between; align-items: flex-end; margin-top: 3rem;
   position: relative; z-index: 2;
