@@ -1,40 +1,8 @@
 window.addEventListener('includes-ready', function () {
 
-  /* ── CANVAS GRAIN HERO ── */
-  var heroCanvas = document.getElementById('hero-canvas');
-  if (heroCanvas) {
-    var ctx = heroCanvas.getContext('2d');
-    function resizeCanvas() { heroCanvas.width = heroCanvas.offsetWidth; heroCanvas.height = heroCanvas.offsetHeight; }
-    resizeCanvas(); window.addEventListener('resize', resizeCanvas);
-    function drawGrain() {
-      var w = heroCanvas.width, h = heroCanvas.height;
-      var img = ctx.createImageData(w, h); var d = img.data;
-      for (var i = 0; i < d.length; i += 4) {
-        var v = Math.random() * 255 | 0;
-        d[i] = v; d[i+1] = Math.round(v * 0.92); d[i+2] = Math.round(v * 0.78); d[i+3] = Math.random() * 28 | 0;
-      }
-      ctx.putImageData(img, 0, 0); requestAnimationFrame(drawGrain);
-    }
-    drawGrain();
-  }
-
-  /* ── CANVAS GRAIN ARCHIVES ── */
-  var archCanvas = document.getElementById('archives-canvas');
-  if (archCanvas) {
-    var actx = archCanvas.getContext('2d');
-    function resizeArch() { archCanvas.width = archCanvas.offsetWidth; archCanvas.height = archCanvas.offsetHeight; }
-    resizeArch(); window.addEventListener('resize', resizeArch);
-    function drawArchGrain() {
-      var w = archCanvas.width, h = archCanvas.height;
-      var img = actx.createImageData(w, h); var d = img.data;
-      for (var i = 0; i < d.length; i += 4) {
-        var v = Math.random() * 255 | 0;
-        d[i] = v; d[i+1] = Math.round(v * 0.92); d[i+2] = Math.round(v * 0.78); d[i+3] = Math.random() * 22 | 0;
-      }
-      actx.putImageData(img, 0, 0); requestAnimationFrame(drawArchGrain);
-    }
-    drawArchGrain();
-  }
+  /* ── CANVAS GRAIN HERO + ARCHIVES ── */
+  startGrain(document.getElementById('hero-canvas'), { alphaMax: 28 });
+  startGrain(document.getElementById('archives-canvas'), { alphaMax: 22 });
 
   /* ── ARCHIVES : DEFILEMENT INFINI + VIGNETTE CURSEUR ── */
   var trackWrap = document.querySelector('.archives-track-wrap');

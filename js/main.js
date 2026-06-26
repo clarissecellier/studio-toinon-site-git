@@ -3,6 +3,54 @@
  * Doit s'exécuter après que includes.js ait dispatché "includes-ready".
  */
 
+/* ── GRAIN ANIMÉ (helper partagé) ──
+   Avant, chaque page redessinait le grain pixel par pixel en pleine résolution
+   à 60fps (≈8M écritures/frame en 1080p), ce qui saturait le thread principal
+   et faisait laguer le curseur personnalisé.
+   Optimisation : le bruit est généré sur un canvas basse résolution (1 px = 2 px
+   écran → 4× moins d'écritures) puis agrandi en drawImage, et l'animation est
+   bridée à 30fps. À l'œil (grain à ~5-11% d'opacité) le rendu est identique.
+   Options : alphaMax (intensité), full (true = plein viewport, sinon taille du canvas). */
+function startGrain(canvas, opts) {
+  if (!canvas) return;
+  opts = opts || {};
+  var alphaMax = opts.alphaMax || 22;
+  var scale = 2;          // 1 px de bruit pour 2 px écran
+  var interval = 1000 / 30;
+  var full = !!opts.full;
+  var ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  var buf = document.createElement('canvas');
+  var bctx = buf.getContext('2d');
+  function resize() {
+    var w = full ? window.innerWidth : canvas.offsetWidth;
+    var h = full ? window.innerHeight : canvas.offsetHeight;
+    canvas.width = w; canvas.height = h;
+    buf.width = Math.max(1, Math.ceil(w / scale));
+    buf.height = Math.max(1, Math.ceil(h / scale));
+    ctx.imageSmoothingEnabled = false;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  var last = 0;
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (now - last < interval) return;
+    last = now;
+    var bw = buf.width, bh = buf.height;
+    var img = bctx.createImageData(bw, bh); var d = img.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var v = Math.random() * 255 | 0;
+      d[i] = v; d[i+1] = Math.round(v * 0.92); d[i+2] = Math.round(v * 0.78); d[i+3] = Math.random() * alphaMax | 0;
+    }
+    bctx.putImageData(img, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(buf, 0, 0, bw, bh, 0, 0, canvas.width, canvas.height);
+  }
+  requestAnimationFrame(frame);
+}
+window.startGrain = startGrain;
+
 window.addEventListener('includes-ready', function () {
 
   /* ── CURSEUR ── */
