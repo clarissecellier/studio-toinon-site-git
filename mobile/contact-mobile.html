@@ -407,24 +407,31 @@ function validate(i){
 }
 
 function submitDossier(){
+  const el=steps[LAST_INPUT];
+  const btn=el.querySelector('[data-next]');
   const jurEl=document.querySelector('input[name="juridiction"]:checked');
-  const sujet='Nouveau dossier — '+(val('prenom')+' '+val('nom')).trim();
-  const corps=
-    'Identité : '+val('prenom')+' '+val('nom')+'\n'+
-    'Email : '+val('email')+'\n'+
-    'Téléphone : '+(val('tel')||'—')+'\n'+
-    'Juridiction : '+(jurEl?jurEl.value:'—')+'\n\n'+
-    val('description');
-  setTimeout(function(){
-    window.location.href='mailto:clarisse@studio-toinon.fr?subject='+encodeURIComponent(sujet)+'&body='+encodeURIComponent(corps);
-  },450);
+  const fd=new FormData();
+  fd.append('nom',(val('prenom')+' '+val('nom')).trim());
+  fd.append('email',val('email'));
+  fd.append('tel',val('tel'));
+  fd.append('juridiction',jurEl?jurEl.value:'');
+  fd.append('message',val('description'));
+  fd.append('website','');           // honeypot
+  if(btn) btn.disabled=true;
+  fetch('../contact.php',{method:'POST',body:fd})
+    .then(r=>r.json())
+    .then(j=>{
+      if(j&&j.ok){ show(LAST_INPUT+1); }
+      else { if(btn) btn.disabled=false; setErr(el,(j&&j.error)||'Envoi impossible. Réessayez.'); }
+    })
+    .catch(()=>{ if(btn) btn.disabled=false; setErr(el,'Connexion impossible. Réessayez ou écrivez à clarisse@studio-toinon.fr.'); });
 }
 
 document.querySelectorAll('[data-next]').forEach(btn=>{
   btn.addEventListener('click',()=>{
     if(cur===0){ show(1); return; }
     if(!validate(cur)) return;
-    if(cur===LAST_INPUT){ show(cur+1); submitDossier(); return; }
+    if(cur===LAST_INPUT){ submitDossier(); return; }
     show(cur+1);
   });
 });

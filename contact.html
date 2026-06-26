@@ -56,41 +56,46 @@
       </div>
     </div>
 
-    <div class="contact-right">
+    <form class="contact-right" id="contact-form" novalidate>
       <div class="form-dossier-num reveal">Dossier N&deg; &mdash; En cours d'ouverture</div>
+
+      <!-- Honeypot anti-spam : champ caché, ne pas remplir -->
+      <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden;">
+        <label>Ne rien saisir<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
 
       <div class="form-group reveal reveal-d1">
         <label class="form-label" for="nom-projet">Nom du projet</label>
-        <input class="form-input" type="text" id="nom-projet" placeholder="Le nom de votre affaire">
+        <input class="form-input" type="text" id="nom-projet" name="projet" placeholder="Le nom de votre affaire">
       </div>
 
       <div class="form-group reveal reveal-d1">
         <label class="form-label" for="identite">Votre identit&eacute;</label>
-        <input class="form-input" type="text" id="identite" placeholder="Nom, pr&eacute;nom ou raison sociale">
+        <input class="form-input" type="text" id="identite" name="nom" placeholder="Nom, pr&eacute;nom ou raison sociale">
       </div>
 
       <div class="form-group reveal reveal-d2">
         <label class="form-label" for="coordonnees">Coordonn&eacute;es</label>
-        <input class="form-input" type="email" id="coordonnees" placeholder="Votre adresse email">
+        <input class="form-input" type="email" id="coordonnees" name="email" placeholder="Votre adresse email">
       </div>
 
       <div class="form-group reveal reveal-d2">
         <label class="form-label">Juridiction concern&eacute;e</label>
         <div class="jur-options" id="juridiction">
           <label class="jur-option">
-            <input type="radio" name="juridiction" value="strategie">
+            <input type="radio" name="juridiction" value="Stratégie de marque">
             <span class="jur-option-label"><span class="jur-option-num">J.01</span>Strat&eacute;gie de marque</span>
           </label>
           <label class="jur-option">
-            <input type="radio" name="juridiction" value="interface">
+            <input type="radio" name="juridiction" value="Design & dev d'interface">
             <span class="jur-option-label"><span class="jur-option-num">J.02</span>Design &amp; dev d'interface</span>
           </label>
           <label class="jur-option">
-            <input type="radio" name="juridiction" value="motion">
+            <input type="radio" name="juridiction" value="Motion & Vidéo">
             <span class="jur-option-label"><span class="jur-option-num">J.03</span>Motion &amp; Vid&eacute;o</span>
           </label>
           <label class="jur-option">
-            <input type="radio" name="juridiction" value="multi">
+            <input type="radio" name="juridiction" value="Plusieurs juridictions">
             <span class="jur-option-label"><span class="jur-option-num">&mdash;</span>Plusieurs juridictions</span>
           </label>
         </div>
@@ -98,17 +103,19 @@
 
       <div class="form-group reveal reveal-d3">
         <label class="form-label" for="dossier">Description du dossier</label>
-        <textarea class="form-textarea" id="dossier" placeholder="D&eacute;crivez votre projet, votre contexte, vos objectifs&hellip;"></textarea>
+        <textarea class="form-textarea" id="dossier" name="message" placeholder="D&eacute;crivez votre projet, votre contexte, vos objectifs&hellip;"></textarea>
       </div>
 
       <div class="form-bottom reveal reveal-d4">
         <p class="form-mention">Chaque dossier re&ccedil;oit une r&eacute;ponse sous 48h. Toutes les informations transmises restent confidentielles.</p>
-        <button class="form-submit">
+        <button type="submit" class="form-submit">
           <span>Soumettre le dossier</span>
           <span>&rarr;</span>
         </button>
       </div>
-    </div>
+
+      <p class="form-feedback" id="form-feedback" role="status" aria-live="polite" style="margin-top:1.2rem;font-family:var(--mono);font-size:0.78rem;line-height:1.6;"></p>
+    </form>
 
   </div>
 
