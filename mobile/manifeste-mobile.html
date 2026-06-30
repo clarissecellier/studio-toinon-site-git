@@ -134,6 +134,20 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;font-style:italic;
   color:var(--kraft);margin-top:2.25rem;
 }
+/* Qui mène l'enquête (incarnation) */
+#s-enquete{background:var(--encre);gap:0;}
+.enq-portrait{position:relative;width:clamp(110px,32vw,150px);aspect-ratio:3/4;background:linear-gradient(160deg,rgba(245,240,232,.08),rgba(245,240,232,.02));border:1px solid rgba(245,240,232,.16);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;}
+.enq-portrait span{font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.3);}
+.enq-portrait::after{content:'';position:absolute;left:.5rem;bottom:.5rem;width:1.2rem;height:1.2rem;border-left:2px solid var(--vive);border-bottom:2px solid var(--vive);}
+.enq-portrait::before{content:'';position:absolute;right:.5rem;top:.5rem;width:1.2rem;height:1.2rem;border-right:2px solid var(--accent);border-top:2px solid var(--accent);}
+.enq-eyebrow{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--encre);background:var(--vive);padding:.3rem .65rem;margin-bottom:1rem;}
+.enq-title{font-family:var(--display);font-size:clamp(2rem,10vw,3rem);text-transform:uppercase;line-height:.95;color:var(--base);margin-bottom:1.25rem;}
+.enq-title .vive{color:var(--vive);}
+.enq-body{font-family:var(--mono);font-size:.78rem;line-height:1.9;color:rgba(245,240,232,.68);max-width:36ch;margin-bottom:.9rem;}
+.enq-body .accent{color:var(--accent);}
+.enq-sign{margin-top:1.1rem;padding-top:1rem;border-top:1px solid rgba(245,240,232,.14);display:flex;flex-direction:column;gap:.3rem;}
+.enq-sign-name{font-family:var(--display);font-size:1.1rem;text-transform:uppercase;color:var(--base);}
+.enq-sign-meta{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--kraft);}
 .verdict-cta{
   margin-top:2.75rem;display:inline-flex;align-items:center;gap:1.1rem;
   background:var(--vive);color:var(--encre);
@@ -225,17 +239,14 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   <p class="belief-body reveal d2">Aucune affaire ne se ressemble. Chaque dossier repart de zéro. On creuse, on argumente, on livre, rien qui ne tienne pas la route.</p>
 </section>
 
-<!-- ── 6. VERDICT ── -->
-<section class="screen" id="s-verdict">
-  <canvas id="verdict-canvas"></canvas>
-  <div class="glitch-lines"></div>
-  <div class="verdict-content">
-    <p class="verdict-phrase reveal">Justice<br>est <span class="vive">rendue.</span></p>
-    <p class="verdict-sub reveal d1">&mdash; Studio Toinon</p>
-    <a href="contact-mobile.html" class="verdict-cta reveal d2">
-      <span>Ouvrir un dossier</span><span>&rarr;</span>
-    </a>
-  </div>
+<!-- ── ENQUÊTE (incarnation) ── -->
+<section class="screen" id="s-enquete">
+  <div class="enq-portrait reveal"><span>Portrait à venir</span></div>
+  <span class="enq-eyebrow reveal d1">Qui mène l'enquête</span>
+  <h2 class="enq-title reveal d1">L'instruction,<br><span class="vive">c'est moi.</span></h2>
+  <p class="enq-body reveal d2">Je suis Clarisse Cellier, fondatrice de Studio Toinon. Ce n'est pas une agence. C'est moi : vous traitez avec la personne qui mène l'enquête, du premier rendez-vous à la livraison.</p>
+  <p class="enq-body reveal d2">Tout ce que ce manifeste défend, <span class="accent">c'est moi qui en réponds.</span></p>
+  <div class="enq-sign reveal d3"><span class="enq-sign-name">Clarisse Cellier</span><span class="enq-sign-meta">Direction artistique · Studio Toinon · Beaucaire (30)</span></div>
 </section>
 
 </div>
