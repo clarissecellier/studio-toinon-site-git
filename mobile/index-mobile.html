@@ -388,6 +388,9 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 .tab-item.active,.tab-item:not(.disabled):active{color:var(--vive);}
 .tab-item.disabled{opacity:.32;pointer-events:none;color:rgba(245,240,232,.3);}
 .tab-icon{font-size:1.6rem;line-height:1;}
+.chro-fab{position:fixed;right:1rem;bottom:calc(var(--bar) + env(safe-area-inset-bottom) + .9rem);display:inline-flex;align-items:center;gap:.5rem;background:var(--vive);color:var(--encre);font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.05rem;border-radius:2rem;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);z-index:199;-webkit-tap-highlight-color:transparent;transition:transform .2s;}
+.chro-fab:active{transform:scale(.95);}
+.chro-fab .fab-ico{font-size:1rem;line-height:1;}
 
 
 
@@ -689,6 +692,8 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 </div>
 
 <!-- ── TAB BAR ── -->
+<a class="chro-fab" href="chroniques-mobile.html" aria-label="Lire les Chroniques"><span class="fab-ico">✎</span><span>Chroniques</span></a>
+
 <nav id="tab-bar">
   <a href="index-mobile.html" class="tab-item active"><span class="tab-icon">⌂</span><span>Accueil</span></a>
   <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
