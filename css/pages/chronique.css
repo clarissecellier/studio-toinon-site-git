@@ -35,7 +35,6 @@ body[data-page="chronique"] nav#site-nav.on-light {
 
 .chro-corps p { font-family: var(--mono); font-size: 1rem; line-height: 2.05; color: rgba(26,26,26,0.82); margin-bottom: 1.75rem; }
 .chro-corps h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.3rem); text-transform: uppercase; line-height: 1; letter-spacing: -0.01em; color: var(--encre); margin: 3.5rem 0 1.5rem; }
-.chro-corps h2::before { content: '§ '; color: var(--accent); }
 .chro-corps blockquote { margin: 3rem 0; padding-left: 1.5rem; border-left: 3px solid var(--accent); }
 .chro-corps blockquote p { font-family: var(--display); font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.2; text-transform: uppercase; color: var(--encre); font-style: normal; }
 .chro-corps .vive { color: var(--accent); }
