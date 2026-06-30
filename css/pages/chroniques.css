@@ -32,31 +32,23 @@ body[data-page="chroniques"] nav#site-nav.nav-solid {
 .hero-lede { font-family: var(--mono); font-size: 1rem; line-height: 2; color: rgba(245,240,232,0.55); max-width: 30ch; border-left: 2px solid var(--vive); padding-left: 1rem; }
 
 /* ══════════════════════════════
-   GRILLE (structure Archives, 3 colonnes, fond noir)
+   GRILLE — cartes typographiques sans visuel, 2 colonnes centrées
 ══════════════════════════════ */
-#journal { background: transparent; padding: 4rem 3.5rem 7rem; position: relative; z-index: 4; }
-.chro-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(245,240,232,0.1); }
-.chro-card { background: var(--encre); text-decoration: none; color: inherit; display: flex; flex-direction: column; cursor: none; transition: background 0.3s; position: relative; }
-.chro-card:hover { background: #242424; }
-.chro-card:hover .chro-card-overlay { opacity: 1; }
-.chro-card:hover .chro-card-ph { transform: scale(1.03); }
+#journal { background: transparent; padding: 5rem 3.5rem 7rem; position: relative; z-index: 4; }
+.chro-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 1180px; margin: 0 auto; }
+.chro-card { background: rgba(245,240,232,0.02); border: 1px solid rgba(245,240,232,0.14); text-decoration: none; color: inherit; display: flex; flex-direction: column; cursor: none; transition: background 0.3s, border-color 0.3s, transform 0.3s; position: relative; padding: 2.75rem 2.75rem 2.25rem; }
+.chro-card:hover { background: rgba(245,240,232,0.05); border-color: rgba(212,232,66,0.55); transform: translateY(-4px); }
 
-.chro-card-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; position: relative; background: rgba(245,240,232,0.04); }
-.chro-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
-.chro-card-ph { width: 100%; height: 100%; background: linear-gradient(135deg, rgba(245,240,232,0.07) 0%, rgba(245,240,232,0.015) 100%); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.25); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
-.chro-card-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
-.chro-card-cta { font-family: var(--display); font-size: 1rem; text-transform: uppercase; color: var(--vive); letter-spacing: 0.05em; }
-
-.chro-card-body { padding: 1.75rem 2rem 1rem; flex: 1; }
-.chro-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-.chro-card-num { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
-.chro-card-cat { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.6); border: 1px solid rgba(245,240,232,0.25); padding: 0.3rem 0.6rem; }
-.chro-card-title { font-family: var(--display); font-size: 1.8rem; text-transform: uppercase; color: var(--base); line-height: 1; letter-spacing: -0.01em; margin-bottom: 0.5rem; transition: color 0.25s; }
+.chro-card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.75rem; }
+.chro-card-num { font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
+.chro-card-cat { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.6); border: 1px solid rgba(245,240,232,0.25); padding: 0.3rem 0.7rem; }
+.chro-card-title { font-family: var(--display); font-size: clamp(2.4rem, 3.3vw, 3.4rem); text-transform: uppercase; color: var(--base); line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 1.4rem; transition: color 0.25s; }
 .chro-card:hover .chro-card-title { color: var(--vive); }
-.chro-card-type { font-family: var(--mono); font-size: 0.9rem; color: rgba(245,240,232,0.7); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
-.chro-card-desc { font-family: var(--mono); font-size: 1rem; line-height: 1.9; color: rgba(245,240,232,0.6); }
-.chro-card-status { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.5); padding: 0 2rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
-.chro-card-status::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--vive); opacity: 0.6; }
+.chro-card-desc { font-family: var(--mono); font-size: 0.95rem; line-height: 1.9; color: rgba(245,240,232,0.6); margin-bottom: 2.25rem; flex: 1; }
+.chro-card-foot { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-top: 1.4rem; border-top: 1px solid rgba(245,240,232,0.12); }
+.chro-card-meta { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.5); }
+.chro-card-cta { font-family: var(--display); font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.04em; color: rgba(245,240,232,0.7); transition: color 0.25s, transform 0.25s; white-space: nowrap; }
+.chro-card:hover .chro-card-cta { color: var(--vive); transform: translateX(4px); }
 
 /* État « en cours d'instruction » (placeholder, pas encore d'article) */
 .chro-soon { margin: 4rem auto 0; text-align: center; font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.4); display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
@@ -67,7 +59,8 @@ body[data-page="chroniques"] nav#site-nav.nav-solid {
 ══════════════════════════════ */
 @media (max-width: 1000px) {
   #journal { padding: 3rem 2rem 5rem; }
-  .chro-grid { grid-template-columns: repeat(2, 1fr); }
+  .chro-grid { grid-template-columns: 1fr; max-width: 640px; }
+  .chro-card { padding: 2.25rem 2.25rem 1.75rem; }
 }
 @media (max-width: 768px) {
   #hero { padding: 7rem 1.5rem 3rem; }
@@ -75,5 +68,4 @@ body[data-page="chroniques"] nav#site-nav.nav-solid {
   .hero-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
   .hero-right { text-align: left; }
   #journal { padding: 2rem 1.5rem 4rem; }
-  .chro-grid { grid-template-columns: 1fr; }
 }
