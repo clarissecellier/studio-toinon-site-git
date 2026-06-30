@@ -109,7 +109,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
    2. À PROPOS
 ══════════════════════════════ */
 #s-about{background:var(--base);justify-content:center;padding:2rem 1.5rem;gap:2rem;}
-.about-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--label);}
+.about-label{font-family:var(--mono);font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--label);}
 .about-title-m{
   font-family:var(--display);
   font-size:clamp(2.8rem,14vw,5rem);
@@ -168,12 +168,12 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 .arch-card-link{position:absolute;inset:0;z-index:2;-webkit-tap-highlight-color:transparent;}
 .arch-card-cta{
   font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--vive);margin-top:.85rem;
-  display:inline-flex;align-items:center;gap:.45rem;
+  text-transform:uppercase;color:var(--encre);background:var(--vive);margin-top:1rem;
+  display:inline-flex;align-self:flex-start;align-items:center;gap:.45rem;padding:.65rem 1.05rem;
 }
 .arch-num{
-  font-family:var(--mono);font-size:.65rem;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;
+  font-family:var(--mono);font-size:1.15rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;font-weight:700;
 }
 .arch-client{
   font-family:var(--display);font-size:clamp(2.5rem,13vw,4.5rem);
@@ -184,11 +184,9 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   font-family:var(--mono);font-size:.7rem;
   color:rgba(245,240,232,.65);letter-spacing:.08em;margin-bottom:.4rem;
 }
-.arch-status{
-  font-family:var(--mono);font-size:.55rem;letter-spacing:.15em;
-  text-transform:uppercase;color:rgba(245,240,232,.4);
-  display:flex;align-items:center;gap:.4rem;
-}
+.arch-tag{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--base);border:1px solid rgba(245,240,232,.4);padding:.4rem .65rem;margin-bottom:.55rem;}
+.arch-year{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:rgba(245,240,232,.55);margin-bottom:.2rem;}
+.arch-status{display:none;}
 .arch-status::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--vive);opacity:.7;}
 .arch-dots{
   position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);
@@ -253,7 +251,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
    5. PROTOCOLE — grille 2×3
 ══════════════════════════════ */
 #s-proto{background:var(--base);padding:2rem 1.5rem;justify-content:center;gap:1.25rem;}
-.proto-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--label);}
+.proto-label{font-family:var(--mono);font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--label);}
 .proto-title{font-family:var(--display);font-size:clamp(1.8rem,9vw,2.8rem);text-transform:uppercase;line-height:.9;color:var(--encre);}
 .proto-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:1px;
@@ -268,24 +266,24 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 .proto-card:active{background:rgba(26,26,26,.04);}
 .proto-num{font-family:var(--display);font-size:2.5rem;color:rgba(26,26,26,.08);line-height:1;}
 .proto-name{font-family:var(--display);font-size:.95rem;text-transform:uppercase;color:var(--encre);line-height:1;}
-.proto-tap{font-family:var(--mono);font-size:.48rem;letter-spacing:.15em;text-transform:uppercase;color:var(--kraft);margin-top:auto;}
+.proto-tap{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--encre);border:1px solid rgba(26,26,26,.28);padding:.32rem .6rem;margin-top:auto;align-self:flex-start;}
 
 /* ══════════════════════════════
    6. TARIFICATION
 ══════════════════════════════ */
-#s-tarif{background:var(--encre);padding:1.5rem;justify-content:flex-start;gap:1rem;}
+#s-tarif{background:var(--encre);padding:1.5rem;justify-content:center;align-items:stretch;text-align:left;gap:1.25rem;}
 .tarif-m-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--kraft);}
 .tarif-m-title{font-family:var(--display);font-size:clamp(1.9rem,9vw,2.8rem);text-transform:uppercase;line-height:.9;color:var(--base);}
 .tarif-m-cards{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.08);}
 .tarif-m-card{background:var(--encre);padding:1.5rem;}
 .tarif-m-tag{
-  font-family:var(--mono);font-size:.52rem;letter-spacing:.18em;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--encre);
-  background:var(--kraft);padding:.25rem .6rem;
-  display:inline-block;margin-bottom:.75rem;
+  background:var(--kraft);padding:.32rem .75rem;
+  display:inline-block;margin-bottom:.85rem;
 }
 .tarif-m-name{font-family:var(--display);font-size:1.6rem;text-transform:uppercase;color:var(--base);margin-bottom:.5rem;}
-.tarif-m-desc{font-family:var(--mono);font-size:.7rem;line-height:1.85;color:rgba(245,240,232,.5);}
+.tarif-m-desc{font-family:var(--mono);font-size:.82rem;line-height:1.8;color:rgba(245,240,232,.62);}
 .tarif-m-cta{
   display:flex;align-items:center;justify-content:center;gap:1rem;
   background:var(--vive);color:var(--encre);
@@ -399,7 +397,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 ══════════════════════════════ */
 .mini-footer{
   margin-top:auto;
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;align-items:center;justify-content:center;
   padding:.85rem 0 0;
   border-top:1px solid rgba(255,255,255,.12);
 }
@@ -421,8 +419,8 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
    7. CHRONIQUES (section finale)
 ══════════════════════════════ */
 #s-chroniques{background:var(--encre);justify-content:center;padding:2rem 1.5rem;gap:1.5rem;}
-.chro-m-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--kraft);display:flex;align-items:center;gap:.7rem;}
-.chro-m-badge{display:inline-flex;align-items:center;background:var(--vive);color:var(--encre);padding:.3rem .7rem;font-size:.55rem;letter-spacing:.15em;}
+.chro-m-label{font-family:var(--mono);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--kraft);display:flex;align-items:center;gap:.7rem;}
+.chro-m-badge{display:inline-flex;align-items:center;background:var(--vive);color:var(--encre);padding:.4rem .85rem;font-size:.72rem;letter-spacing:.15em;}
 .chro-m-title{font-family:var(--display);font-size:clamp(2.8rem,14vw,5rem);text-transform:uppercase;line-height:.92;color:var(--base);}
 .chro-m-title .vive{color:var(--vive);}
 .chro-m-sub{font-family:var(--mono);font-size:.8rem;line-height:1.9;color:rgba(245,240,232,.55);border-left:2px solid var(--vive);padding-left:1rem;max-width:34ch;}
@@ -488,7 +486,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
       <div class="arch-content">
         <div class="arch-num">N° 001</div>
         <div class="arch-client">Mont Saint Clair</div>
-        <div class="arch-meta">Création de site e-commerce — 2025</div>
+        <div class="arch-meta"><span class="arch-tag">Création de site e-commerce</span><span class="arch-year">2025</span></div>
         <div class="arch-status">Affaire résolue</div>
         <div class="arch-card-cta">Consulter le dossier →</div>
       </div>
@@ -500,7 +498,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
       <div class="arch-content">
         <div class="arch-num">N° 002</div>
         <div class="arch-client">Nîmes Métropole</div>
-        <div class="arch-meta">Design d'interface — 2024</div>
+        <div class="arch-meta"><span class="arch-tag">Design d'interface</span><span class="arch-year">2024</span></div>
         <div class="arch-status">Affaire résolue</div>
         <div class="arch-card-cta">Consulter le dossier →</div>
       </div>
@@ -512,7 +510,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
       <div class="arch-content">
         <div class="arch-num">N° 003</div>
         <div class="arch-client">SICTOM</div>
-        <div class="arch-meta">Motion design — 2023</div>
+        <div class="arch-meta"><span class="arch-tag">Motion design</span><span class="arch-year">2023</span></div>
         <div class="arch-status">Affaire résolue</div>
         <div class="arch-card-cta">Consulter le dossier →</div>
       </div>
@@ -524,7 +522,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
       <div class="arch-content">
         <div class="arch-num">N° 004</div>
         <div class="arch-client">TATA FINA</div>
-        <div class="arch-meta">Direction artistique &amp; merch — 2025</div>
+        <div class="arch-meta"><span class="arch-tag">Direction artistique &amp; merch</span><span class="arch-year">2025</span></div>
         <div class="arch-status">Affaire résolue</div>
         <div class="arch-card-cta">Consulter le dossier →</div>
       </div>
@@ -536,7 +534,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
       <div class="arch-content">
         <div class="arch-num">N° 005</div>
         <div class="arch-client">ACTION MINI GRUE</div>
-        <div class="arch-meta">Identité &amp; site vitrine — 2025</div>
+        <div class="arch-meta"><span class="arch-tag">Identité &amp; site vitrine</span><span class="arch-year">2025</span></div>
         <div class="arch-status">Affaire résolue</div>
         <div class="arch-card-cta">Consulter le dossier →</div>
       </div>
@@ -548,7 +546,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
       <div class="arch-content">
         <div class="arch-num">N° 006</div>
         <div class="arch-client">Keolis</div>
-        <div class="arch-meta">Identité de marque — 2024</div>
+        <div class="arch-meta"><span class="arch-tag">Identité de marque</span><span class="arch-year">2024</span></div>
         <div class="arch-status">Affaire résolue</div>
         <div class="arch-card-cta">Consulter le dossier →</div>
       </div>
@@ -641,14 +639,12 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
       <p class="tarif-m-desc">Exécution de bout en bout. Périmètre complet, livrables définis, calendrier fixe.</p>
     </div>
   </div>
-  <a href="contact-mobile.html" class="tarif-m-cta"><span>Soumettre un dossier</span><span>→</span></a>
 </section>
 
 <!-- ── 7. CHRONIQUES (section finale) ── -->
 <section class="screen" id="s-chroniques">
   <div class="chro-m-label">
     <span class="chro-m-badge">Chroniques</span>
-    Notes d'instruction
   </div>
   <div class="chro-m-title">Le dossier<br><span class="vive">continue.</span></div>
   <p class="chro-m-sub">Entre deux affaires, on prend des notes. Méthode, tendances, prises de position : ce que le studio pense du design, versé au débat public.</p>
@@ -657,7 +653,6 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
     <div class="mini-footer-rs">
       <a href="#">Ig</a><a href="#">Li</a><a href="#">Be</a>
     </div>
-    <a href="../mentions-legales.html" class="mini-footer-mentions">Mentions légales</a>
   </div>
 </section>
 

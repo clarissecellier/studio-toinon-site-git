@@ -87,7 +87,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 }
 .hero-m-badge{
   display:inline-flex;align-items:center;background:var(--vive);color:var(--encre);
-  padding:.3rem .75rem;font-size:.58rem;letter-spacing:.15em;
+  padding:.4rem .9rem;font-size:.74rem;letter-spacing:.15em;
 }
 .hero-m-title{
   font-family:var(--display);
@@ -107,8 +107,8 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 .dossier{background:var(--base);}
 .dossier.alt{background:#EDE8DC;}
 .dossier-index{
-  font-family:var(--mono);font-size:.62rem;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--label);margin-bottom:.9rem;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.9rem;font-weight:700;
 }
 .dossier-jur{
   font-family:var(--display);
@@ -121,13 +121,12 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
   text-transform:uppercase;line-height:.95;letter-spacing:-.01em;
   color:var(--encre);max-width:100%;overflow-wrap:break-word;margin-bottom:.85rem;
 }
-.dossier-type{
-  font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem;
-}
+.dossier-type{margin-bottom:0;}
+.dossier-tag{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--encre);border:1px solid rgba(26,26,26,.3);padding:.38rem .65rem;margin-bottom:.55rem;}
+.dossier-yr{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(26,26,26,.45);margin-bottom:1.4rem;}
 .dossier-desc{
-  font-family:var(--mono);font-size:.8rem;line-height:2;
-  color:rgba(26,26,26,.62);max-width:32ch;margin-bottom:1.6rem;
+  font-family:var(--mono);font-size:.88rem;line-height:1.95;
+  color:rgba(26,26,26,.72);max-width:32ch;margin-bottom:1.6rem;
 }
 .dossier-status{
   display:inline-flex;align-items:center;gap:.5rem;
@@ -237,7 +236,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
     <div class="dossier-index reveal">N&deg; 001</div>
     <div class="dossier-jur reveal d1">J.02</div>
     <h2 class="dossier-client reveal d1">Mont Saint Clair</h2>
-    <div class="dossier-type reveal d2">Création de site e-commerce &mdash; 2025</div>
+    <div class="dossier-type reveal d2"><span class="dossier-tag">Création de site e-commerce</span><span class="dossier-yr">2025</span></div>
     <p class="dossier-desc reveal d2">Un site e-commerce premium pour une marque de prêt-à-porter local et écoresponsable.</p>
     <a href="single-mobile.html" class="dossier-cta reveal d3"><span>Consulter le dossier</span><span>&rarr;</span></a>
   </section>
@@ -247,7 +246,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
     <div class="dossier-index reveal">N&deg; 002</div>
     <div class="dossier-jur reveal d1">J.02</div>
     <h2 class="dossier-client reveal d1">Nîmes Métropole</h2>
-    <div class="dossier-type reveal d2">Design d'interface &mdash; 2024</div>
+    <div class="dossier-type reveal d2"><span class="dossier-tag">Design d'interface</span><span class="dossier-yr">2024</span></div>
     <p class="dossier-desc reveal d2">Un portail économique qui réunit l'offre de services du territoire et connecte les entreprises aux bonnes ressources.</p>
     <a href="single-002-mobile.html" class="dossier-cta reveal d3"><span>Consulter le dossier</span><span>&rarr;</span></a>
   </section>
@@ -257,7 +256,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
     <div class="dossier-index reveal">N&deg; 003</div>
     <div class="dossier-jur reveal d1">J.03</div>
     <h2 class="dossier-client reveal d1">SICTOM</h2>
-    <div class="dossier-type reveal d2">Motion design &mdash; 2023</div>
+    <div class="dossier-type reveal d2"><span class="dossier-tag">Motion design</span><span class="dossier-yr">2023</span></div>
     <p class="dossier-desc reveal d2">Douze mini-films d'animation pour expliquer le tri aux 3-6 ans : Doli, le petit monstre qui avale les déchets et les recrache en objets tout neufs.</p>
     <a href="single-003-mobile.html" class="dossier-cta reveal d3"><span>Consulter le dossier</span><span>&rarr;</span></a>
   </section>
@@ -267,7 +266,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
     <div class="dossier-index reveal">N&deg; 004</div>
     <div class="dossier-jur reveal d1">J.01</div>
     <h2 class="dossier-client reveal d1">TATA FINA</h2>
-    <div class="dossier-type reveal d2">Direction artistique &amp; merch &mdash; 2025</div>
+    <div class="dossier-type reveal d2"><span class="dossier-tag">Direction artistique &amp; merch</span><span class="dossier-yr">2025</span></div>
     <p class="dossier-desc reveal d2">Une collection de merch (illustrations, tee-shirts, posters) pour l'événement d'été de l'association, à l'image du flamenco.</p>
     <a href="single-004-mobile.html" class="dossier-cta reveal d3"><span>Consulter le dossier</span><span>&rarr;</span></a>
   </section>
@@ -277,7 +276,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
     <div class="dossier-index reveal">N&deg; 005</div>
     <div class="dossier-jur reveal d1">J.01 &middot; J.02</div>
     <h2 class="dossier-client reveal d1">ACTION MINI GRUE</h2>
-    <div class="dossier-type reveal d2">Identité &amp; site vitrine &mdash; 2025</div>
+    <div class="dossier-type reveal d2"><span class="dossier-tag">Identité &amp; site vitrine</span><span class="dossier-yr">2025</span></div>
     <p class="dossier-desc reveal d2">Identité de marque et site vitrine pour un opérateur de mini grue araignée qui se lance à son compte.</p>
     <a href="single-005-mobile.html" class="dossier-cta reveal d3"><span>Consulter le dossier</span><span>&rarr;</span></a>
   </section>
@@ -287,7 +286,7 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
     <div class="dossier-index reveal">N&deg; 006</div>
     <div class="dossier-jur reveal d1">J.01</div>
     <h2 class="dossier-client reveal d1">Keolis</h2>
-    <div class="dossier-type reveal d2">Identité de marque &mdash; 2024</div>
+    <div class="dossier-type reveal d2"><span class="dossier-tag">Identité de marque</span><span class="dossier-yr">2024</span></div>
     <p class="dossier-desc reveal d2">Identité du nouveau réseau de transport « D'AQUI » de la ville d'Argelès-sur-Mer.</p>
     <a href="single-006-mobile.html" class="dossier-cta reveal d3"><span>Consulter le dossier</span><span>&rarr;</span></a>
   </section>
