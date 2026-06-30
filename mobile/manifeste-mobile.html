@@ -29,7 +29,7 @@
   --accent:#E8462A;--kraft:#C8B89A;--label:#8C7A56;
   --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
   --mono:'Courier New',Courier,monospace;
-  --bar:64px;
+  --bar:80px;
 }
 html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
 
@@ -161,15 +161,15 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 .tab-item{
   display:flex;flex-direction:column;align-items:center;gap:.3rem;
   padding:.5rem;text-decoration:none;
-  font-family:var(--mono);font-size:.42rem;letter-spacing:.1em;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;
   text-transform:uppercase;cursor:pointer;
   -webkit-tap-highlight-color:transparent;
-  background:none;border:none;color:rgba(245,240,232,.3);
+  background:none;border:none;color:rgba(245,240,232,.55);
   transition:color .2s;
 }
 .tab-item.active,.tab-item:not(.disabled):active{color:var(--vive);}
 .tab-item.disabled{opacity:.32;pointer-events:none;color:rgba(245,240,232,.3);}
-.tab-icon{font-size:1.15rem;line-height:1;}
+.tab-icon{font-size:1.6rem;line-height:1;}
 </style>
 </head>
 <body>
