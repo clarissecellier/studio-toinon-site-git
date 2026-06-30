@@ -35,8 +35,8 @@ nav#site-nav {
 .form-dossier-num::after { content: ''; flex: 1; height: 1px; background: rgba(26,26,26,0.1); }
 .form-group { margin-bottom: 0; border-top: 1px solid rgba(26,26,26,0.1); position: relative; }
 .form-group:last-of-type { border-bottom: 1px solid rgba(26,26,26,0.1); margin-bottom: 2.5rem; }
-.form-label { display: block; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(26,26,26,0.7); padding: 1.2rem 0 0; font-weight: 700; transition: color 0.2s; }
-.form-group:focus-within .form-label { color: var(--accent); }
+.form-label { display: inline-block; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--base); background: var(--accent); padding: 0.28rem 0.6rem; margin: 1.2rem 0 0.55rem; font-weight: 700; transition: background 0.2s, color 0.2s; }
+.form-group:focus-within .form-label { background: var(--encre); color: var(--base); }
 .form-input, .form-textarea, .form-select { display: block; width: 100%; background: transparent; border: none; outline: none; font-family: var(--mono); font-size: 0.92rem; color: var(--encre); padding: 0.5rem 0 1.2rem; resize: none; appearance: none; transition: color 0.2s; }
 .form-input::placeholder, .form-textarea::placeholder { color: rgba(26,26,26,0.35); }
 .form-textarea { min-height: 100px; }
