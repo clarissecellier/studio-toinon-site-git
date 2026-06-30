@@ -45,17 +45,17 @@ nav#site-nav {
 .nav-center { display: flex; border: 1px solid rgba(255,255,255,0.2); transition: border-color 0.35s; }
 .nav-center a {
   display: flex; align-items: center; gap: 0.6rem;
-  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em;
+  font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.22em;
   text-transform: uppercase; color: var(--base); text-decoration: none;
   padding: 0.65rem 1.4rem; border-right: 1px solid rgba(255,255,255,0.15);
   transition: background 0.2s, color 0.35s, border-color 0.35s;
 }
 .nav-center a:last-child { border-right: none; }
 .nav-center a:hover { background: var(--base); color: var(--encre); }
-.nav-center a .nav-num { font-size: 0.48rem; color: var(--accent); letter-spacing: 0.1em; flex-shrink: 0; }
+.nav-center a .nav-num { font-size: 0.9rem; color: var(--accent); letter-spacing: 0.1em; flex-shrink: 0; }
 .nav-right { display: flex; justify-content: flex-end; }
 .nav-cta {
-  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em;
+  font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.22em;
   text-transform: uppercase; color: var(--encre); text-decoration: none;
   background: var(--vive); border: 1px solid var(--vive); padding: 0.65rem 1.25rem;
   transition: background 0.2s, color 0.2s, border-color 0.2s; cursor: none;
@@ -81,9 +81,9 @@ footer#site-footer {
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 .footer-logo { height: 16px; opacity: 0.4; }
-.footer-services, .footer-copy { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(200,184,154,0.5); }
+.footer-services, .footer-copy { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.1em; color: rgba(200,184,154,0.5); }
 .footer-mentions {
-  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em;
+  font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.1em;
   color: rgba(200,184,154,0.4); text-decoration: none; transition: color 0.2s;
 }
 .footer-mentions:hover { color: var(--vive); }
@@ -91,7 +91,7 @@ footer#site-footer.light .footer-mentions { color: rgba(26,26,26,0.35); }
 footer#site-footer.light .footer-mentions:hover { color: var(--accent); }
 .footer-social { display: flex; align-items: center; gap: 1.25rem; }
 .footer-social-link {
-  font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.18em;
+  font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.18em;
   text-transform: uppercase; text-decoration: none; cursor: none;
   color: rgba(200,184,154,0.85); transition: color 0.2s;
 }
@@ -115,7 +115,7 @@ footer#site-footer.light .footer-mentions:hover { color: var(--accent); }
 .tab-item {
   display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
   padding: 0.5rem; text-decoration: none;
-  font-family: var(--mono); font-size: 0.42rem; letter-spacing: 0.1em;
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em;
   text-transform: uppercase; cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   background: none; border: none; color: rgba(245,240,232,0.3);

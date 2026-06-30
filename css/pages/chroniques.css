@@ -24,12 +24,12 @@ body[data-page="chroniques"] nav#site-nav.nav-solid {
 ══════════════════════════════ */
 #hero { background: transparent; padding: 12rem 3.5rem 5rem; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .hero-inner { display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 4; }
-.hero-eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.55); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-.hero-eyebrow-badge { background: var(--vive); color: var(--encre); padding: 0.28rem 0.7rem; font-size: 0.55rem; letter-spacing: 0.15em; }
+.hero-eyebrow { font-family: var(--mono); font-size: 1rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.55); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+.hero-eyebrow-badge { background: var(--vive); color: var(--encre); padding: 0.28rem 0.7rem; font-size: 1rem; letter-spacing: 0.15em; }
 .hero-title { font-family: var(--display); font-size: clamp(4rem, 9vw, 8.5rem); text-transform: uppercase; line-height: 0.88; letter-spacing: -0.02em; color: var(--base); }
 .hero-title .outline { -webkit-text-stroke: 1.5px var(--base); color: transparent; }
 .hero-right { text-align: right; padding-bottom: 0.6rem; }
-.hero-lede { font-family: var(--mono); font-size: 0.78rem; line-height: 2; color: rgba(245,240,232,0.55); max-width: 30ch; border-left: 2px solid var(--vive); padding-left: 1rem; }
+.hero-lede { font-family: var(--mono); font-size: 1rem; line-height: 2; color: rgba(245,240,232,0.55); max-width: 30ch; border-left: 2px solid var(--vive); padding-left: 1rem; }
 
 /* ══════════════════════════════
    GRILLE (structure Archives, 3 colonnes, fond noir)
@@ -49,17 +49,17 @@ body[data-page="chroniques"] nav#site-nav.nav-solid {
 
 .chro-card-body { padding: 1.75rem 2rem 1rem; flex: 1; }
 .chro-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-.chro-card-num { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
-.chro-card-cat { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.6); border: 1px solid rgba(245,240,232,0.25); padding: 0.2rem 0.5rem; }
+.chro-card-num { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+.chro-card-cat { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.6); border: 1px solid rgba(245,240,232,0.25); padding: 0.3rem 0.6rem; }
 .chro-card-title { font-family: var(--display); font-size: 1.8rem; text-transform: uppercase; color: var(--base); line-height: 1; letter-spacing: -0.01em; margin-bottom: 0.5rem; transition: color 0.25s; }
 .chro-card:hover .chro-card-title { color: var(--vive); }
-.chro-card-type { font-family: var(--mono); font-size: 0.72rem; color: rgba(245,240,232,0.7); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
-.chro-card-desc { font-family: var(--mono); font-size: 0.72rem; line-height: 1.9; color: rgba(245,240,232,0.6); }
-.chro-card-status { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.5); padding: 0 2rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.chro-card-type { font-family: var(--mono); font-size: 0.9rem; color: rgba(245,240,232,0.7); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+.chro-card-desc { font-family: var(--mono); font-size: 1rem; line-height: 1.9; color: rgba(245,240,232,0.6); }
+.chro-card-status { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.5); padding: 0 2rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
 .chro-card-status::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--vive); opacity: 0.6; }
 
 /* État « en cours d'instruction » (placeholder, pas encore d'article) */
-.chro-soon { margin: 4rem auto 0; text-align: center; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.4); display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
+.chro-soon { margin: 4rem auto 0; text-align: center; font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.4); display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
 .chro-soon::before, .chro-soon::after { content: ''; height: 1px; width: 3rem; background: rgba(245,240,232,0.2); }
 
 /* ══════════════════════════════

@@ -34,13 +34,13 @@ body[data-page="archives"] nav#site-nav.on-light {
 ══════════════════════════════ */
 #hero { background: transparent; padding: 12rem 3.5rem 5rem; position: relative; overflow: hidden; border-bottom: 1px solid rgba(26,26,26,0.1); }
 .hero-inner { display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 4; }
-.hero-eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(26,26,26,0.55); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-.hero-eyebrow-badge { background: var(--vive); color: var(--encre); padding: 0.28rem 0.7rem; font-size: 0.55rem; letter-spacing: 0.15em; }
+.hero-eyebrow { font-family: var(--mono); font-size: 1rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(26,26,26,0.55); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+.hero-eyebrow-badge { background: var(--vive); color: var(--encre); padding: 0.28rem 0.7rem; font-size: 1rem; letter-spacing: 0.15em; }
 .hero-title { font-family: var(--display); font-size: clamp(4rem, 9vw, 8.5rem); text-transform: uppercase; line-height: 0.88; letter-spacing: -0.02em; color: var(--encre); }
 .hero-title .outline { -webkit-text-stroke: 1.5px var(--encre); color: transparent; }
 .hero-right { text-align: right; padding-bottom: 0.5rem; }
 .hero-count { font-family: var(--display); font-size: clamp(3rem, 5vw, 5rem); text-transform: uppercase; color: rgba(26,26,26,0.08); line-height: 1; }
-.hero-count-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(26,26,26,0.35); margin-top: 0.5rem; }
+.hero-count-label { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(26,26,26,0.35); margin-top: 0.5rem; }
 
 /* ══════════════════════════════
    FILTRES
@@ -50,9 +50,9 @@ body[data-page="archives"] nav#site-nav.on-light {
   padding: 1.5rem 3.5rem; border-bottom: 1px solid rgba(26,26,26,0.1);
   display: flex; align-items: center; gap: 0; position: sticky; top: 5.25rem; z-index: 100;
 }
-.filtre-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(26,26,26,0.5); margin-right: 1.5rem; flex-shrink: 0; }
+.filtre-label { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(26,26,26,0.5); margin-right: 1.5rem; flex-shrink: 0; }
 .filtres-list { display: flex; gap: 0; list-style: none; border: 1px solid rgba(26,26,26,0.18); }
-.filtre-btn { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,26,26,0.55); background: transparent; border: none; border-right: 1px solid rgba(26,26,26,0.12); padding: 0.6rem 1.2rem; cursor: none; transition: background 0.2s, color 0.2s; }
+.filtre-btn { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,26,26,0.55); background: transparent; border: none; border-right: 1px solid rgba(26,26,26,0.12); padding: 0.6rem 1.2rem; cursor: none; transition: background 0.2s, color 0.2s; }
 .filtres-list li:last-child .filtre-btn { border-right: none; }
 .filtre-btn:hover { color: var(--encre); background: rgba(26,26,26,0.05); }
 .filtre-btn.active { background: var(--encre); color: var(--base); }
@@ -72,12 +72,12 @@ body[data-page="archives"] nav#site-nav.on-light {
 .archive-card-cta { font-family: var(--display); font-size: 1rem; text-transform: uppercase; color: var(--vive); letter-spacing: 0.05em; }
 .archive-card-body { padding: 1.75rem 2rem 1rem; flex: 1; }
 .archive-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-.archive-card-num { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
-.archive-card-jur { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(26,26,26,0.6); border: 1px solid rgba(26,26,26,0.25); padding: 0.2rem 0.5rem; }
+.archive-card-num { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+.archive-card-jur { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(26,26,26,0.6); border: 1px solid rgba(26,26,26,0.25); padding: 0.3rem 0.6rem; }
 .archive-card-client { font-family: var(--display); font-size: 1.8rem; text-transform: uppercase; color: var(--encre); line-height: 1; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
-.archive-card-type { font-family: var(--mono); font-size: 0.72rem; color: rgba(26,26,26,0.7); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
-.archive-card-desc { font-family: var(--mono); font-size: 0.72rem; line-height: 1.9; color: rgba(26,26,26,0.65); }
-.archive-card-status { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(26,26,26,0.5); padding: 0 2rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.archive-card-type { font-family: var(--mono); font-size: 0.9rem; color: rgba(26,26,26,0.7); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+.archive-card-desc { font-family: var(--mono); font-size: 1rem; line-height: 1.9; color: rgba(26,26,26,0.65); }
+.archive-card-status { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(26,26,26,0.5); padding: 0 2rem 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
 .archive-card-status::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--encre); opacity: 0.4; }
 
 /* Responsive */

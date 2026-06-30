@@ -7,12 +7,12 @@
   padding: 0 3.5rem 5rem; position: relative; overflow: hidden;
 }
 #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.04; mix-blend-mode: screen; }
-.hero-m-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--kraft); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
-.hero-m-badge { display: inline-flex; align-items: center; background: var(--vive); color: var(--encre); padding: 0.3rem 0.75rem; font-size: 0.58rem; letter-spacing: 0.15em; }
+.hero-m-eyebrow { font-family: var(--mono); font-size: 1rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--kraft); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+.hero-m-badge { display: inline-flex; align-items: center; background: var(--vive); color: var(--encre); padding: 0.3rem 0.75rem; font-size: 1rem; letter-spacing: 0.15em; }
 .hero-m-title { font-family: var(--display); font-size: clamp(5rem, 11vw, 10rem); text-transform: uppercase; line-height: 0.88; letter-spacing: -0.02em; color: var(--base); max-width: 900px; }
 .hero-m-title .outline { -webkit-text-stroke: 1.5px var(--base); color: transparent; }
 .hero-m-bottom { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 3rem; }
-.hero-m-sub { font-family: var(--mono); font-size: 0.72rem; color: rgba(245,240,232,0.5); line-height: 1.9; max-width: 360px; font-style: italic; }
+.hero-m-sub { font-family: var(--mono); font-size: 1rem; color: rgba(245,240,232,0.5); line-height: 1.9; max-width: 360px; font-style: italic; }
 
 /* ══════════════════════════════
    CORPS MANIFESTE
@@ -20,20 +20,20 @@
 #manifeste-body { background: var(--base); }
 .manifeste-intro { padding: 8rem 3.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
 .manifeste-intro-left { position: sticky; top: 8rem; }
-.manifeste-num { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--label); margin-bottom: 1.5rem; }
+.manifeste-num { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--label); margin-bottom: 1.5rem; }
 .manifeste-pull { font-family: var(--display); font-size: clamp(2rem, 3.5vw, 3rem); text-transform: uppercase; line-height: 0.95; color: var(--encre); }
 .manifeste-pull .dot-accent { color: var(--accent); }
-.manifeste-intro-right p { font-family: var(--mono); font-size: 0.78rem; line-height: 2.1; color: rgba(26,26,26,0.65); margin-bottom: 1.5rem; }
+.manifeste-intro-right p { font-family: var(--mono); font-size: 1rem; line-height: 2.1; color: rgba(26,26,26,0.65); margin-bottom: 1.5rem; }
 .manifeste-intro-right p strong { color: var(--encre); font-weight: normal; }
 .manifeste-beliefs { padding: 0 3.5rem; }
 .belief { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.25rem; padding: 4rem 0; border-top: 1px solid rgba(26,26,26,0.08); }
 .belief:first-child { border-top: none; padding-top: 6rem; }
 .belief:last-child { border-bottom: 1px solid rgba(26,26,26,0.08); }
-.belief-index { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--label); }
+.belief-index { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--label); }
 .belief-title { font-family: var(--display); font-size: clamp(2rem, 3.5vw, 3.2rem); text-transform: uppercase; color: var(--encre); line-height: 0.95; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
 .belief-title .vive { color: var(--vive); }
 .belief-title .accent { color: var(--accent); }
-.belief-body { font-family: var(--mono); font-size: 0.78rem; line-height: 2.1; color: rgba(26,26,26,0.85); max-width: 680px; margin: 0 auto; }
+.belief-body { font-family: var(--mono); font-size: 1rem; line-height: 2.1; color: rgba(26,26,26,0.85); max-width: 680px; margin: 0 auto; }
 
 /* ══════════════════════════════
    VERDICT
@@ -41,7 +41,7 @@
 #verdict { background: var(--encre); padding: 10rem 3.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; overflow: hidden; }
 .verdict-phrase { font-family: var(--display); font-size: clamp(4rem, 9vw, 8rem); text-transform: uppercase; line-height: 0.9; letter-spacing: -0.02em; color: var(--base); max-width: 800px; }
 .verdict-phrase .vive { color: var(--vive); }
-.verdict-sub { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; font-style: italic; color: var(--kraft); margin-top: 3rem; }
+.verdict-sub { font-family: var(--mono); font-size: 1rem; letter-spacing: 0.08em; font-style: italic; color: var(--kraft); margin-top: 3rem; }
 .verdict-cta {
   margin-top: 4rem; display: inline-flex; align-items: center; gap: 1.25rem;
   background: var(--vive); color: var(--encre); font-family: var(--display); font-size: 1.1rem;
