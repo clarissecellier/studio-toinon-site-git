@@ -41,6 +41,11 @@ window.addEventListener('includes-ready', function () {
       setFeedback('Adresse email invalide.', false);
       return;
     }
+    var rgpd = form.querySelector('#rgpd');
+    if (rgpd && !rgpd.checked) {
+      setFeedback('Cochez la case pour accepter le traitement de vos données.', false);
+      return;
+    }
 
     var original = btnLabel ? btnLabel.textContent : '';
     if (btn) btn.disabled = true;

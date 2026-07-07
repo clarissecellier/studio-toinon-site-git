@@ -50,6 +50,16 @@ nav#site-nav {
 .jur-option:hover .jur-option-label { border-color: rgba(26,26,26,0.4); color: var(--encre); }
 .jur-option input:checked + .jur-option-label { background: var(--encre); color: var(--base); border-color: var(--encre); }
 .jur-option input:checked + .jur-option-label .jur-option-num { color: var(--vive); }
+/* Case RGPD */
+.form-rgpd { display: flex; align-items: flex-start; gap: 0.65rem; margin-top: 1.8rem; cursor: none; max-width: 420px; }
+.form-rgpd input { display: none; }
+.form-rgpd-box { flex-shrink: 0; width: 18px; height: 18px; border: 1px solid rgba(26,26,26,0.35); margin-top: 1px; position: relative; transition: background 0.2s, border-color 0.2s; }
+.form-rgpd:hover .form-rgpd-box { border-color: rgba(26,26,26,0.6); }
+.form-rgpd input:checked + .form-rgpd-box { background: var(--encre); border-color: var(--encre); }
+.form-rgpd input:checked + .form-rgpd-box::after { content: ''; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid var(--vive); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.form-rgpd-text { font-family: var(--mono); font-size: 0.62rem; line-height: 1.7; color: rgba(26,26,26,0.55); }
+.form-rgpd-text a { color: var(--accent); text-decoration: underline; }
+
 .form-bottom { display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
 .form-mention { font-family: var(--mono); font-size: 0.55rem; color: rgba(26,26,26,0.35); line-height: 1.7; max-width: 260px; }
 .form-submit {

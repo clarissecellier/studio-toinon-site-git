@@ -207,12 +207,74 @@
         <span class="sg-specimen-caption">Barre de filtres &middot; <code>#filtres</code></span>
       </div>
     </div>
+
+    <!-- Carte chronique -->
+    <p class="sg-section-intro" style="margin-top:5rem">Carte &laquo; chronique &raquo; du blog : num&eacute;ro en accent, cat&eacute;gorie encadr&eacute;e, titre display, extrait mono, pied avec date et lien. Sur fond sombre. Survolez.</p>
+    <div class="sg-grid">
+      <div class="sg-specimen on-dark">
+        <a href="#" class="sg-chro-card">
+          <div class="sg-chro-head"><span class="sg-chro-num">N&deg; 001</span><span class="sg-chro-cat">Marque</span></div>
+          <h3 class="sg-chro-title">Un logo ne fait pas une marque.</h3>
+          <p class="sg-chro-desc">On vous a vendu un symbole. Mais une marque, c'est ce qui reste quand on retire le logo.</p>
+          <div class="sg-chro-foot"><span class="sg-chro-meta">23 juin 2026 &middot; ~ 4 min</span><span class="sg-chro-cta">Lire &rarr;</span></div>
+        </a>
+        <span class="sg-specimen-caption">Carte chronique &middot; <code>.chro-card</code></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FORMULAIRE ══ -->
+  <section id="sg-form" class="sg-section light">
+    <div class="sg-section-head">
+      <span class="sg-num">05 &mdash; Pi&egrave;ce</span>
+      <h2 class="sg-section-title">Le <span class="accent">formulaire</span></h2>
+    </div>
+    <p class="sg-section-intro">Le dossier d'ouverture : libell&eacute;s en badge rouge, champs pos&eacute;s sur filets fins, cases juridiction, consentement RGPD et bouton d'envoi. Chaque champ est une question de l'instruction.</p>
+
+    <div class="sg-grid">
+      <div class="sg-specimen" style="gap:1.5rem">
+        <form class="sg-form-demo" onsubmit="return false">
+          <div class="sg-field">
+            <label class="sg-form-label" for="sg-inp">Votre identit&eacute;</label>
+            <input class="sg-form-input" id="sg-inp" type="text" placeholder="Nom, pr&eacute;nom ou raison sociale">
+          </div>
+          <div class="sg-field">
+            <label class="sg-form-label" for="sg-txt">Description du dossier</label>
+            <textarea class="sg-form-input sg-form-textarea" id="sg-txt" placeholder="D&eacute;crivez votre affaire&hellip;"></textarea>
+          </div>
+        </form>
+        <span class="sg-specimen-caption">Libell&eacute; + champ &middot; <code>.form-label / .form-input</code></span>
+      </div>
+
+      <div class="sg-specimen">
+        <div class="sg-jur-options">
+          <span class="sg-jur-option active"><span class="sg-jur-num">J.01</span>Marque</span>
+          <span class="sg-jur-option"><span class="sg-jur-num">J.02</span>Interface</span>
+          <span class="sg-jur-option"><span class="sg-jur-num">J.03</span>Motion</span>
+        </div>
+        <span class="sg-specimen-caption">Cases juridiction &middot; s&eacute;lectionn&eacute;e / au repos &middot; <code>.jur-option</code></span>
+      </div>
+    </div>
+
+    <div class="sg-grid" style="margin-top:2rem">
+      <div class="sg-specimen">
+        <div style="display:flex;flex-direction:column;gap:1.1rem">
+          <span class="sg-rgpd checked"><span class="sg-rgpd-box"></span><span class="sg-rgpd-text">J'accepte que mes donn&eacute;es soient utilis&eacute;es pour traiter ma demande. <a href="mentions-legales.html">Mentions l&eacute;gales</a></span></span>
+          <span class="sg-rgpd"><span class="sg-rgpd-box"></span><span class="sg-rgpd-text">&Eacute;tat d&eacute;coch&eacute; &mdash; l'envoi est bloqu&eacute; tant que la case n'est pas coch&eacute;e.</span></span>
+        </div>
+        <span class="sg-specimen-caption">Case RGPD &middot; coch&eacute;e / d&eacute;coch&eacute;e &middot; <code>.form-rgpd</code></span>
+      </div>
+      <div class="sg-specimen">
+        <button class="sg-btn-submit"><span>Soumettre le dossier</span><span>&rarr;</span></button>
+        <span class="sg-specimen-caption">Bouton d'envoi &middot; <code>.form-submit</code></span>
+      </div>
+    </div>
   </section>
 
   <!-- ══ PRINCIPES ══ -->
   <section id="sg-rules" class="sg-section dark">
     <div class="sg-section-head">
-      <span class="sg-num">05 &mdash; Pi&egrave;ce</span>
+      <span class="sg-num">06 &mdash; Pi&egrave;ce</span>
       <h2 class="sg-section-title">R&egrave;gles du <span class="vive">dossier</span></h2>
     </div>
     <div class="sg-rules">

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Le brief est un interrogatoire &mdash; Chroniques</title>
+  <meta name="description" content="Un bon brief ne se remplit pas, il se conduit. Cinq questions pour extraire le vrai probl&egrave;me avant de dessiner la moindre solution. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <link rel="canonical" href="https://studio-toinon.fr/chronique-003.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='%23E8462A'/%3E%3C/svg%3E">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Studio Toinon">
+  <meta property="og:title" content="Le brief est un interrogatoire &mdash; Studio Toinon">
+  <meta property="og:description" content="Un bon brief ne se remplit pas, il se conduit. Cinq questions pour extraire le vrai probl&egrave;me avant de dessiner la moindre solution. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <meta property="og:url" content="https://studio-toinon.fr/chronique-003.html">
+  <meta property="og:image" content="https://studio-toinon.fr/assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Le brief est un interrogatoire &mdash; Studio Toinon">
+  <meta name="twitter:description" content="Un bon brief ne se remplit pas, il se conduit. Cinq questions pour extraire le vrai probl&egrave;me avant de dessiner la moindre solution. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <meta name="twitter:image" content="https://studio-toinon.fr/assets/images/og-image.png">
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;--label:#8C7A56;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:80px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+/* Article = lecture continue (pas de scroll-snap) */
+#app{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  background:#EDE8DC;
+}
+#app::-webkit-scrollbar{display:none}
+
+/* ── HERO ── */
+#hero{background:var(--encre);padding:3.5rem 1.5rem 2.5rem;}
+.breadcrumb{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.5);display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;}
+.breadcrumb a{color:rgba(245,240,232,.5);text-decoration:none;}
+.breadcrumb .sep{opacity:.4;}
+.h-cat{display:inline-flex;background:var(--vive);color:var(--encre);font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .7rem;margin-bottom:1.25rem;}
+.h-title{font-family:var(--display);font-size:clamp(2.1rem,10vw,3rem);text-transform:uppercase;line-height:.95;letter-spacing:-.02em;color:var(--base);}
+.h-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.75rem;}
+.h-meta-item{display:flex;flex-direction:column;gap:.3rem;}
+.h-meta-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4);}
+.h-meta-val{font-family:var(--mono);font-size:.72rem;color:var(--kraft);}
+
+/* ── CORPS ── */
+#corps{padding:2.5rem 1.5rem 3rem;}
+.lede{font-family:var(--mono);font-size:.92rem;line-height:1.85;font-style:italic;color:var(--encre);border-left:2px solid var(--vive);padding-left:1rem;margin-bottom:2.5rem;}
+.corps p{font-family:var(--mono);font-size:.82rem;line-height:2;color:rgba(26,26,26,.8);margin-bottom:1.4rem;}
+.corps p strong{color:var(--encre);}
+.corps h2{font-family:var(--display);font-size:clamp(1.4rem,7vw,1.9rem);text-transform:uppercase;line-height:1;color:var(--encre);margin:2.5rem 0 1.1rem;}
+.corps blockquote{margin:2.2rem 0;padding-left:1rem;border-left:3px solid var(--accent);}
+.corps blockquote p{font-family:var(--display);font-size:clamp(1.3rem,6vw,1.7rem);line-height:1.15;text-transform:uppercase;color:var(--encre);font-style:normal;}
+.corps .vive{color:var(--accent);}
+.sign{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(26,26,26,.14);font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(26,26,26,.5);}
+
+/* ── RETOUR ── */
+.back{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.75rem 1.5rem 3rem;border-top:1px solid rgba(26,26,26,.12);text-decoration:none;}
+.back-dir{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+.back-name{font-family:var(--display);font-size:1.4rem;text-transform:uppercase;color:var(--encre);line-height:1;}
+
+/* ── TAB BAR ── */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;height:var(--bar);
+  background:var(--encre);border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;
+  padding:0 .5rem;padding-bottom:env(safe-area-inset-bottom);z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  -webkit-tap-highlight-color:transparent;background:none;border:none;color:rgba(245,240,232,.55);transition:color .2s;
+}
+.tab-item:active{color:var(--vive);}
+.tab-icon{font-size:1.6rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <section id="hero">
+    <div class="breadcrumb">
+      <a href="chroniques-mobile.html">Chroniques</a>
+      <span class="sep">&mdash;</span>
+      <span>Note N&deg; 003</span>
+    </div>
+    <span class="h-cat">Méthode</span>
+    <h1 class="h-title">Le brief est un interrogatoire.</h1>
+    <div class="h-meta">
+      <div class="h-meta-item"><span class="h-meta-label">Publié le</span><span class="h-meta-val">7 juillet 2026</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Rubrique</span><span class="h-meta-val">Méthode</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Lecture</span><span class="h-meta-val">~ 4 min</span></div>
+    </div>
+  </section>
+
+  <div id="corps">
+    <p class="lede">Le client est arrivé avec sa solution. « Je veux un logo bleu, moderne, qui inspire confiance. » Il a même une référence, un concurrent qu'il admire, un mood board et une couleur que sa femme trouve jolie. Il n'a pas encore posé son problème. Il est déjà en train de commander la réponse.</p>
+
+    <article class="corps">
+
+      <h2>L'affaire</h2>
+      <p>C'est le cas le plus courant. Et le plus dangereux.</p>
+      <p>Un brief mal conduit produit un bon travail pour la mauvaise raison. On peut livrer un logo impeccable qui ne résout rien. On peut sortir un site parfait qui parle aux mauvaises personnes. La technique était au niveau. Le résultat, non.</p>
+      <p>Ce n'est pas la faute du client. Il ne sait pas formuler un problème de design, ce n'est pas son métier. Sa demande est sincère, mais elle arrive avec plusieurs couches d'interprétation déjà intégrées, souvent mal posées. Il a traduit son besoin en solution avant même d'en parler.</p>
+      <p>Le brief n'est pas un formulaire à remplir. C'est une instruction à ouvrir. Et c'est le designer qui l'ouvre.</p>
+
+      <h2>L'enquête</h2>
+      <p>On a cinq questions. Pas plus, pas moins. Elles changent tout.</p>
+      <p><strong>À qui ?</strong> Pas « à nos clients ». À qui, précisément ? Quel profil, quel niveau de confiance déjà acquis, quel contexte de découverte de la marque ? Plus la cible est floue, plus le design l'est aussi.</p>
+      <p><strong>Contre qui ?</strong> La concurrence est le meilleur révélateur de la distinction possible. Si on ne sait pas ce qui existe, on ne sait pas ce qu'on peut éviter de répéter. Un logo « bleu moderne » dans un secteur saturé de bleu moderne, c'est une erreur de positionnement, pas de goût.</p>
+      <p><strong>Que se passe-t-il si on ne fait rien ?</strong> Cette question révèle l'urgence réelle. Si la réponse est « pas grand-chose », la commande n'est pas prioritaire. Si la réponse est « on perd des clients chaque mois », le projet a un vrai moteur. On adapte le niveau d'ambition en conséquence.</p>
+      <p><strong>Qu'est-ce qu'on ne veut surtout pas ?</strong> Le refus est souvent plus informatif que le désir. « Surtout pas mignon », « surtout pas austère », « surtout pas le même ton que notre ancienne identité » : ces contraintes négatives dessinent la zone de travail plus vite que n'importe quelle liste de mots-clés positifs.</p>
+      <p><strong>Comment vous définirez-vous le succès dans six mois ?</strong> Cette dernière question sort le projet de l'esthétique pour entrer dans la mesure. Et elle engage le client sur ce qui compte vraiment.</p>
+
+      <blockquote><p>Un bon brief n'est pas celui que le client a préparé. <span class="vive">C'est celui que le designer a extrait.</span></p></blockquote>
+
+      <p>Ces cinq questions ne remplacent pas l'écoute, elles la structurent. Elles permettent de distinguer ce que le client veut de ce dont il a besoin. Ce n'est pas la même chose. Presque jamais.</p>
+
+      <h2>Le verdict</h2>
+      <p>Le premier rendez-vous décide du résultat. Pas le deuxième, pas la présentation des maquettes. Le brief.</p>
+      <p>Un designer qui écoute sans instruire produit ce qu'on lui a demandé. Un designer qui instruit d'abord produit ce qui sera juste. La différence se voit au deuxième client : l'un revient avec des retouches infinies, l'autre revient avec un nouveau projet.</p>
+      <p>Le brief n'est pas rempli par le client. Il est conduit par le designer. C'est de la responsabilité, pas de l'autorité.</p>
+      <p>C'est dans cet ordre qu'on travaille ici. D'abord les questions. Ensuite les idées.</p>
+
+      <div class="sign">&mdash; Studio Toinon</div>
+    </article>
+  </div>
+
+  <a href="chroniques-mobile.html" class="back">
+    <span class="back-dir">&larr; Toutes les chroniques</span>
+    <span class="back-name">Le journal</span>
+  </a>
+
+</div>
+
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives-mobile.html" class="tab-item"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <a href="contact-mobile.html" class="tab-item"><span class="tab-icon">✉</span><span>Contact</span></a>
+</nav>
+
+<script src="../js/consent.js"></script>
+</body>
+</html>
