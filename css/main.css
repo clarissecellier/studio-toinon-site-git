@@ -78,10 +78,20 @@ nav#site-nav.on-light .nav-burger span { background: var(--encre); }
 footer#site-footer {
   background: var(--encre); padding: 2rem 3.5rem;
   display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 0.75rem 2rem;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 .footer-logo { height: 16px; opacity: 0.4; }
 .footer-services, .footer-copy { font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.1em; color: rgba(200,184,154,0.5); }
+.footer-copy { font-size: 0.78rem; }
+.footer-local { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 1.25rem; }
+.footer-local a {
+  font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em;
+  color: rgba(200,184,154,0.45); text-decoration: none; transition: color 0.2s;
+}
+.footer-local a:hover { color: var(--vive); }
+footer#site-footer.light .footer-local a { color: rgba(26,26,26,0.4); }
+footer#site-footer.light .footer-local a:hover { color: var(--accent); }
 .footer-mentions {
   font-family: var(--mono); font-size: 0.9rem; letter-spacing: 0.1em;
   color: rgba(200,184,154,0.4); text-decoration: none; transition: color 0.2s;

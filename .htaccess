@@ -1,0 +1,5 @@
+# Une seule adresse canonique : https://studio-toinon.fr (sans www)
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\. [NC,OR]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://studio-toinon.fr/$1 [R=301,L]

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://studio-toinon.fr/</loc><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://studio-toinon.fr/</loc><lastmod>2026-09-24</lastmod><priority>1.0</priority></url>
   <url><loc>https://studio-toinon.fr/manifeste.html</loc><lastmod>2026-06-26</lastmod></url>
+  <url><loc>https://studio-toinon.fr/site-internet-gard.html</loc><lastmod>2026-09-24</lastmod><priority>0.9</priority></url>
+  <url><loc>https://studio-toinon.fr/identite-visuelle-gard.html</loc><lastmod>2026-09-24</lastmod><priority>0.9</priority></url>
   <url><loc>https://studio-toinon.fr/archives.html</loc><lastmod>2026-06-26</lastmod></url>
   <url><loc>https://studio-toinon.fr/chroniques.html</loc><lastmod>2026-09-03</lastmod></url>
   <url><loc>https://studio-toinon.fr/chronique-001.html</loc><lastmod>2026-06-26</lastmod></url>

@@ -237,7 +237,7 @@ body[data-page="index"] nav#site-nav.nav-solid.on-light {
 .jur-name { font-family: var(--display); font-size: clamp(2.2rem, 4.5vw, 4rem); text-transform: uppercase; color: var(--base); line-height: 1; letter-spacing: -0.01em; transition: letter-spacing 0.4s; }
 .jur-arrow { font-size: 1.3rem; color: var(--vive); opacity: 0; transition: transform 0.3s, opacity 0.3s, color 0.3s; }
 .jur-detail { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.16,1,0.3,1); }
-.jur-detail.open { max-height: 400px; }
+.jur-detail.open { max-height: 520px; }
 .jur-detail-inner { padding: 2.5rem 3.5rem 3rem calc(3.5rem + 160px + 2rem); border-top: 1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); }
 .jur-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .jur-list li {
@@ -247,6 +247,13 @@ body[data-page="index"] nav#site-nav.nav-solid.on-light {
   transition: border-color 0.25s, color 0.25s, background 0.25s;
 }
 .jur-list li:hover { border-color: var(--accent); color: var(--base); background: rgba(212,232,66,0.06); }
+.jur-more {
+  display: inline-block; margin-top: 1.5rem;
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em;
+  color: var(--vive); text-decoration: none; border-bottom: 1px solid rgba(212,232,66,0.3);
+  padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+}
+.jur-more:hover { color: var(--base); border-color: var(--base); }
 
 /* ══════════════════════════════
    PROTOCOLE

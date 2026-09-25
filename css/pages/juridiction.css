@@ -1,0 +1,148 @@
+/* ══════════════════════════════
+   JURIDICTION — pages d'atterrissage territoriales
+   (site-internet-gard.html, identite-visuelle-gard.html)
+   Gabarit calqué sur mentions-legales : une seule page,
+   responsive simple, pas de doublon mobile.
+══════════════════════════════ */
+
+#page {
+  position: relative; z-index: 4;
+  max-width: 900px; margin: 0 auto;
+  padding: 11rem 3.5rem 8rem;
+}
+
+/* ── En-tête ── */
+.jur-eyebrow {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem;
+}
+.jur-eyebrow::before { content: ''; width: 16px; height: 1px; background: var(--accent); }
+
+.jur-title {
+  font-family: var(--display); font-size: clamp(2.6rem, 5.6vw, 5rem);
+  text-transform: uppercase; line-height: 0.92; letter-spacing: -0.02em;
+  color: var(--encre); margin-bottom: 2rem;
+}
+.jur-title .vive { color: var(--accent); }
+
+.jur-chapo {
+  font-family: var(--mono); font-size: 0.86rem; line-height: 1.95;
+  color: rgba(26, 26, 26, 0.72); max-width: 44em; margin-bottom: 1.75rem;
+}
+.jur-chapo strong { color: var(--encre); font-weight: 600; }
+
+.jur-meta {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 4.5rem;
+}
+.jur-tag {
+  font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--label);
+  border: 1px solid rgba(26, 26, 26, 0.14); border-radius: 100px;
+  padding: 0.45rem 0.9rem;
+}
+
+/* ── Sections numérotées ── */
+.jur-section { padding: 3rem 0; border-top: 1px solid rgba(26, 26, 26, 0.1); }
+.jur-section:last-of-type { border-bottom: 1px solid rgba(26, 26, 26, 0.1); margin-bottom: 4rem; }
+.jur-section-num {
+  font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+}
+.jur-section h2 {
+  font-family: var(--display); font-size: clamp(1.4rem, 2.6vw, 2rem);
+  text-transform: uppercase; color: var(--encre);
+  line-height: 1.02; margin-bottom: 1.5rem; letter-spacing: -0.01em;
+}
+.jur-body { font-family: var(--mono); font-size: 0.75rem; line-height: 2.05; color: rgba(26, 26, 26, 0.65); }
+.jur-body p { margin-bottom: 0.9rem; }
+.jur-body p:last-child { margin-bottom: 0; }
+.jur-body strong { color: var(--encre); font-weight: 600; }
+.jur-body a { color: var(--encre); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+.jur-body a:hover { color: var(--accent); }
+
+/* ── Grille des prestations ── */
+.jur-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(26, 26, 26, 0.1); margin-top: 0.5rem; }
+.jur-card { background: var(--base); padding: 1.75rem 1.5rem; }
+.jur-card-num { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.2em; color: var(--label); margin-bottom: 0.75rem; }
+.jur-card h3 { font-family: var(--display); font-size: 1.05rem; text-transform: uppercase; color: var(--encre); line-height: 1.05; margin-bottom: 0.75rem; }
+.jur-card p { font-family: var(--mono); font-size: 0.7rem; line-height: 1.85; color: rgba(26, 26, 26, 0.6); margin: 0; }
+
+/* ── Pièces à conviction (maillage vers les dossiers) ── */
+.jur-proofs { display: flex; flex-direction: column; margin-top: 0.5rem; }
+.jur-proof {
+  display: flex; align-items: baseline; gap: 1.25rem;
+  padding: 1.15rem 0; border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  text-decoration: none; transition: padding-left 0.25s ease, color 0.2s;
+}
+.jur-proof:hover { padding-left: 0.6rem; }
+.jur-proof-num { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.18em; color: var(--accent); flex-shrink: 0; }
+.jur-proof-name { font-family: var(--display); font-size: 1.05rem; text-transform: uppercase; color: var(--encre); line-height: 1; }
+.jur-proof-desc { font-family: var(--mono); font-size: 0.68rem; color: rgba(26, 26, 26, 0.55); margin-left: auto; text-align: right; }
+
+/* ── Communes ── */
+.jur-communes { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
+.jur-commune {
+  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.04em;
+  color: rgba(26, 26, 26, 0.7); background: rgba(26, 26, 26, 0.045);
+  padding: 0.5rem 0.85rem;
+}
+.jur-commune.pivot { background: var(--encre); color: var(--base); }
+
+/* ── FAQ ── */
+.jur-faq { margin-top: 0.5rem; }
+.jur-faq details { border-bottom: 1px solid rgba(26, 26, 26, 0.08); }
+.jur-faq summary {
+  cursor: pointer; list-style: none; padding: 1.25rem 2rem 1.25rem 0; position: relative;
+  font-family: var(--mono); font-size: 0.78rem; line-height: 1.6;
+  color: var(--encre); transition: color 0.2s;
+}
+.jur-faq summary::-webkit-details-marker { display: none; }
+.jur-faq summary::after {
+  content: '+'; position: absolute; right: 0; top: 1.1rem;
+  font-family: var(--mono); font-size: 1rem; color: var(--accent); transition: transform 0.25s;
+}
+.jur-faq details[open] summary::after { transform: rotate(45deg); }
+.jur-faq summary:hover { color: var(--accent); }
+.jur-faq-answer { font-family: var(--mono); font-size: 0.73rem; line-height: 2; color: rgba(26, 26, 26, 0.65); padding: 0 2rem 1.5rem 0; }
+.jur-faq-answer p { margin-bottom: 0.75rem; }
+.jur-faq-answer p:last-child { margin-bottom: 0; }
+.jur-faq-answer a { color: var(--encre); text-decoration: underline; text-underline-offset: 3px; }
+.jur-faq-answer a:hover { color: var(--accent); }
+
+/* ── Appel à l'action ── */
+.jur-cta { background: var(--encre); color: var(--base); padding: 3.5rem 3rem; margin-bottom: 3rem; }
+.jur-cta-eyebrow { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--vive); margin-bottom: 1.25rem; }
+.jur-cta h2 { font-family: var(--display); font-size: clamp(1.8rem, 3.4vw, 2.75rem); text-transform: uppercase; line-height: 0.98; margin-bottom: 1.25rem; color: var(--base); }
+.jur-cta p { font-family: var(--mono); font-size: 0.75rem; line-height: 1.95; color: rgba(245, 240, 232, 0.7); max-width: 40em; margin-bottom: 2rem; }
+.jur-cta-btn {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--encre); background: var(--vive); text-decoration: none;
+  padding: 1rem 1.6rem; transition: background 0.2s, transform 0.2s;
+}
+.jur-cta-btn:hover { background: var(--base); transform: translateX(4px); }
+
+/* ── Liens de bas de page ── */
+.jur-links { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; }
+.jur-back {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.45); text-decoration: none; transition: color 0.2s;
+}
+.jur-back:hover { color: var(--accent); }
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media (max-width: 768px) {
+  #page { padding: 7rem 1.5rem 4rem; }
+  .br-desk { display: none; }
+  .jur-title { font-size: clamp(1.7rem, 8vw, 2.8rem); line-height: 0.98; }
+  .jur-chapo { font-size: 0.8rem; }
+  .jur-meta { margin-bottom: 3rem; }
+  .jur-grid { grid-template-columns: 1fr; }
+  .jur-proof { flex-wrap: wrap; gap: 0.5rem 1rem; }
+  .jur-proof-desc { margin-left: 0; text-align: left; width: 100%; }
+  .jur-cta { padding: 2.5rem 1.5rem; }
+}
