@@ -6,3 +6,6 @@ desktop.ini
 # Éditeurs
 .vscode/
 *.swp
+
+# Python
+__pycache__/
