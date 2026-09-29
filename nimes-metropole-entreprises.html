@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Redirection mobile : les petits écrans (≤ 768px) basculent sur la version
+       dédiée. Exécuté avant tout affichage pour éviter le clignotement.
+       Échappatoire : ajouter ?desktop à l'URL pour forcer la version bureau. */
+    (function () {
+      try {
+        var forceDesktop = location.search.indexOf('desktop') !== -1
+          || localStorage.getItem('viewMode') === 'desktop';
+        if (!forceDesktop && window.matchMedia('(max-width: 768px)').matches) {
+          location.replace('mobile/nimes-metropole-entreprises');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <title>N&icirc;mes M&eacute;tropole &mdash; Dossier site internet, N&icirc;mes (30) | Studio Toinon</title>
+  <meta name="description" content="N&icirc;mes M&eacute;tropole Entreprises : design du portail &eacute;conomique. &Eacute;tude de cas de design d'interface par Studio Toinon.">
+  <link rel="canonical" href="https://studio-toinon.fr/nimes-metropole-entreprises">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Studio Toinon">
+  <meta property="og:title" content="N&icirc;mes M&eacute;tropole &mdash; Studio Toinon">
+  <meta property="og:description" content="N&icirc;mes M&eacute;tropole Entreprises : design du portail &eacute;conomique. &Eacute;tude de cas de design d'interface par Studio Toinon.">
+  <meta property="og:url" content="https://studio-toinon.fr/nimes-metropole-entreprises">
+  <meta property="og:image" content="https://studio-toinon.fr/assets/images/dossiers/002-nimes-metropole-entreprises/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="N&icirc;mes M&eacute;tropole &mdash; Studio Toinon">
+  <meta name="twitter:description" content="N&icirc;mes M&eacute;tropole Entreprises : design du portail &eacute;conomique. &Eacute;tude de cas de design d'interface par Studio Toinon.">
+  <meta name="twitter:image" content="https://studio-toinon.fr/assets/images/dossiers/002-nimes-metropole-entreprises/cover.jpg">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/single.css">
+</head>
+<body class="page-light" data-page="single" data-default-dark="false">
+
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <div id="site-header-placeholder"></div>
+
+  <section id="hero">
+    <div class="hero-top reveal">
+      <div class="hero-breadcrumb">
+        <a href="archives.html">Archives</a>
+      </div>
+      <div class="hero-statut">Affaire r&eacute;solue</div>
+    </div>
+    <div class="hero-main">
+      <div>
+        <div class="hero-num reveal">Dossier N&deg; 002</div>
+        <h1 class="hero-title reveal reveal-d1">N&icirc;mes<br>M&eacute;tropole</h1>
+      </div>
+      <div class="hero-meta reveal reveal-d2">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Client</span>
+          <span class="hero-meta-val">N&icirc;mes M&eacute;tropole</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Juridiction</span>
+          <span class="hero-meta-val">J.02 &mdash; Design d'interface</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Ann&eacute;e</span>
+          <span class="hero-meta-val">2024</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="cover" class="reveal">
+    <img src="assets/images/dossiers/002-nimes-metropole-entreprises/cover.jpg" alt="N&icirc;mes M&eacute;tropole Entreprises &mdash; visuel principal">
+  </div>
+
+  <div id="corps">
+
+    <div class="projet-intro">
+      <div class="projet-intro-col reveal">
+        <div class="col-label">L'affaire</div>
+        <div class="col-title">Le contexte</div>
+        <p class="col-body">N&icirc;mes M&eacute;tropole avait une offre &eacute;conomique riche, mais &eacute;parpill&eacute;e. Des aides, des services, des interlocuteurs &mdash; partout, mais nulle part vraiment. Les entreprises du territoire cherchaient des r&eacute;ponses ; il leur manquait l'endroit pour les trouver. Le dossier : un portail unique, clair, o&ugrave; l'information se donne sans d&eacute;tour.</p>
+      </div>
+      <div class="projet-intro-col reveal reveal-d1">
+        <div class="col-label">L'enqu&ecirc;te</div>
+        <div class="col-title">La m&eacute;thode</div>
+        <p class="col-body">Mission instruite au sein de l'agence SEDICOM, en collaboration avec les &eacute;quipes. On a pens&eacute; l'interface comme un annuaire doubl&eacute; d'une bo&icirc;te &agrave; outils : intuitive, accessible &agrave; tous les acteurs &eacute;conomiques, sans jargon ni parcours labyrinthique. Charte graphique, identit&eacute; visuelle, modules, style guide, animation des boutons &mdash; chaque &eacute;l&eacute;ment instruit dans le m&ecirc;me sens : mener l'utilisateur jusqu'&agrave; sa r&eacute;ponse.</p>
+      </div>
+      <div class="projet-intro-col reveal reveal-d2">
+        <div class="col-label">Le verdict</div>
+        <div class="col-title">Le r&eacute;sultat</div>
+        <p class="col-body">Une interface simple, claire et directe, pens&eacute;e pour tous les acteurs du territoire.</p>
+      </div>
+    </div>
+
+    <div class="images-section reveal pieces-std">
+      <div class="images-label">Pi&egrave;ces du dossier</div>
+      <div class="images-grid">
+        <div class="img-block tall">
+          <img src="assets/images/dossiers/002-nimes-metropole-entreprises/piece-01.jpg" alt="N&icirc;mes M&eacute;tropole Entreprises &mdash; pi&egrave;ce 01">
+        </div>
+        <div class="images-grid-right">
+          <div class="img-block">
+            <img src="assets/images/dossiers/002-nimes-metropole-entreprises/piece-02.jpg" alt="N&icirc;mes M&eacute;tropole Entreprises &mdash; pi&egrave;ce 02">
+          </div>
+          <div class="img-block">
+            <img src="assets/images/dossiers/002-nimes-metropole-entreprises/piece-03.jpg" alt="N&icirc;mes M&eacute;tropole Entreprises &mdash; pi&egrave;ce 03">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="width:100%; aspect-ratio:21/9; background: rgba(26,26,26,0.05); border-top: 1px solid rgba(26,26,26,0.08); border-bottom: 1px solid rgba(26,26,26,0.08); overflow: hidden;">
+      <img src="assets/images/dossiers/002-nimes-metropole-entreprises/bandeau.jpg" alt="N&icirc;mes M&eacute;tropole Entreprises &mdash; visuel pleine largeur" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+
+    <div class="verdict-section">
+      <div class="verdict-left reveal">
+        <div>
+          <div class="col-label">Le verdict</div>
+          <div class="verdict-title">Justice<br>est <span class="vive">rendue.</span></div>
+        </div>
+        <div class="verdict-stamp">Affaire r&eacute;solue</div>
+      </div>
+      <div class="verdict-right reveal reveal-d1">
+        <p class="verdict-body">Un portail &eacute;conomique qui ne perd personne. Navigation limpide, information structur&eacute;e, mise en relation facilit&eacute;e. Chaque &eacute;cran s'adresse &agrave; tous &mdash; de la jeune entreprise au groupe install&eacute; &mdash; et tient une promesse simple : trouver vite, comprendre clair, agir sans friction.</p>
+        <div class="verdict-livrables">
+          <div class="verdict-livrables-label">Livrables</div>
+          <div class="livrable-item">Maquette webdesign</div>
+          <div class="livrable-item">Charte graphique &amp; identit&eacute; visuelle</div>
+          <div class="livrable-item">Style guide &amp; modules d'interface</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="projet-nav">
+    <a href="mont-saint-clair" class="projet-nav-item reveal">
+      <span class="projet-nav-direction">&larr; Dossier pr&eacute;c&eacute;dent</span>
+      <span class="projet-nav-name">Mont Saint Clair</span>
+      <span class="projet-nav-type">Cr&eacute;ation de site e-commerce &mdash; 2025</span>
+    </a>
+    <a href="doli" class="projet-nav-item reveal reveal-d1">
+      <span class="projet-nav-direction">Dossier suivant &rarr;</span>
+      <span class="projet-nav-name">SICTOM</span>
+      <span class="projet-nav-type">Motion design &mdash; 2023</span>
+    </a>
+  </div>
+
+  <div id="site-footer-placeholder"></div>
+  <div id="tab-bar-placeholder"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages/single.js"></script>
+
+</body>
+</html>

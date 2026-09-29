@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Votre site n'est plus une destination. C'est une source &mdash; Chroniques</title>
+  <meta name="description" content="Le moteur répond à la place du site : moins d'un tiers des recherches Google envoient encore un clic. Le site ne sert plus à informer, il sert à convaincre. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <link rel="canonical" href="https://studio-toinon.fr/votre-site-est-une-source">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Studio Toinon">
+  <meta property="og:title" content="Votre site n'est plus une destination. C'est une source &mdash; Studio Toinon">
+  <meta property="og:description" content="Le moteur répond à la place du site : moins d'un tiers des recherches Google envoient encore un clic. Le site ne sert plus à informer, il sert à convaincre. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <meta property="og:url" content="https://studio-toinon.fr/votre-site-est-une-source">
+  <meta property="og:image" content="https://studio-toinon.fr/assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Votre site n'est plus une destination. C'est une source &mdash; Studio Toinon">
+  <meta name="twitter:description" content="Le moteur répond à la place du site : moins d'un tiers des recherches Google envoient encore un clic. Le site ne sert plus à informer, il sert à convaincre. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <meta name="twitter:image" content="https://studio-toinon.fr/assets/images/og-image.png">
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;--label:#8C7A56;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:80px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+/* Article = lecture continue (pas de scroll-snap) */
+#app{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  background:#EDE8DC;
+}
+#app::-webkit-scrollbar{display:none}
+
+/* ── HERO ── */
+#hero{background:var(--encre);padding:3.5rem 1.5rem 2.5rem;}
+.breadcrumb{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.5);display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;}
+.breadcrumb a{color:rgba(245,240,232,.5);text-decoration:none;}
+.breadcrumb .sep{opacity:.4;}
+.h-cat{display:inline-flex;background:var(--vive);color:var(--encre);font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .7rem;margin-bottom:1.25rem;}
+.h-title{font-family:var(--display);font-size:clamp(2.1rem,10vw,3rem);text-transform:uppercase;line-height:.95;letter-spacing:-.02em;color:var(--base);}
+.h-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.75rem;}
+.h-meta-item{display:flex;flex-direction:column;gap:.3rem;}
+.h-meta-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4);}
+.h-meta-val{font-family:var(--mono);font-size:.72rem;color:var(--kraft);}
+
+/* ── CORPS ── */
+#corps{padding:2.5rem 1.5rem 3rem;}
+.lede{font-family:var(--mono);font-size:.92rem;line-height:1.85;font-style:italic;color:var(--encre);border-left:2px solid var(--vive);padding-left:1rem;margin-bottom:2.5rem;}
+.corps p{font-family:var(--mono);font-size:.82rem;line-height:2;color:rgba(26,26,26,.8);margin-bottom:1.4rem;}
+.corps p strong{color:var(--encre);}
+.corps h2{font-family:var(--display);font-size:clamp(1.4rem,7vw,1.9rem);text-transform:uppercase;line-height:1;color:var(--encre);margin:2.5rem 0 1.1rem;}
+.corps blockquote{margin:2.2rem 0;padding-left:1rem;border-left:3px solid var(--accent);}
+.corps blockquote p{font-family:var(--display);font-size:clamp(1.3rem,6vw,1.7rem);line-height:1.15;text-transform:uppercase;color:var(--encre);font-style:normal;}
+.corps .vive{color:var(--accent);}
+.sign{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(26,26,26,.14);font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(26,26,26,.5);}
+
+/* ── RETOUR ── */
+.back{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.75rem 1.5rem 3rem;border-top:1px solid rgba(26,26,26,.12);text-decoration:none;}
+.back-dir{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+.back-name{font-family:var(--display);font-size:1.4rem;text-transform:uppercase;color:var(--encre);line-height:1;}
+
+/* ── TAB BAR ── */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;height:var(--bar);
+  background:var(--encre);border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;
+  padding:0 .5rem;padding-bottom:env(safe-area-inset-bottom);z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  -webkit-tap-highlight-color:transparent;background:none;border:none;color:rgba(245,240,232,.55);transition:color .2s;
+}
+.tab-item:active{color:var(--vive);}
+.tab-icon{font-size:1.6rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <section id="hero">
+    <div class="breadcrumb">
+      <a href="chroniques-mobile.html">Chroniques</a>
+      <span class="sep">&mdash;</span>
+      <span>Note N&deg; 010</span>
+    </div>
+    <span class="h-cat">Interface</span>
+    <h1 class="h-title">Votre site n'est plus une destination. C'est une source.</h1>
+    <div class="h-meta">
+      <div class="h-meta-item"><span class="h-meta-label">Publié le</span><span class="h-meta-val">29 septembre 2026</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Rubrique</span><span class="h-meta-val">Interface</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Lecture</span><span class="h-meta-val">~ 4 min</span></div>
+    </div>
+  </section>
+
+  <div id="corps">
+    <p class="lede">Le trafic baisse et personne n'a rien changé. Le moteur ne renvoie plus vers votre site, il répond à sa place. Ce qui reste : le visiteur qui a déjà lu le résumé, et qui vient vérifier.</p>
+
+    <article class="corps">
+
+      <h2>L'affaire</h2>
+      <p>Le trafic du site baisse. Personne n'a touché à rien. Les pages sont là, les articles aussi, le référencement n'a pas bougé d'un iota. Et pourtant, mois après mois, la courbe descend.</p>
+      <p>On cherche un coupable. Le premier suspect est toujours le même : le SEO. On relance un audit, on réécrit des balises, on ajoute des articles. La courbe continue de descendre.</p>
+      <p>Le SEO n'y est pour rien. Le coupable, c'est la recherche elle-même, qui ne mène plus nulle part.</p>
+
+      <h2>L'enquête</h2>
+      <p>Pendant vingt ans, un moteur de recherche a fonctionné comme un annuaire. Vous posiez une question, il vous donnait une liste d'adresses, vous alliez chercher la réponse sur place. Le site était une destination.</p>
+      <p>Ce contrat est rompu. Le moteur ne renvoie plus, il répond. Un résumé en haut de page, quelques lignes rédigées par une IA, et l'affaire est réglée avant même le premier clic.</p>
+      <p>Les chiffres sont sans appel. En 2026, moins d'un tiers des recherches Google envoient encore un visiteur vers un site, selon SparkToro. Quand un résumé IA s'affiche, Pew Research mesure 8 % de clics sur un résultat classique, contre 15 % sans. Bain &amp; Company chiffre la perte de trafic organique entre 15 et 25 %.</p>
+      <p>Votre site n'est plus une destination. C'est une source. Le moteur y puise, reformule, et garde le visiteur chez lui.</p>
+
+      <blockquote>
+        <p>Le visiteur qui arrive encore sur votre site a déjà lu le résumé. <span class="vive">Il ne vient pas s'informer. Il vient vérifier.</span></p>
+      </blockquote>
+
+      <p>Mais tout le monde ne s'arrête pas au résumé. Celui qui clique quand même est un visiteur d'un genre nouveau. Il a déjà la réponse générale. Il connaît les grandes lignes. Ce qu'il cherche, c'est ce que le résumé ne peut pas lui donner : une raison de faire confiance à quelqu'un en particulier.</p>
+      <p>Et c'est là que la plupart des sites échouent. Ils ont été conçus pour être trouvés, pas pour être crus. Des articles génériques écrits pour cocher des mots-clés. Des pages de services interchangeables. Des « nous sommes passionnés » que personne ne lit. Tout ce qu'un résumé IA fait déjà mieux, et gratuitement.</p>
+
+      <h2>Le verdict</h2>
+      <p>Arrêtez d'écrire pour le moteur. Écrivez pour celui qui a déjà lu le résumé.</p>
+      <p>Ce visiteur-là est informé, pressé, exigeant. Il ne veut pas un article de plus sur « les cinq erreurs à éviter ». Il veut des preuves. Des projets réels, avec des noms. Des cas précis, avec un avant et un après. Une méthode expliquée, pas promise. Un visage derrière l'entreprise.</p>
+      <p>Concrètement, ça veut dire moins de pages, et des pages plus denses. Moins de contenu écrit pour exister dans Google, plus de contenu écrit pour convaincre un humain qui hésite entre vous et un autre.</p>
+      <p>Le moteur vous prend le visiteur curieux. Il vous laisse le visiteur décidé. C'est le plus précieux des deux. Encore faut-il avoir quelque chose à lui montrer quand il arrive.</p>
+      <div class="sign">&mdash; Studio Toinon</div>
+    </article>
+  </div>
+
+  <a href="chroniques-mobile.html" class="back">
+    <span class="back-dir">&larr; Toutes les chroniques</span>
+    <span class="back-name">Le journal</span>
+  </a>
+
+</div>
+
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives-mobile.html" class="tab-item"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <a href="contact-mobile.html" class="tab-item"><span class="tab-icon">✉</span><span>Contact</span></a>
+</nav>
+
+<script src="../js/consent.js"></script>
+</body>
+</html>

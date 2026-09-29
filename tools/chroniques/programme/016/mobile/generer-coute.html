@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Générer coûte &mdash; Chroniques</title>
+  <meta name="description" content="Deux cents visuels générés pour en garder un. Le coût est énergétique, il est surtout cognitif. Décider avant de générer redevient une posture professionnelle. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <link rel="canonical" href="https://studio-toinon.fr/generer-coute">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Studio Toinon">
+  <meta property="og:title" content="Générer coûte &mdash; Studio Toinon">
+  <meta property="og:description" content="Deux cents visuels générés pour en garder un. Le coût est énergétique, il est surtout cognitif. Décider avant de générer redevient une posture professionnelle. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <meta property="og:url" content="https://studio-toinon.fr/generer-coute">
+  <meta property="og:image" content="https://studio-toinon.fr/assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Générer coûte &mdash; Studio Toinon">
+  <meta name="twitter:description" content="Deux cents visuels générés pour en garder un. Le coût est énergétique, il est surtout cognitif. Décider avant de générer redevient une posture professionnelle. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <meta name="twitter:image" content="https://studio-toinon.fr/assets/images/og-image.png">
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;--label:#8C7A56;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:80px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+/* Article = lecture continue (pas de scroll-snap) */
+#app{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  background:#EDE8DC;
+}
+#app::-webkit-scrollbar{display:none}
+
+/* ── HERO ── */
+#hero{background:var(--encre);padding:3.5rem 1.5rem 2.5rem;}
+.breadcrumb{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.5);display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;}
+.breadcrumb a{color:rgba(245,240,232,.5);text-decoration:none;}
+.breadcrumb .sep{opacity:.4;}
+.h-cat{display:inline-flex;background:var(--vive);color:var(--encre);font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .7rem;margin-bottom:1.25rem;}
+.h-title{font-family:var(--display);font-size:clamp(2.1rem,10vw,3rem);text-transform:uppercase;line-height:.95;letter-spacing:-.02em;color:var(--base);}
+.h-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.75rem;}
+.h-meta-item{display:flex;flex-direction:column;gap:.3rem;}
+.h-meta-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4);}
+.h-meta-val{font-family:var(--mono);font-size:.72rem;color:var(--kraft);}
+
+/* ── CORPS ── */
+#corps{padding:2.5rem 1.5rem 3rem;}
+.lede{font-family:var(--mono);font-size:.92rem;line-height:1.85;font-style:italic;color:var(--encre);border-left:2px solid var(--vive);padding-left:1rem;margin-bottom:2.5rem;}
+.corps p{font-family:var(--mono);font-size:.82rem;line-height:2;color:rgba(26,26,26,.8);margin-bottom:1.4rem;}
+.corps p strong{color:var(--encre);}
+.corps h2{font-family:var(--display);font-size:clamp(1.4rem,7vw,1.9rem);text-transform:uppercase;line-height:1;color:var(--encre);margin:2.5rem 0 1.1rem;}
+.corps blockquote{margin:2.2rem 0;padding-left:1rem;border-left:3px solid var(--accent);}
+.corps blockquote p{font-family:var(--display);font-size:clamp(1.3rem,6vw,1.7rem);line-height:1.15;text-transform:uppercase;color:var(--encre);font-style:normal;}
+.corps .vive{color:var(--accent);}
+.sign{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(26,26,26,.14);font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(26,26,26,.5);}
+
+/* ── RETOUR ── */
+.back{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.75rem 1.5rem 3rem;border-top:1px solid rgba(26,26,26,.12);text-decoration:none;}
+.back-dir{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+.back-name{font-family:var(--display);font-size:1.4rem;text-transform:uppercase;color:var(--encre);line-height:1;}
+
+/* ── TAB BAR ── */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;height:var(--bar);
+  background:var(--encre);border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;
+  padding:0 .5rem;padding-bottom:env(safe-area-inset-bottom);z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  -webkit-tap-highlight-color:transparent;background:none;border:none;color:rgba(245,240,232,.55);transition:color .2s;
+}
+.tab-item:active{color:var(--vive);}
+.tab-icon{font-size:1.6rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <section id="hero">
+    <div class="breadcrumb">
+      <a href="chroniques-mobile.html">Chroniques</a>
+      <span class="sep">&mdash;</span>
+      <span>Note N&deg; 016</span>
+    </div>
+    <span class="h-cat">Tendances</span>
+    <h1 class="h-title">Générer coûte.</h1>
+    <div class="h-meta">
+      <div class="h-meta-item"><span class="h-meta-label">Publié le</span><span class="h-meta-val">10 novembre 2026</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Rubrique</span><span class="h-meta-val">Tendances</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Lecture</span><span class="h-meta-val">~ 3 min</span></div>
+    </div>
+  </section>
+
+  <div id="corps">
+    <p class="lede">Deux cents visuels générés pour en garder un. Le geste ne coûte rien à celui qui le fait. Il coûte quand même : en énergie, en temps, et surtout en décisions qu'on ne prend plus.</p>
+
+    <article class="corps">
+
+      <h2>L'affaire</h2>
+      <p>Deux cents visuels générés. Un seul retenu. Cent quatre-vingt-dix-neuf jetés sans un regard.</p>
+      <p>Le geste ne coûte rien à celui qui le fait. Un clic, quelques secondes d'attente, et on recommence. Pourquoi s'en priver ? L'abonnement est payé, la machine ne se plaint pas.</p>
+      <p>Le geste coûte quand même. Simplement, la facture arrive ailleurs.</p>
+
+      <h2>L'enquête</h2>
+      <p>Il y a d'abord le coût qu'on connaît sans le voir. Chaque génération mobilise des serveurs, de l'énergie, de l'eau pour les refroidir. Multipliée par des millions d'utilisateurs qui génèrent par réflexe, l'addition devient massive. Le numérique a un poids matériel, même quand il se donne des airs de nuage.</p>
+      <p>La France a commencé à le formaliser. Le RGESN, référentiel général d'écoconception de services numériques, compte 78 critères. Il s'impose comme référence depuis la loi REEN du 15 novembre 2021, d'abord pour les acteurs publics. Pour le privé, il reste un texte d'incitation. Mais il apparaît de plus en plus souvent dans les appels d'offres. Ce qui était une bonne intention devient un critère de sélection.</p>
+      <p>Le coût le plus sous-estimé, pourtant, n'est pas énergétique. Il est cognitif.</p>
+
+      <blockquote>
+        <p>Générer devient <span class="vive">une façon de ne pas décider.</span></p>
+      </blockquote>
+
+      <p>Le brouillon infini remplace la réflexion préalable. Plutôt que de se demander ce qu'on veut, on génère, on regarde, on régénère. On espère que la bonne réponse finira par sortir du tas. Plus d'options, moins de direction. On passe une heure à trier ce qu'on aurait pu définir en dix minutes.</p>
+      <p>Et au bout du compte, le choix se fait souvent par fatigue plutôt que par conviction. La deux centième version n'est pas retenue parce qu'elle est juste. Elle est retenue parce qu'il faut bien s'arrêter.</p>
+
+      <h2>Le verdict</h2>
+      <p>Décider avant de générer.</p>
+      <p>Savoir ce qu'on cherche avant de lancer la machine. Poser le cadre, le ton, la contrainte. Puis générer peu, et avec intention. C'est plus lent au début. C'est plus court à la fin. Et c'est moins cher partout : en énergie, en temps, en attention.</p>
+      <p>Créer moins et mieux n'est pas une coquetterie d'artisan nostalgique. C'est une posture professionnelle. Celle de quelqu'un qui sait ce qu'il fait avant de le faire.</p>
+      <p>Générer coûte. La seule question est de savoir qui paie, et combien de fois.</p>
+      <div class="sign">&mdash; Studio Toinon</div>
+    </article>
+  </div>
+
+  <a href="chroniques-mobile.html" class="back">
+    <span class="back-dir">&larr; Toutes les chroniques</span>
+    <span class="back-name">Le journal</span>
+  </a>
+
+</div>
+
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives-mobile.html" class="tab-item"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <a href="contact-mobile.html" class="tab-item"><span class="tab-icon">✉</span><span>Contact</span></a>
+</nav>
+
+<script src="../js/consent.js"></script>
+</body>
+</html>

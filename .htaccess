@@ -1,5 +1,46 @@
 # Une seule adresse canonique : https://studio-toinon.fr (sans www)
+Options -MultiViews
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\. [NC,OR]
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://studio-toinon.fr/$1 [R=301,L]
+
+# Anciennes adresses des dossiers et des chroniques (avant le 29/09/2026) : 301 vers le nom de la page
+RewriteRule ^single\.html$ https://studio-toinon.fr/mont-saint-clair [R=301,L]
+RewriteRule ^single-002\.html$ https://studio-toinon.fr/nimes-metropole-entreprises [R=301,L]
+RewriteRule ^single-003\.html$ https://studio-toinon.fr/doli [R=301,L]
+RewriteRule ^single-004\.html$ https://studio-toinon.fr/tata-fina [R=301,L]
+RewriteRule ^single-005\.html$ https://studio-toinon.fr/action-mini-grue [R=301,L]
+RewriteRule ^single-006\.html$ https://studio-toinon.fr/d-aqui [R=301,L]
+RewriteRule ^chronique-001\.html$ https://studio-toinon.fr/un-logo-ne-fait-pas-une-marque [R=301,L]
+RewriteRule ^chronique-002\.html$ https://studio-toinon.fr/la-perfection-est-devenue-suspecte [R=301,L]
+RewriteRule ^chronique-003\.html$ https://studio-toinon.fr/le-brief-est-un-interrogatoire [R=301,L]
+RewriteRule ^chronique-004\.html$ https://studio-toinon.fr/un-site-rapide-est-un-site-honnete [R=301,L]
+RewriteRule ^chronique-005\.html$ https://studio-toinon.fr/l-ia-dessine-mais-ne-decide-pas [R=301,L]
+RewriteRule ^chronique-006\.html$ https://studio-toinon.fr/le-minimalisme-a-chaud [R=301,L]
+RewriteRule ^chronique-007\.html$ https://studio-toinon.fr/une-marque-qui-bouge-se-retient-mieux [R=301,L]
+RewriteRule ^chronique-008\.html$ https://studio-toinon.fr/l-ia-ne-tue-pas-les-designers [R=301,L]
+RewriteRule ^chronique-009\.html$ https://studio-toinon.fr/la-grille-et-le-chaos [R=301,L]
+RewriteRule ^chronique-010\.html$ https://studio-toinon.fr/votre-site-est-une-source [R=301,L]
+RewriteRule ^mobile/single-mobile\.html$ https://studio-toinon.fr/mobile/mont-saint-clair [R=301,L]
+RewriteRule ^mobile/single-002-mobile\.html$ https://studio-toinon.fr/mobile/nimes-metropole-entreprises [R=301,L]
+RewriteRule ^mobile/single-003-mobile\.html$ https://studio-toinon.fr/mobile/doli [R=301,L]
+RewriteRule ^mobile/single-004-mobile\.html$ https://studio-toinon.fr/mobile/tata-fina [R=301,L]
+RewriteRule ^mobile/single-005-mobile\.html$ https://studio-toinon.fr/mobile/action-mini-grue [R=301,L]
+RewriteRule ^mobile/single-006-mobile\.html$ https://studio-toinon.fr/mobile/d-aqui [R=301,L]
+RewriteRule ^mobile/chronique-001-mobile\.html$ https://studio-toinon.fr/mobile/un-logo-ne-fait-pas-une-marque [R=301,L]
+RewriteRule ^mobile/chronique-002-mobile\.html$ https://studio-toinon.fr/mobile/la-perfection-est-devenue-suspecte [R=301,L]
+RewriteRule ^mobile/chronique-003-mobile\.html$ https://studio-toinon.fr/mobile/le-brief-est-un-interrogatoire [R=301,L]
+RewriteRule ^mobile/chronique-004-mobile\.html$ https://studio-toinon.fr/mobile/un-site-rapide-est-un-site-honnete [R=301,L]
+RewriteRule ^mobile/chronique-005-mobile\.html$ https://studio-toinon.fr/mobile/l-ia-dessine-mais-ne-decide-pas [R=301,L]
+RewriteRule ^mobile/chronique-006-mobile\.html$ https://studio-toinon.fr/mobile/le-minimalisme-a-chaud [R=301,L]
+RewriteRule ^mobile/chronique-007-mobile\.html$ https://studio-toinon.fr/mobile/une-marque-qui-bouge-se-retient-mieux [R=301,L]
+RewriteRule ^mobile/chronique-008-mobile\.html$ https://studio-toinon.fr/mobile/l-ia-ne-tue-pas-les-designers [R=301,L]
+RewriteRule ^mobile/chronique-009-mobile\.html$ https://studio-toinon.fr/mobile/la-grille-et-le-chaos [R=301,L]
+RewriteRule ^mobile/chronique-010-mobile\.html$ https://studio-toinon.fr/mobile/votre-site-est-une-source [R=301,L]
+
+# Adresses sans extension : /doli sert doli.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]

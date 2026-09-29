@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Redirection mobile : les petits écrans (≤ 768px) basculent sur la version
+       dédiée. Exécuté avant tout affichage pour éviter le clignotement.
+       Échappatoire : ajouter ?desktop à l'URL pour forcer la version bureau. */
+    (function () {
+      try {
+        var forceDesktop = location.search.indexOf('desktop') !== -1
+          || localStorage.getItem('viewMode') === 'desktop';
+        if (!forceDesktop && window.matchMedia('(max-width: 768px)').matches) {
+          location.replace('mobile/d-aqui');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <title>D'AQUI &mdash; Dossier campagne de marque, Keolis | Studio Toinon</title>
+  <meta name="description" content="D'AQUI pour Keolis : strat&eacute;gie de marque et charte graphique du r&eacute;seau de transport d'Argel&egrave;s-sur-Mer. &Eacute;tude de cas branding par Studio Toinon.">
+  <link rel="canonical" href="https://studio-toinon.fr/d-aqui">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Studio Toinon">
+  <meta property="og:title" content="D'AQUI &mdash; Studio Toinon">
+  <meta property="og:description" content="D'AQUI pour Keolis : strat&eacute;gie de marque et charte graphique du r&eacute;seau de transport d'Argel&egrave;s-sur-Mer. &Eacute;tude de cas branding par Studio Toinon.">
+  <meta property="og:url" content="https://studio-toinon.fr/d-aqui">
+  <meta property="og:image" content="https://studio-toinon.fr/assets/images/dossiers/006-keolis-daqui/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="D'AQUI &mdash; Studio Toinon">
+  <meta name="twitter:description" content="D'AQUI pour Keolis : strat&eacute;gie de marque et charte graphique du r&eacute;seau de transport d'Argel&egrave;s-sur-Mer. &Eacute;tude de cas branding par Studio Toinon.">
+  <meta name="twitter:image" content="https://studio-toinon.fr/assets/images/dossiers/006-keolis-daqui/cover.jpg">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/single.css">
+</head>
+<body class="page-light" data-page="single" data-default-dark="false">
+
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <div id="site-header-placeholder"></div>
+
+  <section id="hero">
+    <div class="hero-top reveal">
+      <div class="hero-breadcrumb">
+        <a href="archives.html">Archives</a>
+      </div>
+      <div class="hero-statut">Affaire résolue</div>
+    </div>
+    <div class="hero-main">
+      <div>
+        <div class="hero-num reveal">Dossier N° 006</div>
+        <h1 class="hero-title reveal reveal-d1">D'AQUI</h1>
+      </div>
+      <div class="hero-meta reveal reveal-d2">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Client</span>
+          <span class="hero-meta-val">Keolis — Ville d'Argelès-sur-Mer</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Juridiction</span>
+          <span class="hero-meta-val">J.01 — Stratégie de marque</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Année</span>
+          <span class="hero-meta-val">2024</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="cover" class="reveal">
+    <img src="assets/images/dossiers/006-keolis-daqui/cover.jpg" alt="D'AQUI — panneau du réseau face à la Méditerranée">
+  </div>
+
+  <div id="corps">
+
+    <div class="projet-intro">
+      <div class="projet-intro-col reveal">
+        <div class="col-label">L'affaire</div>
+        <div class="col-title">Le contexte</div>
+        <p class="col-body">Argelès-sur-Mer se dote d'un tout nouveau réseau de transport. Keolis pour le faire rouler, mais une ligne flambant neuve n'a ni nom familier, ni visage. Comment faire adopter par les habitants comme par les vacanciers un service qui n'existait pas hier ? Il fallait une marque qui dise, d'un seul regard : c'est le vôtre, c'est d'ici.</p>
+      </div>
+      <div class="projet-intro-col reveal reveal-d1">
+        <div class="col-label">L'enquête</div>
+        <div class="col-title">La méthode</div>
+        <p class="col-body">Mission menée au sein de l'agence SEDICOM, avec les équipes. On est allé puiser dans l'identité du pays catalan : « D'aquí », c'est « d'ici ». Pour les couleurs, on s'est inspiré des tissus catalans, ces toiles à rayures vives qui claquent au soleil, déclinées en une frise comme la diversité des lignes et des publics. Une flèche trace l'itinéraire et file vers le large, sur un bleu profond de Méditerranée. Le tout réuni dans une charte graphique complète.</p>
+      </div>
+      <div class="projet-intro-col reveal reveal-d2">
+        <div class="col-label">Le verdict</div>
+        <div class="col-title">Le résultat</div>
+        <p class="col-body">Un réseau qui a tout de suite une âme, que les Argelésiens peuvent vraiment appeler le leur.</p>
+      </div>
+    </div>
+
+    <div class="images-section reveal pieces-std">
+      <div class="images-label">Pièces du dossier</div>
+      <div class="images-grid">
+        <div class="img-block tall">
+          <img src="assets/images/dossiers/006-keolis-daqui/piece-01.jpg" alt="D'AQUI — charte graphique et palette de couleurs">
+        </div>
+        <div class="images-grid-right">
+          <div class="img-block">
+            <img src="assets/images/dossiers/006-keolis-daqui/piece-02.jpg" alt="D'AQUI — signalétique du réseau">
+          </div>
+          <div class="img-block">
+            <img src="assets/images/dossiers/006-keolis-daqui/piece-03.jpg" alt="D'AQUI — logo">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict-section">
+      <div class="verdict-left reveal">
+        <div>
+          <div class="col-label">Le verdict</div>
+          <div class="verdict-title">Justice<br>est <span class="vive">rendue.</span></div>
+        </div>
+        <div class="verdict-stamp">Affaire résolue</div>
+      </div>
+      <div class="verdict-right reveal reveal-d1">
+        <p class="verdict-body">D'AQUI ne ressemble à aucun autre transport : il parle catalan, il porte les couleurs d'ici, il donne envie de monter à bord. De la navette au petit train, une signature cohérente qui ancre le service dans son territoire.</p>
+        <div class="verdict-livrables">
+          <div class="verdict-livrables-label">Livrables</div>
+          <div class="livrable-item">Création du logo</div>
+          <div class="livrable-item">Charte graphique</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="projet-nav">
+    <a href="action-mini-grue" class="projet-nav-item reveal">
+      <span class="projet-nav-direction">← Dossier précédent</span>
+      <span class="projet-nav-name">ACTION MINI GRUE</span>
+      <span class="projet-nav-type">Identité &amp; site vitrine — 2026</span>
+    </a>
+    <a href="mont-saint-clair" class="projet-nav-item reveal reveal-d1">
+      <span class="projet-nav-direction">Dossier suivant →</span>
+      <span class="projet-nav-name">Mont Saint Clair</span>
+      <span class="projet-nav-type">Création de site e-commerce — 2025</span>
+    </a>
+  </div>
+
+  <div id="site-footer-placeholder"></div>
+  <div id="tab-bar-placeholder"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages/single.js"></script>
+
+</body>
+</html>

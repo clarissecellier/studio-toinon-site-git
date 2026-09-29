@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>L'accessibilité n'est pas une faveur. C'est un dû &mdash; Chroniques</title>
+  <meta name="description" content="European Accessibility Act, RGAA, seuils et sanctions : qui est vraiment concerné, et pourquoi un site illisible perd des clients bien avant d'être sanctionné. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <link rel="canonical" href="https://studio-toinon.fr/l-accessibilite-n-est-pas-une-faveur">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Studio Toinon">
+  <meta property="og:title" content="L'accessibilité n'est pas une faveur. C'est un dû &mdash; Studio Toinon">
+  <meta property="og:description" content="European Accessibility Act, RGAA, seuils et sanctions : qui est vraiment concerné, et pourquoi un site illisible perd des clients bien avant d'être sanctionné. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <meta property="og:url" content="https://studio-toinon.fr/l-accessibilite-n-est-pas-une-faveur">
+  <meta property="og:image" content="https://studio-toinon.fr/assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="L'accessibilité n'est pas une faveur. C'est un dû &mdash; Studio Toinon">
+  <meta name="twitter:description" content="European Accessibility Act, RGAA, seuils et sanctions : qui est vraiment concerné, et pourquoi un site illisible perd des clients bien avant d'être sanctionné. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <meta name="twitter:image" content="https://studio-toinon.fr/assets/images/og-image.png">
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;--label:#8C7A56;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:80px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+/* Article = lecture continue (pas de scroll-snap) */
+#app{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  background:#EDE8DC;
+}
+#app::-webkit-scrollbar{display:none}
+
+/* ── HERO ── */
+#hero{background:var(--encre);padding:3.5rem 1.5rem 2.5rem;}
+.breadcrumb{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.5);display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;}
+.breadcrumb a{color:rgba(245,240,232,.5);text-decoration:none;}
+.breadcrumb .sep{opacity:.4;}
+.h-cat{display:inline-flex;background:var(--vive);color:var(--encre);font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .7rem;margin-bottom:1.25rem;}
+.h-title{font-family:var(--display);font-size:clamp(2.1rem,10vw,3rem);text-transform:uppercase;line-height:.95;letter-spacing:-.02em;color:var(--base);}
+.h-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.75rem;}
+.h-meta-item{display:flex;flex-direction:column;gap:.3rem;}
+.h-meta-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4);}
+.h-meta-val{font-family:var(--mono);font-size:.72rem;color:var(--kraft);}
+
+/* ── CORPS ── */
+#corps{padding:2.5rem 1.5rem 3rem;}
+.lede{font-family:var(--mono);font-size:.92rem;line-height:1.85;font-style:italic;color:var(--encre);border-left:2px solid var(--vive);padding-left:1rem;margin-bottom:2.5rem;}
+.corps p{font-family:var(--mono);font-size:.82rem;line-height:2;color:rgba(26,26,26,.8);margin-bottom:1.4rem;}
+.corps p strong{color:var(--encre);}
+.corps h2{font-family:var(--display);font-size:clamp(1.4rem,7vw,1.9rem);text-transform:uppercase;line-height:1;color:var(--encre);margin:2.5rem 0 1.1rem;}
+.corps blockquote{margin:2.2rem 0;padding-left:1rem;border-left:3px solid var(--accent);}
+.corps blockquote p{font-family:var(--display);font-size:clamp(1.3rem,6vw,1.7rem);line-height:1.15;text-transform:uppercase;color:var(--encre);font-style:normal;}
+.corps .vive{color:var(--accent);}
+.sign{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(26,26,26,.14);font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(26,26,26,.5);}
+
+/* ── RETOUR ── */
+.back{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.75rem 1.5rem 3rem;border-top:1px solid rgba(26,26,26,.12);text-decoration:none;}
+.back-dir{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+.back-name{font-family:var(--display);font-size:1.4rem;text-transform:uppercase;color:var(--encre);line-height:1;}
+
+/* ── TAB BAR ── */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;height:var(--bar);
+  background:var(--encre);border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;
+  padding:0 .5rem;padding-bottom:env(safe-area-inset-bottom);z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  -webkit-tap-highlight-color:transparent;background:none;border:none;color:rgba(245,240,232,.55);transition:color .2s;
+}
+.tab-item:active{color:var(--vive);}
+.tab-icon{font-size:1.6rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <section id="hero">
+    <div class="breadcrumb">
+      <a href="chroniques-mobile.html">Chroniques</a>
+      <span class="sep">&mdash;</span>
+      <span>Note N&deg; 013</span>
+    </div>
+    <span class="h-cat">Interface</span>
+    <h1 class="h-title">L'accessibilité n'est pas une faveur. C'est un dû.</h1>
+    <div class="h-meta">
+      <div class="h-meta-item"><span class="h-meta-label">Publié le</span><span class="h-meta-val">20 octobre 2026</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Rubrique</span><span class="h-meta-val">Interface</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Lecture</span><span class="h-meta-val">~ 4 min</span></div>
+    </div>
+  </section>
+
+  <div id="corps">
+    <p class="lede">Un site peut être conforme au droit et rester inutilisable. Il peut aussi être hors la loi sans que personne ne s'en aperçoive. Dans les deux cas, des gens arrivent, n'y parviennent pas, et repartent sans rien dire.</p>
+
+    <article class="corps">
+
+      <h2>L'affaire</h2>
+      <p>Un site peut être parfaitement conforme au droit et rester inutilisable pour une partie de ses visiteurs. Il peut aussi être hors la loi sans que personne, dans l'entreprise, ne s'en soit jamais aperçu.</p>
+      <p>Dans les deux cas, le constat est le même : des gens arrivent, n'y parviennent pas, et repartent. Sans rien dire. Sans laisser d'autre trace dans les statistiques qu'un taux de rebond que personne n'interprète.</p>
+      <p>L'accessibilité numérique a longtemps été traitée comme une option. Un bonus pour les grands comptes, un sujet pour plus tard. Ce temps-là est terminé.</p>
+
+      <h2>L'enquête</h2>
+      <p>Commençons par ce que dit la loi, et surtout par ce qu'elle ne dit pas.</p>
+      <p>Depuis le 28 juin 2025, l'European Accessibility Act s'applique en France, transposé par la loi du 9 mars 2023. Il vise le commerce en ligne, les services bancaires, les transports et les médias. Les entreprises concernées sont celles qui dépassent dix salariés ou deux millions d'euros de chiffre d'affaires. Les micro-entreprises sous ces deux seuils en sont exemptées.</p>
+      <p>Autrement dit, non, tout le monde n'est pas concerné. Prétendre le contraire serait faux, et agiter la menace d'une amende devant un artisan qui n'y est pas soumis décrédibilise le sujet tout entier. Pour ceux qui le sont, le référentiel est connu : le RGAA 4.1.2, 106 critères, aligné sur les standards internationaux WCAG. Les contrôles de la DGCCRF et de l'Arcom se renforcent en 2026, et les sanctions peuvent atteindre 300 000 euros.</p>
+      <p>Mais la loi n'est que le plancher. Et s'arrêter au plancher, c'est manquer l'essentiel.</p>
+
+      <blockquote>
+        <p>Personne ne se plaint d'un site inaccessible. <span class="vive">Les gens partent, c'est tout.</span></p>
+      </blockquote>
+
+      <p>Regardez ce qui bloque, concrètement. Un texte gris clair sur fond blanc, illisible pour un œil fatigué ou sur un écran en plein soleil. Un formulaire dont les champs n'ont pas d'étiquette, muet pour un lecteur d'écran. Une vidéo sans sous-titres, inutile dans un train ou pour une personne sourde. Un menu impossible à parcourir au clavier, infranchissable pour qui ne peut pas tenir une souris.</p>
+      <p>Chacun de ces défauts a un nom et un critère précis. Aucun n'est une fatalité technique. Et chacun exclut des clients bien avant d'exposer à la moindre sanction. Car l'accessibilité ne concerne pas seulement les personnes en situation de handicap. Elle concerne aussi le senior qui agrandit ses caractères, le parent qui navigue d'une main, le visiteur qui a simplement oublié ses lunettes.</p>
+
+      <h2>Le verdict</h2>
+      <p>Traitez l'accessibilité comme la qualité : à la conception, pas en rattrapage.</p>
+      <p>Un contraste se choisit en même temps que la palette. Une étiquette de formulaire s'écrit en même temps que le formulaire. Un sous-titre se prévoit dès le montage. Intégrés dès le départ, ces choix ne coûtent presque rien. Corrigés après coup, ils coûtent un audit, une refonte partielle et parfois une mise en demeure.</p>
+      <p>Et si vous vous demandez si la loi s'applique à vous, posez la question clairement plutôt que de céder à la panique ou au déni. La réponse tient en deux seuils et une liste de secteurs.</p>
+      <p>Mais la vraie question n'est pas « suis-je obligé ? ». C'est « combien de clients suis-je en train de perdre sans le savoir ? ». L'accessibilité n'est pas une faveur faite à quelques-uns. C'est un dû envers tous ceux qui essaient d'entrer.</p>
+      <div class="sign">&mdash; Studio Toinon</div>
+    </article>
+  </div>
+
+  <a href="chroniques-mobile.html" class="back">
+    <span class="back-dir">&larr; Toutes les chroniques</span>
+    <span class="back-name">Le journal</span>
+  </a>
+
+</div>
+
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives-mobile.html" class="tab-item"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <a href="contact-mobile.html" class="tab-item"><span class="tab-icon">✉</span><span>Contact</span></a>
+</nav>
+
+<script src="../js/consent.js"></script>
+</body>
+</html>

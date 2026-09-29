@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Tout le monde a l'outil. Personne n'a la méthode &mdash; Chroniques</title>
+  <meta name="description" content="Deux tiers des entreprises utilisent l'IA générative, un tiers seulement en tire un gain réel. L'écart n'est pas technique, il est méthodologique. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <link rel="canonical" href="https://studio-toinon.fr/personne-n-a-la-methode">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Studio Toinon">
+  <meta property="og:title" content="Tout le monde a l'outil. Personne n'a la méthode &mdash; Studio Toinon">
+  <meta property="og:description" content="Deux tiers des entreprises utilisent l'IA générative, un tiers seulement en tire un gain réel. L'écart n'est pas technique, il est méthodologique. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <meta property="og:url" content="https://studio-toinon.fr/personne-n-a-la-methode">
+  <meta property="og:image" content="https://studio-toinon.fr/assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tout le monde a l'outil. Personne n'a la méthode &mdash; Studio Toinon">
+  <meta name="twitter:description" content="Deux tiers des entreprises utilisent l'IA générative, un tiers seulement en tire un gain réel. L'écart n'est pas technique, il est méthodologique. Une chronique de Studio Toinon, studio de design dans le Gard.">
+  <meta name="twitter:image" content="https://studio-toinon.fr/assets/images/og-image.png">
+<style>
+@font-face{font-family:'MomoTrust';src:url('../assets/fonts/MomoTrust.ttf') format('truetype');font-display:swap;}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --base:#F5F0E8;--vive:#D4E842;--encre:#1A1A1A;
+  --accent:#E8462A;--kraft:#C8B89A;--label:#8C7A56;
+  --display:'MomoTrust','Arial Narrow',Arial,sans-serif;
+  --mono:'Courier New',Courier,monospace;
+  --bar:80px;
+}
+html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoothing:antialiased;}
+
+/* Article = lecture continue (pas de scroll-snap) */
+#app{
+  height:calc(100dvh - var(--bar) - env(safe-area-inset-bottom));
+  overflow-y:scroll;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  background:#EDE8DC;
+}
+#app::-webkit-scrollbar{display:none}
+
+/* ── HERO ── */
+#hero{background:var(--encre);padding:3.5rem 1.5rem 2.5rem;}
+.breadcrumb{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.5);display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;}
+.breadcrumb a{color:rgba(245,240,232,.5);text-decoration:none;}
+.breadcrumb .sep{opacity:.4;}
+.h-cat{display:inline-flex;background:var(--vive);color:var(--encre);font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .7rem;margin-bottom:1.25rem;}
+.h-title{font-family:var(--display);font-size:clamp(2.1rem,10vw,3rem);text-transform:uppercase;line-height:.95;letter-spacing:-.02em;color:var(--base);}
+.h-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.75rem;}
+.h-meta-item{display:flex;flex-direction:column;gap:.3rem;}
+.h-meta-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.4);}
+.h-meta-val{font-family:var(--mono);font-size:.72rem;color:var(--kraft);}
+
+/* ── CORPS ── */
+#corps{padding:2.5rem 1.5rem 3rem;}
+.lede{font-family:var(--mono);font-size:.92rem;line-height:1.85;font-style:italic;color:var(--encre);border-left:2px solid var(--vive);padding-left:1rem;margin-bottom:2.5rem;}
+.corps p{font-family:var(--mono);font-size:.82rem;line-height:2;color:rgba(26,26,26,.8);margin-bottom:1.4rem;}
+.corps p strong{color:var(--encre);}
+.corps h2{font-family:var(--display);font-size:clamp(1.4rem,7vw,1.9rem);text-transform:uppercase;line-height:1;color:var(--encre);margin:2.5rem 0 1.1rem;}
+.corps blockquote{margin:2.2rem 0;padding-left:1rem;border-left:3px solid var(--accent);}
+.corps blockquote p{font-family:var(--display);font-size:clamp(1.3rem,6vw,1.7rem);line-height:1.15;text-transform:uppercase;color:var(--encre);font-style:normal;}
+.corps .vive{color:var(--accent);}
+.sign{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(26,26,26,.14);font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(26,26,26,.5);}
+
+/* ── RETOUR ── */
+.back{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.75rem 1.5rem 3rem;border-top:1px solid rgba(26,26,26,.12);text-decoration:none;}
+.back-dir{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+.back-name{font-family:var(--display);font-size:1.4rem;text-transform:uppercase;color:var(--encre);line-height:1;}
+
+/* ── TAB BAR ── */
+#tab-bar{
+  position:fixed;bottom:0;left:0;right:0;height:var(--bar);
+  background:var(--encre);border-top:1px solid rgba(255,255,255,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);align-items:center;
+  padding:0 .5rem;padding-bottom:env(safe-area-inset-bottom);z-index:200;
+}
+.tab-item{
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.5rem;text-decoration:none;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  -webkit-tap-highlight-color:transparent;background:none;border:none;color:rgba(245,240,232,.55);transition:color .2s;
+}
+.tab-item:active{color:var(--vive);}
+.tab-icon{font-size:1.6rem;line-height:1;}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <section id="hero">
+    <div class="breadcrumb">
+      <a href="chroniques-mobile.html">Chroniques</a>
+      <span class="sep">&mdash;</span>
+      <span>Note N&deg; 012</span>
+    </div>
+    <span class="h-cat">Méthode</span>
+    <h1 class="h-title">Tout le monde a l'outil. Personne n'a la méthode.</h1>
+    <div class="h-meta">
+      <div class="h-meta-item"><span class="h-meta-label">Publié le</span><span class="h-meta-val">13 octobre 2026</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Rubrique</span><span class="h-meta-val">Méthode</span></div>
+      <div class="h-meta-item"><span class="h-meta-label">Lecture</span><span class="h-meta-val">~ 4 min</span></div>
+    </div>
+  </section>
+
+  <div id="corps">
+    <p class="lede">Deux tiers des entreprises utilisent l'IA générative. Un tiers en tire quelque chose. Le problème n'est pas l'outil : un outil accélère une exécution, il ne répare rien de ce qui se passe avant.</p>
+
+    <article class="corps">
+
+      <h2>L'affaire</h2>
+      <p>L'outil est partout. Le gain, nulle part.</p>
+      <p>Début 2026, plus des deux tiers des entreprises françaises d'au moins vingt salariés déclarent utiliser des outils d'IA générative. Chez celles de mille salariés et plus, on grimpe à 83 %. Les chiffres viennent de la Banque de France et de l'Insee, pas d'un éditeur de logiciel en quête de clients.</p>
+      <p>Et pourtant, parmi ces entreprises utilisatrices, seules 31 % constatent un gain de productivité réel. Deux tiers l'utilisent. Un tiers en tire quelque chose.</p>
+      <p>Le reste paie des abonnements, forme ses équipes, organise des ateliers. Et attend.</p>
+
+      <h2>L'enquête</h2>
+      <p>Le premier réflexe est de soupçonner l'outil. Pas assez puissant, mal configuré, pas le bon modèle. On change de solution, on teste la concurrente, on attend la prochaine version. Rien ne change.</p>
+      <p>Parce que le problème n'est pas technique. Il est méthodologique.</p>
+      <p>Un outil accélère une exécution. Il ne répare rien de ce qui se passe avant. Un brief flou reste flou, il est juste traité plus vite. Un circuit de validation absent reste absent, il produit juste plus de versions que personne ne valide. Une décision jamais prise ne se prend pas toute seule parce qu'un logiciel propose dix options au lieu de deux.</p>
+
+      <blockquote>
+        <p>Un processus net devient rapide. <span class="vive">Un processus vaseux devient rapidement vaseux.</span></p>
+      </blockquote>
+
+      <p>L'IA n'améliore pas une organisation. Elle l'amplifie. Ce qui fonctionnait fonctionne mieux. Ce qui dysfonctionnait dysfonctionne à grande échelle, avec une apparence de productivité en prime. On produit plus, on avance moins.</p>
+      <p>Ceux qui en tirent un gain réel ne sont pas ceux qui ont le meilleur outil. Ce sont ceux qui savaient déjà ce qu'ils voulaient obtenir, qui décidait, et à quel moment. L'outil est arrivé dans un cadre existant, il l'a accéléré. Chez les autres, il est arrivé dans le vide, et il l'a rempli de bruit.</p>
+      <p>On retrouve exactement la même mécanique dans un projet de design. Un client sans brief clair qui reçoit trente propositions générées n'est pas plus avancé qu'avec trois. Il est plus perdu.</p>
+
+      <h2>Le verdict</h2>
+      <p>Avant l'outil, le cadre.</p>
+      <p>Trois questions, dans cet ordre. Qui décide ? Sur quel critère ? À quel moment ? Tant qu'elles n'ont pas de réponse nette, aucun outil ne vous fera gagner de temps. Il vous fera seulement perdre le vôtre plus vite.</p>
+      <p>Une fois le cadre posé, alors seulement, accélérez. Et là, oui, l'IA tient ses promesses.</p>
+      <p>Tout le monde a l'outil. C'est devenu le minimum. Ce qui distingue désormais une équipe d'une autre, ce n'est plus ce qu'elle utilise. C'est la façon dont elle décide.</p>
+      <div class="sign">&mdash; Studio Toinon</div>
+    </article>
+  </div>
+
+  <a href="chroniques-mobile.html" class="back">
+    <span class="back-dir">&larr; Toutes les chroniques</span>
+    <span class="back-name">Le journal</span>
+  </a>
+
+</div>
+
+<nav id="tab-bar">
+  <a href="index-mobile.html" class="tab-item"><span class="tab-icon">⌂</span><span>Accueil</span></a>
+  <a href="manifeste-mobile.html" class="tab-item"><span class="tab-icon">◎</span><span>Manifeste</span></a>
+  <a href="archives-mobile.html" class="tab-item"><span class="tab-icon">◫</span><span>Archives</span></a>
+  <a href="contact-mobile.html" class="tab-item"><span class="tab-icon">✉</span><span>Contact</span></a>
+</nav>
+
+<script src="../js/consent.js"></script>
+</body>
+</html>
