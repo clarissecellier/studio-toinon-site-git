@@ -295,20 +295,37 @@ html,body{height:100%;overflow:hidden;background:var(--encre);-webkit-font-smoot
 
 <script>
 // ── GRAIN ──
-function initGrain(id){
+function initGrain(id,alphaMax){
   const c=document.getElementById(id);if(!c)return;
-  const ctx=c.getContext('2d');
-  function r(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
-  r();window.addEventListener('resize',r);
-  function d(){
-    const w=c.width,h=c.height,img=ctx.createImageData(w,h),px=img.data;
+  const ctx=c.getContext('2d');alphaMax=alphaMax||32;
+  // Grain précalculé : 6 tuiles de bruit générées une seule fois, posées en motif
+  // avec un décalage aléatoire à ~24 i/s, et en pause quand le canvas sort de l'écran.
+  // (L'ancien grain recalculait tout l'écran pixel par pixel à 60 i/s : ~1 s de thread bloqué au chargement.)
+  const T=128,tiles=[];
+  for(let k=0;k<6;k++){
+    const t=document.createElement('canvas');t.width=t.height=T;
+    const tc=t.getContext('2d'),img=tc.createImageData(T,T),px=img.data;
     for(let i=0;i<px.length;i+=4){
       const v=Math.random()*255|0;
-      px[i]=v;px[i+1]=Math.round(v*.92);px[i+2]=Math.round(v*.78);px[i+3]=Math.random()*32|0;
+      px[i]=v;px[i+1]=Math.round(v*.92);px[i+2]=Math.round(v*.78);px[i+3]=Math.random()*alphaMax|0;
     }
-    ctx.putImageData(img,0,0);requestAnimationFrame(d);
+    tc.putImageData(img,0,0);tiles.push(ctx.createPattern(t,'repeat'));
   }
-  d();
+  function r(){c.width=c.offsetWidth;c.height=c.offsetHeight;draw();}
+  let k=0,last=0,on=true;
+  function draw(){
+    const ox=Math.random()*T|0,oy=Math.random()*T|0;
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.save();ctx.translate(-ox,-oy);ctx.fillStyle=tiles[k=(k+1)%tiles.length];
+    ctx.fillRect(0,0,c.width+T,c.height+T);ctx.restore();
+  }
+  r();window.addEventListener('resize',r);
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  function d(now){if(!on)return;requestAnimationFrame(d);if(now-last<42)return;last=now;draw();}
+  if('IntersectionObserver' in window)new IntersectionObserver(e=>{
+    const v=e[0].isIntersecting;if(v&&!on){on=true;requestAnimationFrame(d);}on=v;
+  }).observe(c);
+  requestAnimationFrame(d);
 }
 initGrain('hero-canvas');
 

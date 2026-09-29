@@ -5,6 +5,18 @@ RewriteCond %{HTTP_HOST} ^www\. [NC,OR]
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://studio-toinon.fr/$1 [R=301,L]
 
+# Accueil sur téléphone : redirection côté serveur vers la version mobile, sans passer par la
+# page desktop (la redirection JS de index.html reste en filet pour les autres cas).
+# Échappatoire : ?desktop. Les tablettes (sans « Mobi » dans l'agent) gardent la logique JS.
+RewriteCond %{QUERY_STRING} !desktop
+RewriteCond %{HTTP_USER_AGENT} (Mobi|iPhone) [NC]
+RewriteRule ^(index\.html)?$ https://studio-toinon.fr/mobile/index-mobile.html [R=302,L]
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/(index\.html)?$#">
+    Header append Vary User-Agent
+  </If>
+</IfModule>
+
 # Anciennes adresses des dossiers et des chroniques (avant le 29/09/2026) : 301 vers le nom de la page
 RewriteRule ^single\.html$ https://studio-toinon.fr/mont-saint-clair [R=301,L]
 RewriteRule ^single-002\.html$ https://studio-toinon.fr/nimes-metropole-entreprises [R=301,L]
@@ -44,3 +56,23 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+)$ $1.html [L]
+
+# Cache navigateur : images, vidéos et polices un an (changer le nom du fichier si on le remplace),
+# CSS et JS une semaine, pages HTML toujours revalidées.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType text/javascript "access plus 1 week"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
