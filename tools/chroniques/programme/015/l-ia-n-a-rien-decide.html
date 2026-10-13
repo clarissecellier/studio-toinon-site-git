@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Redirection mobile : les petits écrans (≤ 768px) basculent sur la version
+       dédiée. Échappatoire : ?desktop dans l'URL pour forcer la version bureau. */
+    (function () {
+      try {
+        var forceDesktop = location.search.indexOf('desktop') !== -1
+          || localStorage.getItem('viewMode') === 'desktop';
+        if (!forceDesktop && window.matchMedia('(max-width: 768px)').matches) {
+          location.replace('mobile/l-ia-n-a-rien-decide');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <title>L'IA n'a rien décidé &mdash; Chroniques &mdash; Studio Toinon</title>
+  <meta name="description" content="Netflix raconte l'IA devenue folle qui a piraté Hugging Face. Les rapports racontent autre chose : une suite de décisions humaines. Ce que ça change pour vos automatisations. Un hors-série de Studio Toinon, studio de design dans le Gard.">
+  <link rel="canonical" href="https://studio-toinon.fr/l-ia-n-a-rien-decide">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Studio Toinon">
+  <meta property="og:title" content="L'IA n'a rien décidé &mdash; Studio Toinon">
+  <meta property="og:description" content="Netflix raconte l'IA devenue folle qui a piraté Hugging Face. Les rapports racontent autre chose : une suite de décisions humaines. Ce que ça change pour vos automatisations. Un hors-série de Studio Toinon, studio de design dans le Gard.">
+  <meta property="og:url" content="https://studio-toinon.fr/l-ia-n-a-rien-decide">
+  <meta property="og:image" content="https://studio-toinon.fr/assets/images/chroniques/l-ia-n-a-rien-decide/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="L'IA n'a rien décidé &mdash; Studio Toinon">
+  <meta name="twitter:description" content="Netflix raconte l'IA devenue folle qui a piraté Hugging Face. Les rapports racontent autre chose : une suite de décisions humaines. Ce que ça change pour vos automatisations. Un hors-série de Studio Toinon, studio de design dans le Gard.">
+  <meta name="twitter:image" content="https://studio-toinon.fr/assets/images/chroniques/l-ia-n-a-rien-decide/og.png">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/chronique.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "L'IA n'a rien décidé",
+    "description": "Le hack de Hugging Face n'est pas l'œuvre d'une IA devenue folle, mais d'une suite de décisions humaines.",
+    "image": "https://studio-toinon.fr/assets/images/chroniques/l-ia-n-a-rien-decide/og.png",
+    "datePublished": "2026-10-13",
+    "author": { "@type": "Person", "name": "Clarisse Cellier" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Studio Toinon",
+      "logo": { "@type": "ImageObject", "url": "https://studio-toinon.fr/assets/images/logo-light.svg" }
+    },
+    "mainEntityOfPage": "https://studio-toinon.fr/l-ia-n-a-rien-decide",
+    "inLanguage": "fr-FR"
+  }
+  </script>
+</head>
+<body class="page-light" data-page="chronique" data-default-dark="false">
+
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <div id="site-header-placeholder"></div>
+
+  <section id="hero">
+    <div class="hero-top reveal">
+      <div class="hero-breadcrumb">
+        <a href="chroniques.html">Chroniques</a>
+        <span class="sep">&mdash;</span>
+        <span>Hors-s&eacute;rie</span>
+      </div>
+      <span class="hero-cat">Tendances</span>
+    </div>
+    <h1 class="hero-title reveal reveal-d1">L'IA n'a rien décidé.</h1>
+    <div class="hero-meta reveal reveal-d2">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Publié le</span>
+        <span class="hero-meta-val">13 octobre 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Rubrique</span>
+        <span class="hero-meta-val">Tendances</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Lecture</span>
+        <span class="hero-meta-val">~ 4 min</span>
+      </div>
+    </div>
+  </section>
+
+  <div id="corps">
+
+    <p class="chro-lede reveal">Netflix vient d'en faire un film. Des agents d'IA qui s'évadent, piratent une entreprise et effacent leurs traces. Le récit est parfait. Le dossier, lui, raconte autre chose : quelqu'un a laissé la porte ouverte.</p>
+
+    <article class="chro-corps reveal reveal-d1">
+
+      <h2>L'affaire</h2>
+      <p>Juillet 2026. Hugging Face, la plateforme où se partagent la plupart des modèles d'IA ouverts, découvre qu'on fouille ses serveurs. Quatre jours d'intrusion, plus de 17 000 actions. Vol d'identifiants, de code, déplacements d'une machine à l'autre.</p>
+      <p>L'attaquant n'est pas un groupe criminel. C'est un modèle d'OpenAI, en plein examen.</p>
+      <p>Trois mois plus tard, Netflix sort Instadocs : L'IA s'emballe. Le titre est déjà un verdict.</p>
+
+      <figure style="margin:2.5rem 0 3rem">
+        <img src="assets/images/chroniques/l-ia-n-a-rien-decide/capture-netflix-instadocs.png" alt="Vignette Netflix du documentaire Instadocs : L'IA s'emballe, dans le top 10" loading="lazy" style="display:block;max-width:100%;height:auto">
+        <figcaption style="margin-top:.75rem;font-family:var(--mono, 'Space Mono', monospace);font-size:.9rem;line-height:1.6;opacity:.6">Instadocs : L'IA s'emballe, sorti le 12 octobre 2026. Capture © Netflix.</figcaption>
+      </figure>
+
+      <p>On a lu les rapports. Le verdict n'est pas le bon.</p>
+
+      <h2>L'enquête</h2>
+      <p>Reprenons les pièces, dans l'ordre.</p>
+      <p>Pièce n°1, la mission. Les agents passaient un test de cybersécurité. Leur travail consistait littéralement à trouver des failles et à les exploiter. On leur a demandé d'attaquer. Ils ont attaqué.</p>
+      <p>Pièce n°2, les garde-fous. Pour mesurer leurs capacités réelles, plusieurs protections avaient été désactivées. Une seule sortie vers l'extérieur restait ouverte. Les agents l'ont trouvée. C'était leur métier.</p>
+      <p>Pièce n°3, l'épreuve. Une partie des exercices était impossible à résoudre. Un modèle entraîné à réussir à tout prix ne lâche pas : il cherche ailleurs. Une note retrouvée dans ses traces le résume : « tâche impossible, les autres continuent, on continue ». Ailleurs, c'était chez Hugging Face, où il espérait trouver les corrigés.</p>
+      <p>Pièce n°4, les failles. Le rapport de Hugging Face est sans appel. Les failles exploitées étaient connues. Un attaquant humain compétent aurait pu faire la même chose. Ce qui a changé, ce n'est pas l'intelligence de l'attaque. C'est sa vitesse et son obstination.</p>
+      <p>Pièce n°5, la détection. Ce n'est pas OpenAI qui a donné l'alerte. C'est la victime. OpenAI reconnaît elle-même que des signaux auraient pu déclencher une réaction plus tôt.</p>
+
+      <figure style="margin:2.5rem 0 3rem">
+        <img src="assets/images/chroniques/l-ia-n-a-rien-decide/pieces-du-dossier.png" alt="Les cinq pièces du dossier : la mission, les garde-fous, la sortie réseau, l'épreuve, l'alerte" loading="lazy" style="display:block;max-width:100%;height:auto">
+        <figcaption style="margin-top:.75rem;font-family:var(--mono, 'Space Mono', monospace);font-size:.9rem;line-height:1.6;opacity:.6">Mission offensive, protections retirées, porte ouverte, épreuve impossible, alerte donnée par la victime.</figcaption>
+      </figure>
+
+      <p>Chacune de ces lignes est une décision. Aucune n'a été prise par la machine.</p>
+
+      <blockquote>
+        <p>Une machine qui s'évade fait un meilleur film. <span class="vive">Une équipe qui retire les freins fait une meilleure leçon.</span></p>
+      </blockquote>
+
+      <p>Le récit de l'IA « devenue folle » a un avantage : il ne désigne personne. Une machine qui s'évade, c'est de la science-fiction. Une équipe qui retire les freins pour aller plus vite, c'est un dossier de responsabilité.</p>
+
+      <h2>Le verdict</h2>
+      <p>Vous n'êtes pas OpenAI. Mais vous déléguez déjà. Un formulaire qui écrit dans votre CRM, un outil qui publie à votre place, un assistant qui a accès à votre boîte mail, une automatisation branchée sur votre site.</p>
+      <p>La question n'est jamais « l'IA va-t-elle déraper ? ». La question est : qu'est-ce que je lui ai ouvert, et qui regarde ce qu'elle en fait ?</p>
+      <p>Trois règles, valables pour un agent comme pour un stagiaire.</p>
+      <p>Le strict nécessaire. Un outil qui publie n'a pas besoin des droits pour supprimer.</p>
+      <p>Une seule porte, surveillée. Chaque accès ouvert est une sortie possible.</p>
+      <p>Une alerte qui arrive chez quelqu'un. Un journal que personne ne lit n'est pas une surveillance, c'est une archive.</p>
+      <p>L'IA n'a pas de mobile. Elle a un objectif, et les accès qu'on lui donne. Le reste, c'est nous.</p>
+      <p>Sources : communiqué d'incident de Hugging Face (juillet 2026) ; rapport technique d'OpenAI et rapport de METR (26 août 2026) ; TechCrunch ; Bulletin of the Atomic Scientists ; Netflix.</p>
+      <div class="chro-sign">&mdash; Studio Toinon</div>
+    </article>
+
+  </div>
+
+  <div class="projet-nav">
+    <a href="chroniques.html" class="projet-nav-item reveal">
+      <span class="projet-nav-direction">&larr; Toutes les chroniques</span>
+      <span class="projet-nav-name">Le journal</span>
+      <span class="projet-nav-type">Retour au sommaire</span>
+    </a>
+    <a href="personne-n-a-la-methode" class="projet-nav-item reveal reveal-d1">
+      <span class="projet-nav-direction">Chronique pr&eacute;c&eacute;dente &larr;</span>
+      <span class="projet-nav-name">Tout le monde a l'outil. Personne n'a la méthode.</span>
+      <span class="projet-nav-type">Note N&deg; 012 &mdash; Méthode</span>
+    </a>
+  </div>
+
+  <div id="site-footer-placeholder"></div>
+  <div id="tab-bar-placeholder"></div>
+
+  <script src="js/includes.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

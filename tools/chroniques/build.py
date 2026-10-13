@@ -26,15 +26,22 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from articles import ARTICLES, PRECEDENTE  # noqa: E402
+from articles import ARTICLES, HORS_SERIE, PRECEDENTE  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = Path(__file__).parent / "programme"
+OUT_HS = Path(__file__).parent / "hors-serie"
 SIGN = '&mdash; Studio Toinon'
 BASE = 10  # dernière chronique déjà en ligne et intégrée au dépôt
 SLUG_009 = PRECEDENTE['slug']
 SLUG = {x['num']: x['slug'] for x in ARTICLES}
 SLUG[PRECEDENTE['num']] = SLUG_009
+OG_DEFAUT = 'https://studio-toinon.fr/assets/images/og-image.png'
+
+
+def etiquette(art):
+    """« Note N° 012 » pour la série, « Hors-série » sinon."""
+    return 'Hors-s&eacute;rie' if art.get('hs') else f'Note N&deg; {num3(art["num"])}'
 
 
 def t(s):
@@ -66,16 +73,27 @@ def corps_blocs(src):
         elif ligne.startswith('> '):
             avant, vive = [x.strip() for x in ligne[2:].split('|', 1)]
             blocs.append(('quote', avant, vive))
+        elif ligne.startswith('! '):
+            src, alt, legende = [x.strip() for x in ligne[2:].split('|', 2)]
+            blocs.append(('fig', src, alt, legende))
         else:
             blocs.append(('p', ligne))
     return blocs
 
 
-def corps_html(art, indent):
+def corps_html(art, indent, racine=''):
+    """racine : préfixe des chemins d'images (« ../ » pour les pages mobiles)."""
     pad = ' ' * indent
     out = []
     for b in corps_blocs(art['corps']):
-        if b[0] == 'h2':
+        if b[0] == 'fig':
+            out.append('')
+            out.append(f'{pad}<figure style="margin:2.5rem 0 3rem">')
+            out.append(f'{pad}  <img src="{racine}{b[1]}" alt="{a(b[2])}" loading="lazy" style="display:block;max-width:100%;height:auto">')
+            out.append(f'{pad}  <figcaption style="margin-top:.75rem;font-family:var(--mono, \'Space Mono\', monospace);font-size:.9rem;line-height:1.6;opacity:.6">{t(b[3])}</figcaption>')
+            out.append(f'{pad}</figure>')
+            out.append('')
+        elif b[0] == 'h2':
             if out:
                 out.append('')
             out.append(f'{pad}<h2>{t(b[1])}</h2>')
@@ -100,7 +118,6 @@ META_009 = re.search(r'<meta name="description" content="([^"]+)"', SRC_009).gro
 
 def head_desktop(art):
     head = SRC_009.split('<body', 1)[0]
-    n = num3(art['num'])
     # Redirection mobile, canonical, og:url et mainEntityOfPage.
     head = head.replace(SLUG_009, art['slug'])
     head = head.replace('<title>La grille et le chaos &mdash; Chroniques &mdash; Studio Toinon</title>',
@@ -114,7 +131,9 @@ def head_desktop(art):
                   lambda m: '"description": ' + json.dumps(art['ld'], ensure_ascii=False) + ',\n' + m.group(1) + '"image"',
                   head, count=1)
     head = head.replace('"datePublished": "2026-08-18"', f'"datePublished": "{art["date"]}"')
-    assert '009' not in head and 'grille' not in head, f'reste de la 009 dans la tête de {n}'
+    if art.get('og'):
+        head = head.replace(OG_DEFAUT, f'https://studio-toinon.fr/{art["og"]}')
+    assert '009' not in head and 'grille' not in head, f'reste de la 009 dans la tête de {art["slug"]}'
     return head
 
 
@@ -131,8 +150,11 @@ def nav_item(cible, sens, titre, num, cat):
 
 
 def page_desktop(art, derniere, par_num):
-    n = num3(art['num'])
-    if derniere:
+    if art.get('hs'):
+        # Hors-série : renvoie vers la chronique numérotée sortie le même jour ou juste avant.
+        p = max((x for x in par_num.values() if x['date'] <= art['date']), key=lambda x: x['num'])
+        nav = nav_item(p['num'], 'precedente', p['titre'], p['num'], p['cat'])
+    elif derniere:
         p = par_num.get(art['num'] - 1, PRECEDENTE)
         nav = nav_item(art['num'] - 1, 'precedente', p['titre'], art['num'] - 1, p['cat'])
     else:
@@ -150,7 +172,7 @@ def page_desktop(art, derniere, par_num):
       <div class="hero-breadcrumb">
         <a href="chroniques.html">Chroniques</a>
         <span class="sep">&mdash;</span>
-        <span>Note N&deg; {n}</span>
+        <span>{etiquette(art)}</span>
       </div>
       <span class="hero-cat">{t(art['cat'])}</span>
     </div>
@@ -218,19 +240,19 @@ def page_base_recablee(par_num):
 
 def head_mobile(art):
     head = SRC_009_M.split('<body>', 1)[0]
-    n = num3(art['num'])
     head = head.replace('<title>La grille et le chaos &mdash; Chroniques</title>',
                         f'<title>{t(sans_point(art["titre"]))} &mdash; Chroniques</title>')
     head = head.replace('La grille et le chaos &mdash; Studio Toinon',
                         f'{a(sans_point(art["titre"]))} &mdash; Studio Toinon')
     head = head.replace(META_009, a(art['meta']))
     head = head.replace(SLUG_009, art['slug'])
-    assert '009' not in head and 'grille' not in head, f'reste de la 009 dans la tête mobile de {n}'
+    if art.get('og'):
+        head = head.replace(OG_DEFAUT, f'https://studio-toinon.fr/{art["og"]}')
+    assert '009' not in head and 'grille' not in head, f'reste de la 009 dans la tête mobile de {art["slug"]}'
     return head
 
 
 def page_mobile(art):
-    n = num3(art['num'])
     body = f'''<body>
 
 <div id="app">
@@ -239,7 +261,7 @@ def page_mobile(art):
     <div class="breadcrumb">
       <a href="chroniques-mobile.html">Chroniques</a>
       <span class="sep">&mdash;</span>
-      <span>Note N&deg; {n}</span>
+      <span>{etiquette(art)}</span>
     </div>
     <span class="h-cat">{t(art['cat'])}</span>
     <h1 class="h-title">{t(art['titre'])}</h1>
@@ -255,7 +277,7 @@ def page_mobile(art):
 
     <article class="corps">
 
-{corps_html(art, 6)}
+{corps_html(art, 6, '../')}
       <div class="sign">{SIGN}</div>
     </article>
   </div>
@@ -295,9 +317,9 @@ STYLE_TITRE_LONG = ' style="font-size:clamp(1.8rem,8.2vw,2.5rem)"'
 
 
 def carte(art):
-    n = num3(art['num'])
+    num = 'Hors-s&eacute;rie' if art.get('hs') else f'N&deg; {num3(art["num"])}'
     return (f'      <a href="{art["slug"]}" class="chro-card reveal" data-jur="{art["jur"]}">\n'
-            f'        <div class="chro-card-head"><span class="chro-card-num">N&deg; {n}</span><span class="chro-card-cat">{t(art["cat"])}</span></div>\n'
+            f'        <div class="chro-card-head"><span class="chro-card-num">{num}</span><span class="chro-card-cat">{t(art["cat"])}</span></div>\n'
             f'        <h2 class="chro-card-title">{t(art["titre"])}</h2>\n'
             f'        <p class="chro-card-desc">{t(art["carte"])}</p>\n'
             f'        <div class="chro-card-foot"><span class="chro-card-meta">{art["date_fr"]} &middot; {art["lecture"]}</span><span class="chro-card-cta">Lire &rarr;</span></div>\n'
@@ -305,11 +327,11 @@ def carte(art):
 
 
 def ecran(art):
-    n = num3(art['num'])
+    repere = 'HORS-SÉRIE ' + art['slug'] if art.get('hs') else num3(art['num'])
     style = STYLE_TITRE_LONG if art.get('titre_long') else ''
-    return (f'  <!-- ── NOTE {n} ── -->\n'
+    return (f'  <!-- ── NOTE {repere} ── -->\n'
             f'  <section class="screen chro">\n'
-            f'    <div class="chro-index reveal">Note N&deg; {n}</div>\n'
+            f'    <div class="chro-index reveal">{etiquette(art)}</div>\n'
             f'    <div class="chro-cat reveal d1">{t(art["cat"])}</div>\n'
             f'    <div class="chro-date reveal d1">{art["date_fr"]}</div>\n'
             f'    <h2 class="chro-title reveal d2"{style}>{t(art["titre"])}</h2>\n'
@@ -346,17 +368,31 @@ def sitemap(publies):
 
 # ─── Assemblage ─────────────────────────────────────────────────────────────
 
+def avec_hors_series(numerotes, jusquau):
+    """Chroniques numérotées + hors-séries datés jusqu'à `jusquau`, dans l'ordre chronologique.
+    À date égale, le hors-série passe après la numérotée (il sort plus tard dans la journée)."""
+    hs = [x for x in HORS_SERIE if x['date'] <= jusquau]
+    return sorted(numerotes + hs, key=lambda x: (x['date'], 1 if x.get('hs') else 0))
+
+
+def ecrire(dossier, fichiers):
+    for chemin, contenu in fichiers.items():
+        f = dossier / chemin
+        f.parent.mkdir(parents=True, exist_ok=True)
+        f.write_text(contenu, encoding='utf-8', newline='\n')
+
+
 def main():
     if f'href="{SLUG[BASE + 1]}"' in SRC_LIST:
         sys.exit(f'La {num3(BASE + 1)} est déjà dans chroniques.html : la base n\'est plus l\'état {num3(BASE)}, rien généré.')
     par_num = {x['num']: x for x in ARTICLES}
-    for x in ARTICLES:
+    for x in ARTICLES + HORS_SERIE:
         x['titre_long'] = len(x['titre']) > 40
     a_publier = [x for x in ARTICLES if x['num'] > BASE]
     if OUT.exists():
         shutil.rmtree(OUT)
     for i, art in enumerate(a_publier):
-        publies = a_publier[: i + 1]
+        publies = avec_hors_series(a_publier[: i + 1], art['date'])
         dossier = OUT / num3(art['num'])
         fichiers = {}
         for x in publies:
@@ -367,10 +403,7 @@ def main():
         fichiers['chroniques.html'] = listing(publies)
         fichiers['mobile/chroniques-mobile.html'] = listing_mobile(publies)
         fichiers['sitemap.xml'] = sitemap(publies)
-        for chemin, contenu in fichiers.items():
-            f = dossier / chemin
-            f.parent.mkdir(parents=True, exist_ok=True)
-            f.write_text(contenu, encoding='utf-8', newline='\n')
+        ecrire(dossier, fichiers)
         manifest = {
             'num': art['num'], 'date': art['date'], 'titre': art['titre'],
             'url': f'https://studio-toinon.fr/{art["slug"]}',
@@ -378,6 +411,23 @@ def main():
         }
         (dossier / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
         print(f'{num3(art["num"])} {art["date"]} : {len(fichiers)} fichiers')
+
+    # Hors-séries : un dépôt à la main par article, le jour de sa sortie. Seuls l'article et
+    # les listings/sitemap bougent ; les instantanés du mardi les reprennent ensuite.
+    if OUT_HS.exists():
+        shutil.rmtree(OUT_HS)
+    for hs in HORS_SERIE:
+        numerotes = [x for x in a_publier if x['date'] <= hs['date']]
+        publies = avec_hors_series(numerotes, hs['date'])
+        fichiers = {
+            f'mobile/{hs["slug"]}.html': page_mobile(hs),
+            f'{hs["slug"]}.html': page_desktop(hs, True, par_num),
+            'chroniques.html': listing(publies),
+            'mobile/chroniques-mobile.html': listing_mobile(publies),
+            'sitemap.xml': sitemap(publies),
+        }
+        ecrire(OUT_HS / hs['slug'], fichiers)
+        print(f'hors-série {hs["slug"]} {hs["date"]} : {len(fichiers)} fichiers')
 
 
 if __name__ == '__main__':

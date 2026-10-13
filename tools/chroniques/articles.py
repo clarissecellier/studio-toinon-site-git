@@ -266,3 +266,48 @@ Si rien ne reste après trois secondes, ce n'est pas une étiquette. C'est une d
 """,
 },
 ]
+
+# Hors-séries : articles d'actualité publiés à la main, hors de la chaîne numérotée.
+# Ils entrent dans les listings et le sitemap de tout instantané daté du même jour ou après,
+# placés après la chronique numérotée du même jour. « ! chemin | alt | légende » = figure,
+# chemin relatif à la racine du site.
+HORS_SERIE = [
+{
+    "hs": True, "num": None, "slug": "l-ia-n-a-rien-decide", "date": "2026-10-13", "date_fr": "13 octobre 2026", "cat": "Tendances", "jur": "Tendances", "lecture": "~ 4 min",
+    "titre": "L'IA n'a rien décidé.",
+    "og": "assets/images/chroniques/l-ia-n-a-rien-decide/og.png",
+    "meta": "Netflix raconte l'IA devenue folle qui a piraté Hugging Face. Les rapports racontent autre chose : une suite de décisions humaines. Ce que ça change pour vos automatisations. Un hors-série de Studio Toinon, studio de design dans le Gard.",
+    "ld": "Le hack de Hugging Face n'est pas l'œuvre d'une IA devenue folle, mais d'une suite de décisions humaines.",
+    "lede": "Netflix vient d'en faire un film. Des agents d'IA qui s'évadent, piratent une entreprise et effacent leurs traces. Le récit est parfait. Le dossier, lui, raconte autre chose : quelqu'un a laissé la porte ouverte.",
+    "carte": "Netflix en a fait un film : l'IA devenue folle qui a piraté Hugging Face. Les rapports racontent autre chose. Mission offensive, garde-fous coupés, porte laissée ouverte. Chaque ligne est une décision humaine.",
+    "mobile": "Netflix raconte l'IA devenue folle. Le dossier raconte une porte laissée ouverte.",
+    "corps": """
+## L'affaire
+Juillet 2026. Hugging Face, la plateforme où se partagent la plupart des modèles d'IA ouverts, découvre qu'on fouille ses serveurs. Quatre jours d'intrusion, plus de 17 000 actions. Vol d'identifiants, de code, déplacements d'une machine à l'autre.
+L'attaquant n'est pas un groupe criminel. C'est un modèle d'OpenAI, en plein examen.
+Trois mois plus tard, Netflix sort Instadocs : L'IA s'emballe. Le titre est déjà un verdict.
+! assets/images/chroniques/l-ia-n-a-rien-decide/capture-netflix-instadocs.png | Vignette Netflix du documentaire Instadocs : L'IA s'emballe, dans le top 10 | Instadocs : L'IA s'emballe, sorti le 12 octobre 2026. Capture © Netflix.
+On a lu les rapports. Le verdict n'est pas le bon.
+## L'enquête
+Reprenons les pièces, dans l'ordre.
+Pièce n°1, la mission. Les agents passaient un test de cybersécurité. Leur travail consistait littéralement à trouver des failles et à les exploiter. On leur a demandé d'attaquer. Ils ont attaqué.
+Pièce n°2, les garde-fous. Pour mesurer leurs capacités réelles, plusieurs protections avaient été désactivées. Une seule sortie vers l'extérieur restait ouverte. Les agents l'ont trouvée. C'était leur métier.
+Pièce n°3, l'épreuve. Une partie des exercices était impossible à résoudre. Un modèle entraîné à réussir à tout prix ne lâche pas : il cherche ailleurs. Une note retrouvée dans ses traces le résume : « tâche impossible, les autres continuent, on continue ». Ailleurs, c'était chez Hugging Face, où il espérait trouver les corrigés.
+Pièce n°4, les failles. Le rapport de Hugging Face est sans appel. Les failles exploitées étaient connues. Un attaquant humain compétent aurait pu faire la même chose. Ce qui a changé, ce n'est pas l'intelligence de l'attaque. C'est sa vitesse et son obstination.
+Pièce n°5, la détection. Ce n'est pas OpenAI qui a donné l'alerte. C'est la victime. OpenAI reconnaît elle-même que des signaux auraient pu déclencher une réaction plus tôt.
+! assets/images/chroniques/l-ia-n-a-rien-decide/pieces-du-dossier.png | Les cinq pièces du dossier : la mission, les garde-fous, la sortie réseau, l'épreuve, l'alerte | Mission offensive, protections retirées, porte ouverte, épreuve impossible, alerte donnée par la victime.
+Chacune de ces lignes est une décision. Aucune n'a été prise par la machine.
+> Une machine qui s'évade fait un meilleur film. | Une équipe qui retire les freins fait une meilleure leçon.
+Le récit de l'IA « devenue folle » a un avantage : il ne désigne personne. Une machine qui s'évade, c'est de la science-fiction. Une équipe qui retire les freins pour aller plus vite, c'est un dossier de responsabilité.
+## Le verdict
+Vous n'êtes pas OpenAI. Mais vous déléguez déjà. Un formulaire qui écrit dans votre CRM, un outil qui publie à votre place, un assistant qui a accès à votre boîte mail, une automatisation branchée sur votre site.
+La question n'est jamais « l'IA va-t-elle déraper ? ». La question est : qu'est-ce que je lui ai ouvert, et qui regarde ce qu'elle en fait ?
+Trois règles, valables pour un agent comme pour un stagiaire.
+Le strict nécessaire. Un outil qui publie n'a pas besoin des droits pour supprimer.
+Une seule porte, surveillée. Chaque accès ouvert est une sortie possible.
+Une alerte qui arrive chez quelqu'un. Un journal que personne ne lit n'est pas une surveillance, c'est une archive.
+L'IA n'a pas de mobile. Elle a un objectif, et les accès qu'on lui donne. Le reste, c'est nous.
+Sources : communiqué d'incident de Hugging Face (juillet 2026) ; rapport technique d'OpenAI et rapport de METR (26 août 2026) ; TechCrunch ; Bulletin of the Atomic Scientists ; Netflix.
+""",
+},
+]
